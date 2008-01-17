@@ -14,9 +14,17 @@ class ClassView(Window):
         model.show()
         Window.__init__(self, 'class.glade')
         self.view.accept.set_sensitive(False)
+        self.view.addattr.set_sensitive(False)
         self.model = model
         self.view.name.set_text(model.name)
         self.view.abstract.set_active(model.abstract)
+
+        # Permite realizar multiples selecciones sobre el treeview
+        # (con shift y ctrl)
+
+        treeselection_mode = self.view.treeview_attributes.get_selection()
+        treeselection_mode.set_mode(gtk.SELECTION_MULTIPLE)
+
         self.load_attributes()
 
     def load_attributes(self):
@@ -35,13 +43,30 @@ class ClassView(Window):
             self.view.accept.set_sensitive(True)
         else :
             self.view.accept.set_sensitive(False)
-    
+
+    def on_attrentry__changed(self, widget):
+        if len(self.view.attrentry.get_text()) > 0:
+            self.view.addattr.set_sensitive(True)
+        else :
+            self.view.addattr.set_sensitive(False)
+
     def on_accept__clicked(self, widget):
         self.model.name = self.view.name.get_text()
         self.model.abstract = self.view.abstract.get_active()
-        self.model.show()
-            
-        
-        #print self.view.comment_class.get_buffer().get_text()
 
-        
+        treeview_selection = self.view.treeview_attributes.get_selection()
+        model, selected_rows =  treeview_selection.get_selected_rows()
+	self.model.show()
+
+    def on_removeattr__clicked(self, widget):
+        treeview_selection = self.view.treeview_attributes.get_selection()
+        model, selected_rows = treeview_selection.get_selected_rows()
+        iters = [model.get_iter(path) for path in selected_rows]
+
+        for iter in iters:
+            model.remove(iter)
+
+    def on_addattr__clicked(self, widget):
+        model = self.view.treeview_attributes.get_model()
+        model.append([self.view.attrentry.get_text()])
+        self.view.treeview_attributes.set_model(model)
