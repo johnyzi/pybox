@@ -57,27 +57,31 @@ class ClassView(Window):
     def on_name__changed(self, widget):
         if len(self.view.name.get_text()) > 0:
             self.view.accept.set_sensitive(True)
-        else :
+        else:
             self.view.accept.set_sensitive(False)
 
     def on_attrentry__changed(self, widget):
         if len(self.view.attrentry.get_text()) > 0:
             self.view.addattr.set_sensitive(True)
-        else :
+        else:
             self.view.addattr.set_sensitive(False)
 
     def on_methodentry__changed(self, widget):
         if len(self.view.methodentry.get_text()) > 0:
             self.view.addmethod.set_sensitive(True)
-        else :
+        else:
             self.view.addmethod.set_sensitive(False)
 
     def on_accept__clicked(self, widget):
         self.model.name = self.view.name.get_text()
         self.model.abstract = self.view.abstract.get_active()
 
-        treeview_selection = self.view.treeview_attributes.get_selection()
-        model, selected_rows =  treeview_selection.get_selected_rows()
+        model_attributes = self.view.treeview_attributes.get_model()
+        self.model.variables = [name[0] for name in model_attributes]
+
+        model_methods = self.view.treeview_methods.get_model()
+        self.model.methods = [name[0] for name in model_methods]
+
 	self.model.show()
 
     def on_removeattr__clicked(self, widget):
