@@ -10,14 +10,16 @@ class Model:
         self.methods = methods
 
     def show(self):
-        print "Nombre:", self.name
+        print "Name : ", self.name
+
         if self.abstract:
-            print "Is abstract: si"
+            print "Is abstract : YES"
         else:
-            print "Is abstract: no"
-        print "comment:", self.comment
-        print "variables:", self.variables
-        print "methods:", self.methods
+            print "Is abstract : NO"
+
+        print "Comments : ", self.comment
+        print "Attributes : ", self.variables
+        print "Methods : ", self.methods
 
 
 if __name__ == '__main__':

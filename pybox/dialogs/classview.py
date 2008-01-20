@@ -34,7 +34,7 @@ class ClassView(Window):
     def load_attributes(self):
         # Armamos el treeview de los atributos.
 
-        attribute_column = gtk.TreeViewColumn('Atributos', gtk.CellRendererText(), text = 0)
+        attribute_column = gtk.TreeViewColumn('Atributtes', gtk.CellRendererText(), text = 0)
         self.view.treeview_attributes.append_column(attribute_column)
         attribute_model = gtk.ListStore(str)
 
@@ -45,7 +45,7 @@ class ClassView(Window):
 
         # Armamos el treeview de los metodos.
 
-        method_column = gtk.TreeViewColumn('Metodos', gtk.CellRendererText(), text = 0)
+        method_column = gtk.TreeViewColumn('Methods', gtk.CellRendererText(), text = 0)
         self.view.treeview_methods.append_column(method_column)
         method_model= gtk.ListStore(str)
         
@@ -82,7 +82,14 @@ class ClassView(Window):
         model_methods = self.view.treeview_methods.get_model()
         self.model.methods = [name[0] for name in model_methods]
 
-	self.model.show()
+	self.model.show() # Debugging.
+        
+        # Al presionar OK, cerramos la ventana y devolvemos el modelo.
+        self.view.dialog1.destroy()
+        return self.model
+
+    def on_cancel__clicked(self, widget):
+        self.view.dialog1.destroy()
 
     def on_removeattr__clicked(self, widget):
         treeview_selection = self.view.treeview_attributes.get_selection()
@@ -109,3 +116,4 @@ class ClassView(Window):
         model = self.view.treeview_methods.get_model()
         model.append([self.view.methodentry.get_text()])
         self.view.treeview_methods.set_model(model)
+
