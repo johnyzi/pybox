@@ -3,6 +3,9 @@ import gtk
 import gtk.glade
 import goocanvas
 
+import dialogs
+import model
+
 from window import Window
 
 class Main(Window):
@@ -30,6 +33,12 @@ class Main(Window):
 
     def on_main__destroy(self, widget):
         gtk.main_quit()
+
+    def on_add__activate(self, widget):
+        new_model = model.Model()
+        new_dialog = dialogs.classview.ClassView(new_model)
+        new_dialog.view.dialog1.run()
+        #print 'activado el ADD'
     
 if __name__ == '__main__':
     main = Main()
