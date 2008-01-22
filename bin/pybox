@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import sys
+import os
+
+os.chdir('..')
+
+try:
+    path = os.path.join(os.path.dirname(__file__), 'pybox')
+    sys.path.insert(0, os.path.abspath(path))
+except:
+    pass
+
+os.chdir('pybox')
+
+import main
+import gtk
+
+main.Main()
+gtk.main()
