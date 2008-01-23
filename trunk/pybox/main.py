@@ -59,29 +59,19 @@ class Main(Window):
         # Si alguien sabe como averiguar si se presiono OK o CANCEL...
         # En caso que se presione CANCEL, no hay que dibujar nada...
 
-        # ----- DEBUGGING
+        if dialog_ret_val:
+            box = goocanvas.Rect (x = self.x_position, 
+            y = self.y_position, 
+            width = 50, 
+            height = 50, 
+            radius_x = 10, 
+            radius_y = 10, 
+            line_width = 1.0, 
+            stroke_color = "black", 
+            fill_color = "#cccccc")
 
-        print 'dialog_ret_val : ' + str(dialog_ret_val) # ¿No deberia devolver 0 o 1, por OK y CANCEL?
-
-        print '------------'
-        print 'debo agregar nuevo diagrama en : x = ' + str(self.x_position) + ' y = ' + str(self.y_position)
-
-        # Rectangulo de prueba
-
-        box = goocanvas.Rect (x = self.x_position, 
-        y = self.y_position, 
-        width = 50, 
-        height = 50, 
-        radius_x = 10, 
-        radius_y = 10, 
-        line_width = 1.0, 
-        stroke_color = "black", 
-        fill_color = "#cccccc")
-
-        root = self.view.canvas.get_root_item()
-        root.add_child(box)
-    
-        # ----- DEBUGGING
+            root = self.view.canvas.get_root_item()
+            root.add_child(box)
 
 if __name__ == '__main__':
     main = Main()
