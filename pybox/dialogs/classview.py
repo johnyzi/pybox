@@ -20,8 +20,8 @@ class ClassView(Window):
         self.view.name.set_text(model.name)
         self.view.abstract.set_active(model.abstract)
 
-        # Permite realizar multiples selecciones sobre el treeview
-        # (con shift y ctrl)
+        # Permite realizar multiples selecciones sobre el treeview (con shift y ctrl)
+        # Allows us to make multiple selections on the treeview.
 
         treeselection_mode = self.view.treeview_attributes.get_selection()
         treeselection_mode.set_mode(gtk.SELECTION_MULTIPLE)
@@ -33,6 +33,7 @@ class ClassView(Window):
 
     def load_attributes(self):
         # Armamos el treeview de los atributos.
+        # We build the attribute treeview
 
         attribute_column = gtk.TreeViewColumn('Atributtes', gtk.CellRendererText(), text = 0)
         self.view.treeview_attributes.append_column(attribute_column)
@@ -44,6 +45,7 @@ class ClassView(Window):
         self.view.treeview_attributes.set_model(attribute_model)
 
         # Armamos el treeview de los metodos.
+        # We build the method treeview.
 
         method_column = gtk.TreeViewColumn('Methods', gtk.CellRendererText(), text = 0)
         self.view.treeview_methods.append_column(method_column)
@@ -55,6 +57,9 @@ class ClassView(Window):
         self.view.treeview_methods.set_model(method_model)
     
     def on_name__changed(self, widget):
+        # Si se escribe el nombre de la clase entonces permitimos que el usuario pueda presionar OK para crearla.
+        # If the name of the class is written then we allow the user to create the class.
+
         if len(self.view.name.get_text()) > 0:
             self.view.accept.set_sensitive(True)
         else:
@@ -82,11 +87,11 @@ class ClassView(Window):
         model_methods = self.view.treeview_methods.get_model()
         self.model.methods = [name[0] for name in model_methods]
 
-	self.model.show() # Debugging.
+	#self.model.show() # Debugging.
         
-        # Al presionar OK, cerramos la ventana y devolvemos el modelo.
+        # Al presionar OK, cerramos la ventana.
+        # When we press OK we close the window.
         self.view.dialog1.destroy()
-        return self.model
 
     def on_cancel__clicked(self, widget):
         self.view.dialog1.destroy()
@@ -111,9 +116,11 @@ class ClassView(Window):
         model = self.view.treeview_attributes.get_model()
         model.append([self.view.attrentry.get_text()])
         self.view.treeview_attributes.set_model(model)
+        self.view.attrentry.set_text('')
 
     def on_addmethod__clicked(self, widget):
         model = self.view.treeview_methods.get_model()
         model.append([self.view.methodentry.get_text()])
         self.view.treeview_methods.set_model(model)
+        self.view.methodentry.set_text('')
 
