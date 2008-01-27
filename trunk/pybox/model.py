@@ -1,7 +1,7 @@
 class Model:
 
-    def __init__(self, name="Persona", superclass="", abstract=False, comment="",
-            variables=['a1', 'a2'], methods=['m1', 'm2']):
+    def __init__(self, name="", superclass="", abstract=False, comment="",
+            variables=[], methods=[]):
         self.name = name
         self.superclass = superclass
         self.abstract = abstract
