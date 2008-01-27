@@ -41,9 +41,17 @@ class Main(Window):
 
     def on_event(self, widget, event):
         if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+
+            # Si se presionó sobre el canvas habilitamos solamente la opcion Add.
+            self.view.add.set_sensitive(True)
+            self.view.edit.set_sensitive(False)
+            self.view.remove.set_sensitive(False)
+
             self.view.popup.popup(None, None, None, event.button, event.time)
             self.x_position = event.x
             self.y_position = event.y
+
+            
 
     def on_quit_item__activate(self, widget):
         self.on_main__destroy(widget)
@@ -57,20 +65,33 @@ class Main(Window):
     def on_add__activate(self, widget):
         new_model = model.Model()
         new_dialog = dialogs.classview.ClassView(new_model)
-        dialog_ret_val = new_dialog.view.dialog1.run()
+        response = new_dialog.view.dialog1.run()
 
-        # Si alguien sabe como averiguar si se presiono OK o CANCEL...
-        # En caso que se presione CANCEL, no hay que dibujar nada...
-
-        if dialog_ret_val == 1:
+        if response:
             root = self.view.canvas.get_root_item()
             box1 = box.Box(self.x_position, self.y_position, new_model, root)
-            box1.group.connect('button_press_event',
-                    self.on_button_press_event, box1)
+            box1.group.connect('button_press_event', self.on_button_press_event, box1)
+
+    def on_remove__activate(self, widget):
+        print 'se presiono delete'
+
+    def on_edit__activate(self, widget):
+        print 'se presiono edit'
 
     def on_button_press_event(self, widget, event, extra, box):
-        print "Se activa un evento:", event 
-        box.model.show()
+        '''print "Se activa un evento:", event 
+        box.model.show()'''
+
+        # Habilitamos la opciones Edit y Remove.
+
+        self.view.add.set_sensitive(False)
+        self.view.edit.set_sensitive(True)
+        self.view.remove.set_sensitive(True)
+
+        
+
+        '''if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+            print 'Se hizo clic derecho sobre una clase'''
 
 if __name__ == '__main__':
     main = Main()
