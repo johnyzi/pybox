@@ -78,7 +78,7 @@ class Main(Window):
     def on_edit__activate(self, widget):
         print 'se presiono edit'
 
-    def on_button_press_event(self, widget, event, extra, box):
+    def on_button_press_event(self, group, widget, event, box):
         '''print "Se activa un evento:", event 
         box.model.show()'''
 
@@ -88,9 +88,7 @@ class Main(Window):
         self.view.edit.set_sensitive(True)
         self.view.remove.set_sensitive(True)
 
-        
-
-        '''if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+        if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
             print 'Se hizo clic derecho sobre una clase'''
 
 if __name__ == '__main__':
