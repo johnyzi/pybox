@@ -5,6 +5,7 @@ import goocanvas
 
 import dialogs
 import model
+import box
 
 from window import Window
 
@@ -29,7 +30,9 @@ class Main(Window):
 
     def _create_canvas(self):
         self.view.canvas = goocanvas.Canvas()
-        self.view.eventbox.add(self.view.canvas)
+        self.view.canvas.props.x2 = 600
+        self.view.canvas.props.y2 = 400
+        self.view.scroll.add(self.view.canvas)
         self.view.canvas.show()
         self.view.canvas.connect('event', self.on_event)
 
@@ -60,18 +63,14 @@ class Main(Window):
         # En caso que se presione CANCEL, no hay que dibujar nada...
 
         if dialog_ret_val:
-            box = goocanvas.Rect (x = self.x_position, 
-            y = self.y_position, 
-            width = 50, 
-            height = 50, 
-            radius_x = 10, 
-            radius_y = 10, 
-            line_width = 1.0, 
-            stroke_color = "black", 
-            fill_color = "#cccccc")
-
             root = self.view.canvas.get_root_item()
-            root.add_child(box)
+            box1 = box.Box(self.x_position, self.y_position, new_model, root)
+            box1.group.connect('button_press_event',
+                    self.on_button_press_event, box1)
+
+    def on_button_press_event(self, widget, event, extra, box):
+        print "Se activa un evento:", event 
+        box.model.show()
 
 if __name__ == '__main__':
     main = Main()
