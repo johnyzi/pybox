@@ -62,7 +62,7 @@ class Main(Window):
         # Si alguien sabe como averiguar si se presiono OK o CANCEL...
         # En caso que se presione CANCEL, no hay que dibujar nada...
 
-        if dialog_ret_val:
+        if dialog_ret_val == 1:
             root = self.view.canvas.get_root_item()
             box1 = box.Box(self.x_position, self.y_position, new_model, root)
             box1.group.connect('button_press_event',

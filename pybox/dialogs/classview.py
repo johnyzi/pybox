@@ -55,6 +55,9 @@ class ClassView(Window):
             method_model.append([item])
 
         self.view.treeview_methods.set_model(method_model)
+
+    def on_dialog1__delete_event(self, widget, extra):
+        self.view.dialog1.destroy()
     
     def on_name__changed(self, widget):
         # Si se escribe el nombre de la clase entonces permitimos que el usuario pueda presionar OK para crearla.
@@ -76,6 +79,12 @@ class ClassView(Window):
             self.view.addmethod.set_sensitive(True)
         else:
             self.view.addmethod.set_sensitive(False)
+
+    def on_attrentry__activate(self, widget):
+        self.on_addattr__clicked(widget)
+
+    def on_methodentry__activate(self, widget):
+        self.on_addmethod__clicked(widget)
 
     def on_accept__clicked(self, widget):
         self.model.name = self.view.name.get_text()
