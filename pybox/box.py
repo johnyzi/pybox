@@ -1,6 +1,6 @@
+# -*- encoding: utf-8 -*-
 import goocanvas
 import pango
-
 
 class Box:
 
@@ -9,6 +9,28 @@ class Box:
         self._create_view(root)
         self.group.translate(x, y)
         self.update(model)
+        self._init_drag_feature()
+
+    def _init_drag_feature(self):
+        self.dragging = False
+        self.drag_x = 0
+        self.drag_y = 0
+        self.group.connect('button_press_event', self.on_drag_start)
+        self.group.connect('button_release_event', self.on_drag_end)
+        self.group.connect('motion_notify_event', self.on_motion)
+
+    def on_drag_start(self, group, item, event):
+        if event.button == 1:
+            self.dragging = True
+            self.drag_x = event.x
+            self.drag_y = event.y
+
+    def on_drag_end(self, group, item, event):
+        self.dragging = False
+
+    def on_motion(self, group, item, event):
+        if self.dragging:
+            group.translate(event.x - self.drag_x, event.y - self.drag_y)
 
     def _create_view(self, root):
         self.group = goocanvas.Group()
