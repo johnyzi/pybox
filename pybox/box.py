@@ -33,22 +33,22 @@ class Box:
             group.translate(event.x - self.drag_x, event.y - self.drag_y)
 
     def _create_view(self, root):
+        defaults_values_for_text = {
+                'font': 'Arial 10',
+                'text': '',
+                'alignment': pango.ALIGN_CENTER,
+                'fill_color': 'black',
+                'use_markup': True}
         self.group = goocanvas.Group()
         root.add_child(self.group)
 
         self.box = goocanvas.Rect(stroke_color='black',
                 line_width=2.0, fill_color='white', radius_x=5, radius_y=5)
-        self.title = goocanvas.Text(text='Hola', font='Arial 10',
-                fill_color='black', use_markup=True, 
-                alignment=pango.ALIGN_CENTER)
-        self.attributes = goocanvas.Text(font='Arial 10', text='', 
-                fill_color='black', alignment=pango.ALIGN_CENTER)
-        self.methods = goocanvas.Text(font='Arial 10', text='', 
-                fill_color='black', alignment=pango.ALIGN_CENTER)
-        self.line1 = goocanvas.Path(data="",
-                stroke_color="black", line_width=2.0)
-        self.line2 = goocanvas.Path(data="",
-                stroke_color="black", line_width=2.0)
+        self.title = goocanvas.Text(**defaults_values_for_text)
+        self.attributes = goocanvas.Text(**defaults_values_for_text)
+        self.methods = goocanvas.Text(**defaults_values_for_text)
+        self.line1 = goocanvas.Path(stroke_color="black", line_width=2.0)
+        self.line2 = goocanvas.Path(stroke_color="black", line_width=2.0)
 
         self.group.add_child(self.box)
         self.group.add_child(self.title)
