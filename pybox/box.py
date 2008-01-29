@@ -20,6 +20,8 @@ class Box:
         self.group.connect('motion_notify_event', self.on_motion)
 
     def on_drag_start(self, group, item, event):
+        group.raise_(None)
+
         if event.button == 1:
             self.dragging = True
             self.drag_x = event.x
