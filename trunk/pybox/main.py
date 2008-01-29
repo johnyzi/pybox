@@ -51,8 +51,6 @@ class Main(Window):
             self.x_position = event.x
             self.y_position = event.y
 
-            
-
     def on_quit_item__activate(self, widget):
         self.on_main__destroy(widget)
 
@@ -74,22 +72,29 @@ class Main(Window):
 
     def on_remove__activate(self, widget):
         print 'se presiono delete'
+        print 'voy a eliminar : ', self.box.model.show()
+        self.group.remove()
 
     def on_edit__activate(self, widget):
         print 'se presiono edit'
+        new_dialog = dialogs.classview.ClassView(self.box.model)
+        response = new_dialog.view.dialog1.run()
 
     def on_button_press_event(self, group, widget, event, box):
         '''print "Se activa un evento:", event 
         box.model.show()'''
 
         # Habilitamos la opciones Edit y Remove.
-
         self.view.add.set_sensitive(False)
         self.view.edit.set_sensitive(True)
         self.view.remove.set_sensitive(True)
 
+        # Almacenamos el box y el grupo para que pueda ser accedido por el
+        # evento on_remove__activate o on_edit__activate.
         if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-            print 'Se hizo clic derecho sobre una clase'''
+            print 'Se hizo clic derecho sobre una clase'
+            self.box = box
+            self.group = group
 
 if __name__ == '__main__':
     main = Main()
