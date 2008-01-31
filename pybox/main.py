@@ -80,6 +80,9 @@ class Main(Window):
         new_dialog = dialogs.classview.ClassView(self.box.model)
         response = new_dialog.view.dialog1.run()
 
+        if response:
+            self.box.update(self.box.model)
+
     def on_button_press_event(self, group, widget, event, box):
         '''print "Se activa un evento:", event 
         box.model.show()'''
