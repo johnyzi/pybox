@@ -71,6 +71,7 @@ class ClassView(Window):
         self.view.treeview_methods.set_model(method_model)
 
     def on_dialog1__delete_event(self, widget, extra):
+        self.view.dialog1.response(0)
         self.view.dialog1.destroy()
     
     def on_name__changed(self, widget):
