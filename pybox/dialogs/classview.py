@@ -10,7 +10,7 @@ class ClassView(Window):
     Se utiliza en dos casos, cuando se quiere crear un nuevo objeto
     y cuando se modifican los datos de una clase existente."""
 
-    def __init__(self, model):
+    def __init__(self, model, classes):
         model.show()
         Window.__init__(self, 'class.glade')
         self.view.accept.set_sensitive(False)
@@ -29,7 +29,21 @@ class ClassView(Window):
         treeselection_mode = self.view.treeview_methods.get_selection()
         treeselection_mode.set_mode(gtk.SELECTION_MULTIPLE)
 
+        self._create_superclass_list(classes)
         self.load_attributes()
+
+    def _create_superclass_list(self, classes):
+        store = gtk.ListStore(str)
+
+        for model in classes:
+            if model.name != self.model.name:
+                store.append([model.name])
+
+        combo = self.view.superclass
+        combo.set_model(store)
+        cell = gtk.CellRendererText()
+        combo.pack_start(cell, True)
+        combo.add_attribute(cell, 'text', 0)
 
     def load_attributes(self):
         # Armamos el treeview de los atributos.
