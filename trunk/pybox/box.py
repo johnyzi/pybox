@@ -69,6 +69,7 @@ class Box:
         else:
             self.title.props.text = "<b>%s</b>" % model.name
 
+
         if model.variables:
             self.attributes.props.text = reduce(self.concatenate, model.variables)
         if model.methods:
@@ -87,19 +88,19 @@ class Box:
     def update_positions(self):
         dx1 = self.dx(self.title)
         dy1 = self.dy(self.title)
-        self.attributes.translate(0, dy1 + 10)
+        self.attributes.props.y = dy1 + 10
 
         dy2 = self.dy(self.attributes)
         dx2 = self.dx(self.attributes)
-        self.methods.translate(0, dy1 + dy2 + 10 + 10)
+        self.methods.props.y = dy1 + dy2 + 10 + 10
 
         dx3 = self.dx(self.methods)
         dy3 = self.dy(self.methods)
 
         width = max(dx1, dx2, dx3) + 10
         
-        self.box.props.x -= 5
-        self.box.props.y -= 5
+        self.box.props.x = -5
+        self.box.props.y = -5
         self.box.props.width = width
         self.box.props.height = dy1 + dy2 + dy3 + 30
 
