@@ -24,6 +24,7 @@ class Main(Window):
         Window.__init__(self, 'main.glade')
         self.view.main.show()
         self._create_canvas()
+        self.classes = []
 
     # Construye el widget canvas.
     # This builds the canvas widget.
@@ -62,22 +63,24 @@ class Main(Window):
 
     def on_add__activate(self, widget):
         new_model = model.Model()
-        new_dialog = dialogs.classview.ClassView(new_model)
+        new_dialog = dialogs.classview.ClassView(new_model, self.classes)
         response = new_dialog.view.dialog1.run()
 
         if response:
             root = self.view.canvas.get_root_item()
             box1 = box.Box(self.x_position, self.y_position, new_model, root)
             box1.group.connect('button_press_event', self.on_button_press_event, box1)
+            self.classes.append(new_model)
 
     def on_remove__activate(self, widget):
         print 'se presiono delete'
         print 'voy a eliminar : ', self.box.model.show()
+        self.classes.remove(self.box.model)
         self.group.remove()
 
     def on_edit__activate(self, widget):
         print 'se presiono edit'
-        new_dialog = dialogs.classview.ClassView(self.box.model)
+        new_dialog = dialogs.classview.ClassView(self.box.model, self.classes)
         response = new_dialog.view.dialog1.run()
 
         if response:

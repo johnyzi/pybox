@@ -4,6 +4,42 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
+Box	box.py	/^class Box:$/;"	c
+Main	main.py	/^class Main(Window):$/;"	c
+Model	model.py	/^class Model:$/;"	c
+View	window.py	/^class View:$/;"	c
 Window	window.py	/^class Window:$/;"	c
+__init__	box.py	/^    def __init__(self, x, y, model, root):$/;"	m	class:Box
+__init__	main.py	/^    def __init__(self):$/;"	m	class:Main
+__init__	model.py	/^    def __init__(self, name="", superclass="", abstract=False, comment="",$/;"	m	class:Model
 __init__	window.py	/^    def __init__(self, ui_file):$/;"	m	class:Window
-view	test.py	/^    new = dialogs.classview.ClassView()$/;"	c
+_connect_callbacks	window.py	/^    def _connect_callbacks(self, ui):$/;"	m	class:Window
+_create_canvas	main.py	/^    def _create_canvas(self):$/;"	m	class:Main
+_create_view	box.py	/^    def _create_view(self, root):$/;"	m	class:Box
+_create_view	window.py	/^    def _create_view(self, ui):$/;"	m	class:Window
+_init_drag_feature	box.py	/^    def _init_drag_feature(self):$/;"	m	class:Box
+aults_values_for_text	box.py	/^        defaults_values_for_text = {$/;"	f	function:Box._create_view
+aults_values_for_text	box.py	/^        self.attributes = goocanvas.Text(**defaults_values_for_text)$/;"	f	function:Box._create_view
+aults_values_for_text	box.py	/^        self.methods = goocanvas.Text(**defaults_values_for_text)$/;"	f	function:Box._create_view
+aults_values_for_text	box.py	/^        self.title = goocanvas.Text(**defaults_values_for_text)$/;"	f	function:Box._create_view
+concatenate	box.py	/^    def concatenate(self, a, b):$/;"	m	class:Box
+dx	box.py	/^    def dx(self, object):$/;"	m	class:Box
+dy	box.py	/^    def dy(self, object):$/;"	m	class:Box
+es	main.py	/^            self.classes.append(new_model)$/;"	c	class:Main.on_add__activate/view
+es	main.py	/^        self.classes = []$/;"	c	function:Main.__init__
+es	main.py	/^        self.classes.remove(self.box.model)$/;"	c	function:Main.on_remove__activate
+on_add__activate	main.py	/^    def on_add__activate(self, widget):$/;"	m	class:Main
+on_button_press_event	main.py	/^    def on_button_press_event(self, group, widget, event, box):$/;"	m	class:Main
+on_drag_end	box.py	/^    def on_drag_end(self, group, item, event):$/;"	m	class:Box
+on_drag_start	box.py	/^    def on_drag_start(self, group, item, event):$/;"	m	class:Box
+on_edit__activate	main.py	/^    def on_edit__activate(self, widget):$/;"	m	class:Main
+on_event	main.py	/^    def on_event(self, widget, event):$/;"	m	class:Main
+on_main__destroy	main.py	/^    def on_main__destroy(self, widget):$/;"	m	class:Main
+on_motion	box.py	/^    def on_motion(self, group, item, event):$/;"	m	class:Box
+on_quit_item__activate	main.py	/^    def on_quit_item__activate(self, widget):$/;"	m	class:Main
+on_remove__activate	main.py	/^    def on_remove__activate(self, widget):$/;"	m	class:Main
+show	model.py	/^    def show(self):$/;"	m	class:Model
+update	box.py	/^    def update(self, model):$/;"	m	class:Box
+update_positions	box.py	/^    def update_positions(self):$/;"	m	class:Box
+view	main.py	/^        new_dialog = dialogs.classview.ClassView(new_model, self.classes)$/;"	c	function:Main.on_add__activate
+view	main.py	/^        new_dialog = dialogs.classview.ClassView(self.box.model)$/;"	c	function:Main.on_edit__activate
