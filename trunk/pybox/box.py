@@ -7,7 +7,7 @@ class Box:
     def __init__(self, x, y, model, root):
         self.model = model
         self._create_view(root)
-        self.group.translate(x, y)
+        self.group.translate(x + 5, y + 5)
         self.update(model)
         self._init_drag_feature()
 
