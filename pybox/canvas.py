@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 import goocanvas
 import box
+import line
 import gtk
 import popup
 
@@ -16,6 +17,7 @@ class Canvas(goocanvas.Canvas):
         goocanvas.Canvas.__init__(self)
         self.main = main
         self.classes = []
+        self.boxes = []
 
         # Construye el widget canvas.
         # This builds the canvas widget.
@@ -41,11 +43,42 @@ class Canvas(goocanvas.Canvas):
             self.x_position = event.x
             self.y_position = event.y
 
-    def create_box(self, new_model):
+    def create_box(self, new_model, x=None, y=None):
         root = self.get_root_item()
-        box1 = box.Box(self.x_position, self.y_position, new_model, root)
+
+        # Si no se especifican `x` e `y` como parametros se asume
+        # que ha creado la caja desde el menú desplegable `Popup`.
+        if not x and not y:
+            x = self.x_position
+            y = self.y_position
+
+        box1 = box.Box(x, y, new_model, root)
         box1.group.connect('button_press_event', self.on_button_press_event, box1)
         self.classes.append(new_model)
+        self.boxes.append((new_model.name, box1))
+
+        # Conecta a las cajas en caso de existir una relacion.
+        if new_model.superclass:
+            superclass_box = self.get_box_by_name(new_model.superclass)
+            self.create_line(box1, superclass_box)
+
+    def get_model_by_name(self, name):
+        for model in self.classes:
+            if model.name == name:
+                return model
+        else:
+            raise NameError("No existe la clase de nombre", name)
+
+    def get_box_by_name(self, name):
+        for boxname, box in self.boxes:
+            if boxname == name:
+                return box
+        else:
+            raise NameError("No existe la clase de nombre", name)
+
+    def create_line(self, child_model, parent_model):
+        root = self.get_root_item()
+        line.Line(child_model, parent_model, root)
 
     def on_button_press_event(self, group, widget, event, box):
         '''print "Se activa un evento:", event 
@@ -64,5 +97,5 @@ class Canvas(goocanvas.Canvas):
 
     def remove_selected_box(self):
         self.classes.remove(self.box.model)
-        self.group.remove()
+        self.box.remove()
 

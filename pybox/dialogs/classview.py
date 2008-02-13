@@ -18,6 +18,7 @@ class ClassView(Window):
         self.view.addmethod.set_sensitive(False)
         self.model = model
         self.view.name.set_text(model.name)
+        #self.view.superclass.set_active(model.superclass)
         self.view.abstract.set_active(model.abstract)
 
         # Permite realizar multiples selecciones sobre el treeview (con shift y ctrl)
@@ -103,6 +104,13 @@ class ClassView(Window):
 
     def on_accept__clicked(self, widget):
         self.model.name = self.view.name.get_text()
+        superclass = self.view.superclass.get_active_text()
+
+        if superclass:
+            self.model.superclass = superclass
+        else:
+            self.model.superclass = ""
+
         self.model.abstract = self.view.abstract.get_active()
 
         model_attributes = self.view.treeview_attributes.get_model()
