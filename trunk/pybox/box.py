@@ -1,10 +1,17 @@
 # -*- encoding: utf-8 -*-
 import goocanvas
 import pango
+import math
+
+def distance((x1, y1), (x2, y2)):
+    ca = x1 - x2
+    co = y1 - y2
+    return math.sqrt(ca*ca + co*co)
 
 class Box:
 
     def __init__(self, x, y, model, root):
+        self.lines_connected_to_me = []
         self.model = model
         self._create_view(root)
         self.group.translate(x + 5, y + 5)
@@ -18,6 +25,14 @@ class Box:
         self.group.connect('button_press_event', self.on_drag_start)
         self.group.connect('button_release_event', self.on_drag_end)
         self.group.connect('motion_notify_event', self.on_motion)
+
+    def remove(self):
+        print self.lines_connected_to_me
+
+        for line in self.lines_connected_to_me:
+            line.remove()
+
+        self.group.remove()
 
     def on_drag_start(self, group, item, event):
         group.raise_(None)
@@ -33,6 +48,14 @@ class Box:
     def on_motion(self, group, item, event):
         if self.dragging:
             group.translate(event.x - self.drag_x, event.y - self.drag_y)
+            self.update_lines()
+
+    def update_lines(self):
+        "Actualiza la posición de las lineas que lo conectan a otras cajas."
+
+        for line in self.lines_connected_to_me:
+            line.update()
+
 
     def _create_view(self, root):
         defaults_values_for_text = {
@@ -84,6 +107,41 @@ class Box:
     def dx(self, object):
         bounds = object.get_bounds()
         return bounds.x2 - bounds.x1
+
+    def get_control_points(self):
+        """Retorna los puntos situados en el borde de la caja.
+
+        Estos puntos se utilizan para conectar lineas a otras cajas.
+        """
+        bounds = self.group.get_bounds()
+        x1, y1 = bounds.x1, bounds.y1
+        x2, y2 = bounds.x2, bounds.y2
+        w, h = x2 - x1, y2 - y1
+
+        return [(x1 + w/2, y1),
+                (x1, y1 + h/2),
+                (x2, y1 + h/2),
+                (x1 + w/2, y2)]
+
+    def get_connection_more_closer_to(self, other):
+        "Retorna los puntos mas cercanos para conectar dos cajas."
+        my_control_points = self.get_control_points()
+        he_control_points = other.get_control_points()
+        less_distance = 400
+        points = []
+
+        for my_point in my_control_points:
+            for he_point in he_control_points:
+                dist = distance(my_point, he_point)
+
+                if not points:
+                    points = [my_point, he_point]
+                    less_distance = dist
+                elif dist < less_distance:
+                    points = [my_point, he_point]
+                    less_distance = dist
+
+        return points
 
     def update_positions(self):
         dx1 = self.dx(self.title)

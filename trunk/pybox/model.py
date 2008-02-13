@@ -17,6 +17,7 @@ class Model:
         else:
             print "Is abstract : NO"
 
+        print "Superclass : ", self.superclass
         print "Comments : ", self.comment
         print "Attributes : ", self.variables
         print "Methods : ", self.methods
