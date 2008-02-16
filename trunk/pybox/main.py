@@ -3,6 +3,7 @@ import gtk
 import gtk.glade
 import goocanvas
 
+import common
 import dialogs
 import model
 import canvas
@@ -26,28 +27,17 @@ class Main(Window):
     def on_main__destroy(self, widget):
         gtk.main_quit()
 
-'''    # Al presionar sobre el boton 'Add' del menu desplegamos la ventana para crear una nueva clase.
-    # When the 'Add' button is pressed we raise the window to create a new class.
-
-    def on_add__activate(self, widget):
-        new_model = model.Model()
-        new_dialog = dialogs.classview.ClassView(new_model, self.canvas.classes)
-        response = new_dialog.view.dialog1.run()
-
-        if response:
-            self.canvas.create_box(new_model)
-
-    def on_remove__activate(self, widget):
-        self.canvas.remove_selected_box()
-
-
-    def on_edit__activate(self, widget):
-        new_dialog = dialogs.classview.ClassView(self.canvas.box.model,
-                self.canvas.classes)
-        response = new_dialog.view.dialog1.run()
-
-        if response:
-            self.canvas.box.update(self.canvas.box.model)'''
+    def on_aboutitem__activate(self, item):
+        image = gtk.Image()
+        dialog = gtk.AboutDialog()
+        dialog.set_name("Pybox")
+        dialog.set_comments("A simple class diagram tool.")
+        dialog.set_license(common.GPL_TEXT)
+        dialog.set_authors(['a', 'b'])
+        image.set_from_file("../pixmaps/logo.png")
+        dialog.set_logo(image.get_pixbuf())
+        dialog.run()
+        dialog.hide()
 
 
 if __name__ == '__main__':

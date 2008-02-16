@@ -31,7 +31,14 @@ class ClassView(Window):
         treeselection_mode.set_mode(gtk.SELECTION_MULTIPLE)
 
         self._create_superclass_list(classes)
+
+        if model.superclass:
+            list = [n[0] for n in self.view.superclass.get_model()]
+            self.view.superclass.set_active(list.index(model.superclass))
+
         self.load_attributes()
+
+        print 'abri un dialogo para crear o editar'
 
     def _create_superclass_list(self, classes):
         store = gtk.ListStore(str)
@@ -97,10 +104,12 @@ class ClassView(Window):
             self.view.addmethod.set_sensitive(False)
 
     def on_attrentry__activate(self, widget):
-        self.on_addattr__clicked(widget)
+        if len(self.view.attrentry.get_text()) > 0:
+            self.on_addattr__clicked(widget)
 
     def on_methodentry__activate(self, widget):
-        self.on_addmethod__clicked(widget)
+        if len(self.view.methodentry.get_text()) > 0:
+            self.on_addmethod__clicked(widget)
 
     def on_accept__clicked(self, widget):
         self.model.name = self.view.name.get_text()

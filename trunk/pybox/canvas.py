@@ -57,10 +57,13 @@ class Canvas(goocanvas.Canvas):
         self.classes.append(new_model)
         self.boxes.append((new_model.name, box1))
 
+        self.connect_box(box1, new_model)
+
+    def connect_box(self, box, new_model):
         # Conecta a las cajas en caso de existir una relacion.
         if new_model.superclass:
             superclass_box = self.get_box_by_name(new_model.superclass)
-            self.create_line(box1, superclass_box)
+            self.create_line(box, superclass_box)
 
     def get_model_by_name(self, name):
         for model in self.classes:
