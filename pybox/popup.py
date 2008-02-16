@@ -31,6 +31,8 @@ class Popup(Window):
 
         if response:
             self.canvas.box.update(self.canvas.box.model)
+            self.canvas.connect_box(self.canvas.box, self.canvas.box.model)
+
 
     def show(self, event, new):
 
