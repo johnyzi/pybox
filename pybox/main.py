@@ -7,6 +7,7 @@ import common
 import dialogs
 import model
 import canvas
+import status
 
 from window import Window
 
@@ -20,6 +21,9 @@ class Main(Window):
         self.view.main.show()
         self.canvas = canvas.Canvas(self)
         self.view.scroll.add(self.canvas)
+        self.view.status = status.StatusBar()
+        self.view.status_placeholder.add(self.view.status)
+        self.view.status.info("Starting program")
 
     def on_quit_item__activate(self, widget):
         self.on_main__destroy(widget)
@@ -38,7 +42,6 @@ class Main(Window):
         dialog.set_logo(image.get_pixbuf())
         dialog.run()
         dialog.hide()
-
 
 if __name__ == '__main__':
     main = Main()
