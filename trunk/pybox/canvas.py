@@ -58,6 +58,7 @@ class Canvas(goocanvas.Canvas):
         self.boxes.append((new_model.name, box1))
 
         self.connect_box(box1, new_model)
+        self.main.view.status.info("Creating %s class" %(new_model.name))
 
     def connect_box(self, box, new_model):
         # Conecta a las cajas en caso de existir una relacion.
@@ -99,6 +100,8 @@ class Canvas(goocanvas.Canvas):
             self.popup.show(event, new=False)
 
     def remove_selected_box(self):
+        name = self.box.model.name
         self.classes.remove(self.box.model)
         self.box.remove()
+        self.main.view.status.info("Removing %s class" %(name))
 
