@@ -7,9 +7,7 @@ import popup
 
 class Canvas(goocanvas.Canvas):
 
-    # Almacena la posicion en donde se hizo clic derecho.
-    # Stores the position where right clic was pressed.
-
+    # Stores the position where right click was pressed.
     x_position = 0
     y_position = 0
 
@@ -18,28 +16,18 @@ class Canvas(goocanvas.Canvas):
         self.main = main
         self.classes = []
         self.boxes = []
-
-        # Construye el widget canvas.
-        # This builds the canvas widget.
-
-        self.props.x2 = 600
-        self.props.y2 = 400
+        self.props.x2 = 100
+        self.props.y2 = 100
         self.show()
         self.connect('event', self.on_event)
 
         self.popup = popup.Popup(self)
 
-    # Al presionar clic derecho sobre el canvas desplegamos el menu de opciones y actualizamos la posicion del mouse.
-    # When right clic is pressed over the canvas we raise the options menu and update the coordinates.
-
     def on_event(self, widget, event):
+        "Show a menu when right click is pressed over the canvas."
+
         if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-
-            # Si se presionó sobre el canvas habilitamos solamente la opcion Add.
-
             self.popup.show(event, new=True)
-
-            
             self.x_position = event.x
             self.y_position = event.y
 
@@ -49,10 +37,10 @@ class Canvas(goocanvas.Canvas):
         # Si no se especifican `x` e `y` como parametros se asume
         # que ha creado la caja desde el menú desplegable `Popup`.
         if not x and not y:
-            x = self.x_position
-            y = self.y_position
+            x = self.x_position + self.props.x1
+            y = self.y_position + self.props.y1
 
-        box1 = box.Box(x, y, new_model, root)
+        box1 = box.Box(x, y, new_model, root, self)
         box1.group.connect('button_press_event', self.on_button_press_event, box1)
         self.classes.append(new_model)
         self.boxes.append((new_model.name, box1))
@@ -71,30 +59,23 @@ class Canvas(goocanvas.Canvas):
             if model.name == name:
                 return model
         else:
-            raise NameError("No existe la clase de nombre", name)
+            raise NameError("This class model don't exist", name)
 
     def get_box_by_name(self, name):
         for boxname, box in self.boxes:
             if boxname == name:
                 return box
         else:
-            raise NameError("No existe la clase de nombre", name)
+            raise NameError("This class box don't exist", name)
 
     def create_line(self, child_model, parent_model):
         root = self.get_root_item()
         line.Line(child_model, parent_model, root)
 
     def on_button_press_event(self, group, widget, event, box):
-        '''print "Se activa un evento:", event 
-        box.model.show()'''
-
-        # Habilitamos la opciones Edit y Remove.
-
-
         # Almacenamos el box y el grupo para que pueda ser accedido por el
         # evento on_remove__activate o on_edit__activate.
         if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-            print 'Se hizo clic derecho sobre una clase'
             self.box = box
             self.group = group
             self.popup.show(event, new=False)
@@ -102,6 +83,41 @@ class Canvas(goocanvas.Canvas):
     def remove_selected_box(self):
         name = self.box.model.name
         self.classes.remove(self.box.model)
+        self.boxes.remove((name, self.box))
         self.box.remove()
         self.main.view.status.info("Removing %s class" %(name))
 
+    def update_area_expanding(self, bounds):
+        "Expand canvas area (if necessary) to content this box."
+
+        if bounds.x1 < self.props.x1:     # left border
+            self.props.x1 = bounds.x1
+        elif bounds.x2 > self.props.x2:   # right border
+            self.props.x2 = bounds.x2
+
+        if bounds.y1 < self.props.y1:     # upper border
+            self.props.y1 = bounds.y1
+        elif bounds.y2 > self.props.y2:   # bottom border
+            self.props.y2 = bounds.y2
+
+    def update_area_to_contract(self):
+        "Contract the canvas area to save space."
+
+        #TODO: Buscar otra forma de reducir el area de pantalla, el siguiente
+        #      código funciona correctamente pero hace poco manipulable el
+        #      area de pantalla.
+
+        '''
+        box_list = [element[1] for element in self.boxes]
+
+        minus_left = box_list[0].get_left()
+
+        for box in box_list:
+            left = box.get_left()
+
+            if left < minus_left:
+                left = minus_left
+
+        if self.props.x1 < minus_left:
+            self.props.x1 = minus_left
+        '''
