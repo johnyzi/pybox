@@ -34,11 +34,12 @@ class ClassView(Window):
 
         if model.superclass:
             list = [n[0] for n in self.view.superclass.get_model()]
-            self.view.superclass.set_active(list.index(model.superclass))
+            try:
+                self.view.superclass.set_active(list.index(model.superclass))
+            except:
+                print "Ups!, la superclase de este modelo se ha borrado."
 
         self.load_attributes()
-
-        print 'abri un dialogo para crear o editar'
 
     def _create_superclass_list(self, classes):
         store = gtk.ListStore(str)

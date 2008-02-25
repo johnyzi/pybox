@@ -9,10 +9,17 @@ def distance((x1, y1), (x2, y2)):
     return math.sqrt(ca*ca + co*co)
 
 class Box:
+    """
+    Representa una caja que visualiza el modelo de datos.
 
-    def __init__(self, x, y, model, root):
+    La caja conoce el modelo de datos que representa y a su vez a todas
+    las lineas que lo conectan con otras cajas (padres o hijos de ella).
+    """
+
+    def __init__(self, x, y, model, root, canvas):
         self.lines_connected_to_me = []
         self.model = model
+        self.canvas = canvas
         self._create_view(root)
         self.group.translate(x + 5, y + 5)
         self.update(model)
@@ -27,8 +34,6 @@ class Box:
         self.group.connect('motion_notify_event', self.on_motion)
 
     def remove(self):
-        print self.lines_connected_to_me
-
         for line in self.lines_connected_to_me:
             line.remove()
 
@@ -44,18 +49,20 @@ class Box:
 
     def on_drag_end(self, group, item, event):
         self.dragging = False
+        self.canvas.update_area_to_contract()
 
     def on_motion(self, group, item, event):
+
         if self.dragging:
             group.translate(event.x - self.drag_x, event.y - self.drag_y)
             self.update_lines()
+            self.canvas.update_area_expanding(self.group.get_bounds())
 
     def update_lines(self):
         "Actualiza la posición de las lineas que lo conectan a otras cajas."
 
         for line in self.lines_connected_to_me:
             line.update()
-
 
     def _create_view(self, root):
         defaults_values_for_text = {
@@ -92,13 +99,13 @@ class Box:
         else:
             self.title.props.text = "<b>%s</b>" % model.name
 
-
         if model.variables:
             self.attributes.props.text = reduce(self.concatenate, model.variables)
         if model.methods:
             self.methods.props.text = reduce(self.concatenate, model.methods)
 
         self.update_positions()
+        self.canvas.update_area_expanding(self.group.get_bounds())
 
     def dy(self, object):
         bounds = object.get_bounds()
@@ -165,3 +172,7 @@ class Box:
         self.line1.props.data = "M -5 %d L %d %d" %(dy1 + 5, width -5, dy1 + 5)
         self.line2.props.data = "M -5 %d L %d %d" %(dy1 + dy2 + 15, width -5, 
                 dy1 + dy2 + 15)
+
+    def get_left(self):
+        bound = self.group.get_bounds()
+        return bound.x1
