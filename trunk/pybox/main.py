@@ -32,16 +32,10 @@ class Main(Window):
         gtk.main_quit()
 
     def on_aboutitem__activate(self, item):
-        image = gtk.Image()
-        dialog = gtk.AboutDialog()
-        dialog.set_name("Pybox")
-        dialog.set_comments("A simple class diagram tool.")
-        dialog.set_license(common.GPL_TEXT)
-        dialog.set_authors(['a', 'b'])
-        image.set_from_file("../pixmaps/logo.png")
-        dialog.set_logo(image.get_pixbuf())
+        dialog = dialogs.about.About()
+        self.view.status.info("Showing about dialog")
         dialog.run()
-        dialog.hide()
+        self.view.status.info("About dialog has closed")
 
 if __name__ == '__main__':
     main = Main()
