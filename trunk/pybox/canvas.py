@@ -121,3 +121,4 @@ class Canvas(goocanvas.Canvas):
         if self.props.x1 < minus_left:
             self.props.x1 = minus_left
         '''
+

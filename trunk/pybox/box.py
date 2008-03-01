@@ -1,7 +1,9 @@
 # -*- encoding: utf-8 -*-
+import gtk
 import goocanvas
 import pango
 import math
+
 
 def distance((x1, y1), (x2, y2)):
     ca = x1 - x2
@@ -29,7 +31,7 @@ class Box:
         self.dragging = False
         self.drag_x = 0
         self.drag_y = 0
-        self.group.connect('button_press_event', self.on_drag_start)
+        self.group.connect('button_press_event', self.on_button_press)
         self.group.connect('button_release_event', self.on_drag_end)
         self.group.connect('motion_notify_event', self.on_motion)
 
@@ -39,13 +41,18 @@ class Box:
 
         self.group.remove()
 
-    def on_drag_start(self, group, item, event):
+    def on_button_press(self, group, item, event):
         group.raise_(None)
 
         if event.button == 1:
-            self.dragging = True
-            self.drag_x = event.x
-            self.drag_y = event.y
+            if event.type == gtk.gdk._2BUTTON_PRESS:
+                self.canvas.popup.on_edit__activate(None, box=self)
+                self.dragging = False
+            else:
+                # Arrastrar y soltar
+                self.dragging = True
+                self.drag_x = event.x
+                self.drag_y = event.y
 
     def on_drag_end(self, group, item, event):
         self.dragging = False
@@ -57,6 +64,9 @@ class Box:
             group.translate(event.x - self.drag_x, event.y - self.drag_y)
             self.update_lines()
             self.canvas.update_area_expanding(self.group.get_bounds())
+
+    def on_double_click(self, group, item, event):
+        print "double click"
 
     def update_lines(self):
         "Actualiza la posición de las lineas que lo conectan a otras cajas."

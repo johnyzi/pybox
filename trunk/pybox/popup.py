@@ -9,10 +9,9 @@ class Popup(Window):
         Window.__init__(self, 'popup.glade')
         self.canvas = canvas
 
-    # Al presionar sobre el boton 'Add' del menu desplegamos la ventana para crear una nueva clase.
-    # When the 'Add' button is pressed we raise the window to create a new class.
 
     def on_add__activate(self, widget):
+        "Raise the window to create a new class."
         new_model = model.Model()
         new_dialog = dialogs.classview.ClassView(new_model, self.canvas.classes)
         response = new_dialog.view.dialog1.run()
@@ -23,15 +22,17 @@ class Popup(Window):
     def on_remove__activate(self, widget):
         self.canvas.remove_selected_box()
 
+    def on_edit__activate(self, widget, box=None):
 
-    def on_edit__activate(self, widget):
-        new_dialog = dialogs.classview.ClassView(self.canvas.box.model,
-                self.canvas.classes)
+        if not box:
+            box = self.canvas.box
+
+        new_dialog = dialogs.classview.ClassView(box.model, self.canvas.classes)
         response = new_dialog.view.dialog1.run()
 
         if response:
-            self.canvas.box.update(self.canvas.box.model)
-            self.canvas.connect_box(self.canvas.box, self.canvas.box.model)
+            box.update(box.model)
+            self.canvas.connect_box(box, box.model)
 
 
     def show(self, event, new):
