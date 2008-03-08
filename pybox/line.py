@@ -82,6 +82,7 @@ class Line(goocanvas.Polyline):
         #self.child.lines_connected_to_me.remove(self)
         #self.father.lines_connected_to_me.remove(self)
         goocanvas.Polyline.remove(self)
+        print "remove, ",self
 
 
 

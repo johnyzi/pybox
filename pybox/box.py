@@ -186,3 +186,14 @@ class Box:
     def get_left(self):
         bound = self.group.get_bounds()
         return bound.x1
+
+    def get_outgoing_lines(self):
+        
+        li = self.lines_connected_to_me
+        father_list = []
+        for line in  li :
+            print line.child
+            if line.child == self :
+                father_list.append(line)
+        return father_list
+    
