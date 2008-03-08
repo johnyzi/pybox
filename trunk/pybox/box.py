@@ -111,8 +111,13 @@ class Box:
 
         if model.variables:
             self.attributes.props.text = reduce(self.concatenate, model.variables)
+        else:
+            self.attributes.props.text = ""
+
         if model.methods:
             self.methods.props.text = reduce(self.concatenate, model.methods)
+        else:
+            self.methods.props.text = ""
 
         self.update_positions()
         self.canvas.update_area_expanding(self.group.get_bounds())
