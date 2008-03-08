@@ -1,0 +1,129 @@
+<html>
+<head>
+    <title>pepe</title>	
+
+<style>
+pre
+{
+	border: thin dashed rgb(0, 0 ,0);
+	background-color: rgb(255, 255, 100);
+	padding: 5px;
+	background-repeat:no-repeat;
+
+}
+</style>
+
+</head>
+<body>
+
+	<h1>Caso 1 : una caja</h1>
+	<img src='./one.png'/>
+<pre>
+OBJETO CANVAS :
+	classes = ['Pet']
+	boxes = [('Pet', &lt;Box instance&gt;)]
+
+OBJETO BOX (Pet) :
+	lines_connected_to_me = []
+	model = &lt;Model instance&gt;
+	canvas = &lt;Canvas instance&gt;
+
+OBJETO MODEL (Pet) :
+	Name = 'Pet'
+	Superclass = ''
+	Variables = ['name']
+	Methods = ['goto']
+</pre>
+
+<hr>
+
+	<h1>Caso 2 : dos cajas</h1>
+	<img src='./two.png'/>
+<pre>
+OBJETO CANVAS :
+	classes = ['Pet']
+	boxes = [('Pet', &lt;Box instance&gt;),
+		('Cat', &lt;Box instance&gt;)]
+
+OBJETO BOX (Pet) :
+	lines_connected_to_me = [&lt;line instance&gt;]
+	model = &lt;Model instance&gt;
+	canvas = &lt;Canvas instance&gt;
+
+OBJETO MODEL (Pet) :
+	Name = 'Pet'
+	Superclass = ''
+	Variables = ['name']
+	Methods = ['goto']
+
+OBJETO BOX (Cat) :
+	lines_connected_to_me = [&lt;line instance&gt;]
+	model = &lt;Model instance&gt;
+	canvas = &lt;Canvas instance&gt;
+
+OBJETO MODEL (Cat) :
+	Name = 'Cat'
+	Superclass = 'Pet'
+	Variables = ['Owner']
+	Methods = []
+
+OBJETO LINE :
+	father = &lt;Box instance&gt; (es Pet)
+	child = &lt;Box instance&gt; (es Cat)
+</pre>
+
+<hr>
+
+	<h1>Caso 3 : tres cajas</h1>
+	<img src='./three.png'/>
+<pre>
+OBJETO CANVAS :
+	classes = ['Pet']
+	boxes = [('Pet', &lt;Box instance&gt;),
+		('Cat', &lt;Box instance&gt;),
+		('Dog', &lt;Box instance&gt;)]
+
+OBJETO BOX (Pet) :
+	lines_connected_to_me = [&lt;line instance&gt;, &lt;line instance&gt;]
+	model = &lt;Model instance&gt;
+	canvas = &lt;Canvas instance&gt;
+
+OBJETO MODEL (Pet) :
+	Name = 'Pet'
+	Superclass = ''
+	Variables = ['name']
+	Methods = ['goto']
+
+OBJETO BOX (Cat) :
+	lines_connected_to_me = [&lt;line instance&gt;]
+	model = &lt;Model instance&gt;
+	canvas = &lt;Canvas instance&gt;
+
+OBJETO MODEL (Cat) :
+	Name = 'Cat'
+	Superclass = 'Pet'
+	Variables = ['Owner']
+	Methods = []
+
+OBJETO BOX (Dog) :
+	lines_connected_to_me = [&lt;line instance&gt;]
+	model = &lt;Model instance&gt;
+	canvas = &lt;Canvas instance&gt;
+
+OBJETO MODEL (Dog) :
+	Name = 'Dog'
+	Superclass = 'Pet'
+	Variables = ['']
+	Methods = []
+
+OBJETO LINE :
+	father = &lt;Box instance&gt; (es Pet)
+	child = &lt;Box instance&gt; (es Cat)
+
+OBJETO LINE :
+	father = &lt;Box instance&gt; (es Pet)
+	child = &lt;Box instance&gt; (es Dog)
+</pre>
+
+</body>
+</html>
