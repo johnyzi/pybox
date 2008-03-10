@@ -50,11 +50,11 @@ class Canvas(goocanvas.Canvas):
 
     def connect_box(self, box, new_model):
 
+        # Conecta a las cajas en caso de existir una relacion.
         fathers=box.get_outgoing_lines()
         for line in fathers:
             line.remove()
         
-        # Conecta a las cajas en caso de existir una relacion.
         if new_model.superclass:
             superclass_box = self.get_box_by_name(new_model.superclass)
             self.create_line(box, superclass_box)

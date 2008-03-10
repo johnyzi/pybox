@@ -44,6 +44,7 @@ class ClassView(Window):
     def _create_superclass_list(self, classes):
         store = gtk.ListStore(str)
 
+	store.append(["NONE"])
         for model in classes:
             if model.name != self.model.name:
                 store.append([model.name])
@@ -117,7 +118,10 @@ class ClassView(Window):
         superclass = self.view.superclass.get_active_text()
 
         if superclass:
-            self.model.superclass = superclass
+		if superclass != "NONE":
+			self.model.superclass = superclass
+		else:
+			self.model.superclass = ""
         else:
             self.model.superclass = ""
 
