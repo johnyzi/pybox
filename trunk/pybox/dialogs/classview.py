@@ -4,6 +4,8 @@ import gtk.glade
 
 from window import Window
 
+NONE_CLASS = "<None>"
+
 class ClassView(Window):
     """Representa las propiedades de una clase de forma visual.
 
@@ -44,7 +46,8 @@ class ClassView(Window):
     def _create_superclass_list(self, classes):
         store = gtk.ListStore(str)
 
-	store.append(["NONE"])
+	store.append([NONE_CLASS])
+
         for model in classes:
             if model.name != self.model.name:
                 store.append([model.name])
@@ -54,6 +57,7 @@ class ClassView(Window):
         cell = gtk.CellRendererText()
         combo.pack_start(cell, True)
         combo.add_attribute(cell, 'text', 0)
+        combo.set_active(0)
 
     def load_attributes(self):
         # Armamos el treeview de los atributos.
@@ -118,10 +122,10 @@ class ClassView(Window):
         superclass = self.view.superclass.get_active_text()
 
         if superclass:
-		if superclass != "NONE":
-			self.model.superclass = superclass
-		else:
-			self.model.superclass = ""
+            if superclass != NONE_CLASS:
+	        self.model.superclass = superclass
+	    else:
+	        self.model.superclass = ""
         else:
             self.model.superclass = ""
 
