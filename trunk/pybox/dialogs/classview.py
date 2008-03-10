@@ -46,7 +46,7 @@ class ClassView(Window):
     def _create_superclass_list(self, classes):
         store = gtk.ListStore(str)
 
-	store.append([NONE_CLASS])
+        store.append([NONE_CLASS])
 
         for model in classes:
             if model.name != self.model.name:
@@ -121,11 +121,8 @@ class ClassView(Window):
         self.model.name = self.view.name.get_text()
         superclass = self.view.superclass.get_active_text()
 
-        if superclass:
-            if superclass != NONE_CLASS:
-	        self.model.superclass = superclass
-	    else:
-	        self.model.superclass = ""
+        if superclass and superclass != NONE_CLASS:
+            self.model.superclass = superclass
         else:
             self.model.superclass = ""
 
@@ -137,7 +134,6 @@ class ClassView(Window):
         model_methods = self.view.treeview_methods.get_model()
         self.model.methods = [name[0] for name in model_methods]
 
-	#self.model.show() # Debugging.
         
         # Al presionar OK, cerramos la ventana.
         # When we press OK we close the window.
