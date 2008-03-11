@@ -31,6 +31,10 @@ class Main(Window):
     def on_main__destroy(self, widget):
         gtk.main_quit()
 
+    def on_export_item__activate(self, widget):
+        import dialogs.export
+        dialog = dialogs.export.PNG(self.view.main, self.canvas, self.view.status)
+
     def on_aboutitem__activate(self, item):
         dialog = dialogs.about.About()
         self.view.status.info("Showing about dialog")
