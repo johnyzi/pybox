@@ -116,6 +116,7 @@ class Canvas(goocanvas.Canvas):
         elif bounds.y2 > self.props.y2:   # bottom border
             self.props.y2 = bounds.y2
 
+
     def update_area_to_contract(self):
         "Contract the canvas area to save space."
 
