@@ -23,6 +23,8 @@ class Box:
         self.model = model
         self.canvas = canvas
         self._create_view(root)
+        self.x = x
+        self.y = y
         self.group.translate(x + 5, y + 5)
         self.update(model)
         self._init_drag_feature()
@@ -64,9 +66,11 @@ class Box:
             group.translate(event.x - self.drag_x, event.y - self.drag_y)
             self.update_lines()
             self.canvas.update_area_expanding(self.group.get_bounds())
+           
+            bounds = group.get_bounds()
+            self.x = bounds.x1 - 5
+            self.y = bounds.y1 - 5
 
-    def on_double_click(self, group, item, event):
-        print "double click"
 
     def update_lines(self):
         "Actualiza la posición de las lineas que lo conectan a otras cajas."

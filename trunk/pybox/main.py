@@ -8,6 +8,7 @@ import dialogs
 import model
 import canvas
 import status
+import dialogs.export
 
 from window import Window
 
@@ -32,12 +33,16 @@ class Main(Window):
         gtk.main_quit()
 
     def on_export_png_item__activate(self, widget):
-        import dialogs.export
-        dialog = dialogs.export.PNG(self.view.main, self.canvas, self.view.status)
+        dialogs.export.PNG(self.view.main, self.canvas, self.view.status)
 
     def on_export_pdf_item__activate(self, widget):
-        import dialogs.export
-        dialog = dialogs.export.PDF(self.view.main, self.canvas, self.view.status)
+        dialogs.export.PDF(self.view.main, self.canvas, self.view.status)
+
+    def on_saveas__activate(self, widget):
+        dialogs.export.Document(self.view.main, self.canvas, self.view.status)
+
+    def on_open__activate(self, widget):
+        dialogs.open.Document(self.view.main, self.canvas, self.view.status)
 
     def on_aboutitem__activate(self, item):
         dialog = dialogs.about.About()
