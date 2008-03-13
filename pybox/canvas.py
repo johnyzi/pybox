@@ -23,6 +23,17 @@ class Canvas(goocanvas.Canvas):
 
         self.popup = popup.Popup(self)
 
+    def clear(self):
+        self.props.x1 = 0
+        self.props.y1 = 0
+        self.props.x2 = 100
+        self.props.y2 = 100
+
+        for (name, box) in self.boxes:
+            box.remove()
+        self.classes = []
+        self.boxes = []
+
     def on_event(self, widget, event):
         "Show a menu when right click is pressed over the canvas."
 
@@ -31,7 +42,13 @@ class Canvas(goocanvas.Canvas):
             self.x_position = event.x
             self.y_position = event.y
 
-    def create_box(self, new_model, x=None, y=None):
+    def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):
+        """Create a graphical Box that shows a class model.
+
+            `x`: horizontal position.
+            `y`: vertical position.
+            `hierarchy_lines`: if must do connect hierarchy lines.
+        """
         root = self.get_root_item()
 
         # Si no se especifican `x` e `y` como parametros se asume
@@ -45,7 +62,9 @@ class Canvas(goocanvas.Canvas):
         self.classes.append(new_model)
         self.boxes.append((new_model.name, box1))
 
-        self.connect_box(box1, new_model)
+        if hierarchy_lines:
+            self.connect_box(box1, new_model)
+
         self.main.view.status.info("Creating %s class" %(new_model.name))
 
     def connect_box(self, box, new_model):
@@ -138,4 +157,3 @@ class Canvas(goocanvas.Canvas):
         if self.props.x1 < minus_left:
             self.props.x1 = minus_left
         '''
-

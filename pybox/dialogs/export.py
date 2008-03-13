@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
+import cPickle
 import gtk
 import cairo
 import goocanvas
-
 
 class SaveDialog:
 
@@ -100,3 +100,26 @@ class PDF(SaveDialog):
         self.canvas.render(cr, bounds, 1.0)
         cr.show_page()
         self.status.info("File saved as %s" %filename)
+
+class Document(SaveDialog):
+    "Allow to save all diagram in a the program format."
+
+    def __init__(self, parent, canvas, status):
+        pattern = ("pybox Files", "*.pybox")
+        name = "untitled.pybox"
+        SaveDialog.__init__(self, parent, canvas, status, pattern, name)
+
+    def _save_canvas_to(self, filename):
+        file = open(filename, 'wb')
+        pickle = cPickle.Pickler(file)
+
+        # TODO: Quitar el nombre de modelo de la lista 'canvas.boxes'.
+        boxes = [box for (name, box) in self.canvas.boxes]
+        dump = [(box.x, box.y, box.model) for box in boxes]
+
+        #print "Modelo de datos a guardar:"
+        #print "\t", dump
+
+        # format: type list = [(x, y, model), ...]
+        pickle.dump(dump)
+        file.close()

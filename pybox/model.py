@@ -22,6 +22,9 @@ class Model:
         print "Attributes : ", self.variables
         print "Methods : ", self.methods
 
+    def __repr__(self):
+        return "<Model name='%s'>" %(self.name)
+
 
 if __name__ == '__main__':
    
