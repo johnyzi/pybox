@@ -86,6 +86,7 @@ class Canvas(goocanvas.Canvas):
         fathers = box.get_outgoing_lines()
         for line in fathers:
             if line.father == superclass:
+                line.child.model.superclass = ""
                 line.remove()
             self.search_relation(line.father,superclass)
 
