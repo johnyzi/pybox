@@ -18,4 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 AUTHORS = [
     'Hugo Ruscitti <hugoruscitti@gmail.com>',
     'Lucas Liendo <mindmaster@gmail.com>',
-    'Sergio Montañez <ser52g@gmail.com>',]
+    'Sergio Montañez <ser52g@gmail.com>',
+    'Adrián Fernando Fiore <krashx0@hotmail.com>',]
+
