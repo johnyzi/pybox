@@ -51,7 +51,7 @@ class Document(OpenDialog):
         OpenDialog.__init__(self, parent, canvas, status, pattern, name)
 
     def _open(self, filename):
-        file = open('project.pybox', 'rb')
+        file = open(filename, 'rb')
         dump = cPickle.load(file)
 
         self.canvas.clear()
