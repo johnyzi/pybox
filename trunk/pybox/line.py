@@ -79,8 +79,10 @@ class Line(goocanvas.Polyline):
         self.props.points = goocanvas.Points(closers)
 
     def remove(self):
-        #self.child.lines_connected_to_me.remove(self)
-        #self.father.lines_connected_to_me.remove(self)
+
+        self.child.lines_connected_to_me.remove(self)
+        self.father.lines_connected_to_me.remove(self)
+
         goocanvas.Polyline.remove(self)
         print "remove, ",self
 
