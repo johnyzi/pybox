@@ -1,5 +1,3 @@
-#wish_list 
-
 = Wish List =
 
 = Details =
