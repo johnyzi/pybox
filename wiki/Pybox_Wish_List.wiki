@@ -1,6 +1,11 @@
-=== Details ===
+=== List wish pybox ===
 
-Add your content here.  Format your content with:
-  * 
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Lista Wish del proyecto Pybox:
+  * Agregar capas de vistas. 
+       # Capas de "conoce a "
+       # Capa de "herencia" 
+       # Capa de "Comentarios"
+  * Pestañas en la ventana de Pybox
+  * Verificar el estado del archivo antes de guardar
+  * Agregar la opcion una clase conoce a otra. Y permitar graficar esto.  
+  *Distintos tipos de vistas de las cajas con un boton propiedades en la barra de herramientas.
