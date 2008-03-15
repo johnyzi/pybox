@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 import goocanvas
-import box
+from box import Box
 import line
 import gtk
 import popup
@@ -14,7 +14,6 @@ class Canvas(goocanvas.Canvas):
     def __init__(self, main):
         goocanvas.Canvas.__init__(self)
         self.main = main
-        self.classes = []
         self.boxes = []
         self.props.x2 = 100
         self.props.y2 = 100
@@ -29,9 +28,9 @@ class Canvas(goocanvas.Canvas):
         self.props.x2 = 100
         self.props.y2 = 100
 
-        for (name, box) in self.boxes:
+        for box in self.boxes:
             box.remove()
-        self.classes = []
+
         self.boxes = []
 
     def on_event(self, widget, event):
@@ -57,13 +56,12 @@ class Canvas(goocanvas.Canvas):
             x = self.x_position + self.props.x1
             y = self.y_position + self.props.y1
 
-        box1 = box.Box(x, y, new_model, root, self)
-        box1.group.connect('button_press_event', self.on_button_press_event, box1)
-        self.classes.append(new_model)
-        self.boxes.append((new_model.name, box1))
+        box = Box(x, y, new_model, root, self)
+        box.group.connect('button_press_event', self.on_button_press_event, box)
+        self.boxes.append(box)
 
         if hierarchy_lines:
-            self.connect_box(box1, new_model)
+            self.connect_box(box, new_model)
 
         self.main.view.status.info("Creating %s class" %(new_model.name))
 
@@ -86,20 +84,19 @@ class Canvas(goocanvas.Canvas):
         fathers = box.get_outgoing_lines()
         for line in fathers:
             if line.father == superclass:
-                line.child.model.superclass = ""
                 line.remove()
             self.search_relation(line.father,superclass)
 
     def get_model_by_name(self, name):
-        for model in self.classes:
-            if model.name == name:
-                return model
-        else:
-            raise NameError("This class model don't exist", name)
+        box = self.get_box_by_name(name)
+        return box.model
+
+    def get_class_names(self):
+        return [box.model.name for box in self.boxes]
 
     def get_box_by_name(self, name):
-        for boxname, box in self.boxes:
-            if boxname == name:
+        for box in self.boxes:
+            if box.model.name == name:
                 return box
         else:
             raise NameError("This class box don't exist", name)
@@ -118,8 +115,7 @@ class Canvas(goocanvas.Canvas):
 
     def remove_selected_box(self):
         name = self.box.model.name
-        self.classes.remove(self.box.model)
-        self.boxes.remove((name, self.box))
+        self.boxes.remove(self.box)
         self.box.remove()
         self.main.view.status.info("Removing %s class" %(name))
 
@@ -145,7 +141,7 @@ class Canvas(goocanvas.Canvas):
         #      area de pantalla.
 
         '''
-        box_list = [element[1] for element in self.boxes]
+        box_list = [box for box in self.boxes]
 
         minus_left = box_list[0].get_left()
 

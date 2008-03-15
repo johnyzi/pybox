@@ -106,7 +106,7 @@ class Box:
     def concatenate(self, a, b):
         return "%s\n%s" %(a, b)
 
-    def update(self, model):
+    def update(self, model, last_name=None):
 
         if model.abstract:
             self.title.props.text = "<i><b>%s</b></i>" % model.name
@@ -125,6 +125,13 @@ class Box:
 
         self.update_positions()
         self.canvas.update_area_expanding(self.group.get_bounds())
+        self._update_childs(last_name)
+
+    def _update_childs(self, last_name):
+        for line in self.get_incoming_lines():
+            print "Antes se llamaba", last_name
+            print "   y ahora se llama", self.model.name
+            line.child.model.superclass = self.model.name
 
     def dy(self, object):
         bounds = object.get_bounds()
@@ -197,12 +204,13 @@ class Box:
         return bound.x1
 
     def get_outgoing_lines(self):
-        
-        li = self.lines_connected_to_me
-        father_list = []
-        for line in  li :
-            print line.child
-            if line.child == self :
-                father_list.append(line)
+
+        father_list = [line for line in self.lines_connected_to_me
+            if line.child == self]
         return father_list
     
+    def get_incoming_lines(self):
+
+        child_list = [line for line in self.lines_connected_to_me
+            if line.father == self]
+        return child_list
