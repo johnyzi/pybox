@@ -1,0 +1,8 @@
+= Wish_List_Pybox =
+
+=== Details ===
+
+Add your content here.  Format your content with:
+  * 
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
