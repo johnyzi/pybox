@@ -1,5 +1,3 @@
-= Wish_List_Pybox =
-
 === Details ===
 
 Add your content here.  Format your content with:
