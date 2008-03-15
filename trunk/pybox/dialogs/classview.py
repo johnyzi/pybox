@@ -48,9 +48,9 @@ class ClassView(Window):
 
         store.append([NONE_CLASS])
 
-        for model in classes:
-            if model.name != self.model.name:
-                store.append([model.name])
+        for name in classes:
+            if name != self.model.name:
+                store.append([name])
 
         combo = self.view.superclass
         combo.set_model(store)
@@ -118,7 +118,9 @@ class ClassView(Window):
             self.on_addmethod__clicked(widget)
 
     def on_accept__clicked(self, widget):
+        print "Nombre anterior:", self.model.name
         self.model.name = self.view.name.get_text()
+        print "Nombre nuevo:", self.model.name
         superclass = self.view.superclass.get_active_text()
 
         if superclass and superclass != NONE_CLASS:

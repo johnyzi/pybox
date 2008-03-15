@@ -7,7 +7,8 @@ if __name__ == '__main__':
     main = main.Main()
 
     mascota = model.Model("Mascota", "", True, "", ['nombre', 'edad'], [])
-    perro = model.Model("Perro", "Mascota", False, "", [], [])
+    canino = model.Model("Canino", "", True, "", [], [])
+    perro = model.Model("Perro", ["Mascota", "Canino"], False, "", [], [])
     caniche = model.Model("Caniche", "Perro", False, "", ['dueño'], [])
 
     main.canvas.create_box(mascota, 50, 20)
