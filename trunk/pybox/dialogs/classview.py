@@ -126,7 +126,7 @@ class ClassView(Window):
         if superclass and superclass != NONE_CLASS:
             self.model.superclass = superclass
         else:
-            self.model.superclass = ""
+            self.model.superclass = []
 
         self.model.abstract = self.view.abstract.get_active()
 
@@ -171,4 +171,5 @@ class ClassView(Window):
         model.append([self.view.methodentry.get_text()])
         self.view.treeview_methods.set_model(model)
         self.view.methodentry.set_text('')
+
 
