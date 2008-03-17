@@ -68,8 +68,10 @@ class Canvas(goocanvas.Canvas):
     def connect_box(self, box, new_model):
 
         # Conecta a las cajas en caso de existir una relacion.
-        fathers=box.get_outgoing_lines()
-        for line in fathers:
+        father_lines = box.get_outgoing_lines()
+        old_fathers = []
+        for line in father_lines:
+            old_fathers.append(line.father)
             line.remove()
         
         if new_model.superclass:
@@ -77,16 +79,25 @@ class Canvas(goocanvas.Canvas):
                 superclass_box = self.get_box_by_name(father)
                 self.create_line(box, superclass_box)
                 superclass = self.get_box_by_name(new_model.name)
-                self._search_relation(superclass_box,superclass)
+                self._search_relation(superclass_box, superclass, old_fathers)
 
-    def _search_relation(self, box, superclass):
+    def _reconnect_herency(self, child, old_fathers):
+
+        #Reconecta un hijo de un box con los antiguos padres de este ultimo.
+            for father in old_fathers:
+                self.create_line(child, father)
+                child.model.superclass.append(father)
+
+
+    def _search_relation(self, box, superclass, old_fathers):
         
         #Busca si se genera un bucle para romperlo
         fathers = box.get_outgoing_lines()
         for line in fathers:
             if line.father == superclass:
+                self._reconnect_herency(line.child, old_fathers)
                 line.remove()
-            self._search_relation(line.father,superclass)
+            self._search_relation(line.father, superclass, old_fathers)
 
     def get_model_by_name(self, name):
         box = self.get_box_by_name(name)
@@ -117,6 +128,11 @@ class Canvas(goocanvas.Canvas):
     def remove_selected_box(self):
         name = self.box.model.name
         self.boxes.remove(self.box)
+
+        old_fathers = [line.fahter for line in self.box.get_outgoing_lines()]
+        for line in self.box.get_incoming_lines():
+            self._reconnect_herency(line.child, old_fathers)
+
         self.box.remove()
         self.main.view.status.info("Removing %s class" %(name))
 
