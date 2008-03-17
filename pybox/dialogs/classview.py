@@ -37,7 +37,8 @@ class ClassView(Window):
         if model.superclass:
             list = [n[0] for n in self.view.superclass.get_model()]
             try:
-                self.view.superclass.set_active(list.index(model.superclass))
+                #Agrego el [0] para hacer pruebas para la herencia multiple
+                self.view.superclass.set_active(list.index(model.superclass[0]))
             except:
                 print "Ups!, la superclase de este modelo se ha borrado."
 
@@ -121,9 +122,12 @@ class ClassView(Window):
         print "Nombre anterior:", self.model.name
         self.model.name = self.view.name.get_text()
         print "Nombre nuevo:", self.model.name
-        superclass = self.view.superclass.get_active_text()
+        
+        '''OJO! para probar a superclasss como lista hago que el único string
+        seleccionado pase a ser una lista de un elemento'''
+        superclass = [self.view.superclass.get_active_text()]
 
-        if superclass and superclass != NONE_CLASS:
+        if superclass and superclass != [NONE_CLASS]:
             self.model.superclass = superclass
         else:
             self.model.superclass = []
