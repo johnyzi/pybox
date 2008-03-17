@@ -73,19 +73,20 @@ class Canvas(goocanvas.Canvas):
             line.remove()
         
         if new_model.superclass:
-            superclass_box = self.get_box_by_name(new_model.superclass)
-            self.create_line(box, superclass_box)
-            superclass = self.get_box_by_name(new_model.name)
-            self.search_relation(superclass_box,superclass)
+            for father in new_model.superclass:
+                superclass_box = self.get_box_by_name(father)
+                self.create_line(box, superclass_box)
+                superclass = self.get_box_by_name(new_model.name)
+                self._search_relation(superclass_box,superclass)
 
-    def search_relation(self, box, superclass):
+    def _search_relation(self, box, superclass):
         
         #Busca si se genera un bucle para romperlo
         fathers = box.get_outgoing_lines()
         for line in fathers:
             if line.father == superclass:
                 line.remove()
-            self.search_relation(line.father,superclass)
+            self._search_relation(line.father,superclass)
 
     def get_model_by_name(self, name):
         box = self.get_box_by_name(name)

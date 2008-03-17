@@ -1,6 +1,6 @@
 class Model:
 
-    def __init__(self, name="", superclass="", abstract=False, comment="",
+    def __init__(self, name="", superclass=[], abstract=False, comment="",
             variables=[], methods=[]):
         self.name = name
         self.superclass = superclass
@@ -28,5 +28,5 @@ class Model:
 
 if __name__ == '__main__':
    
-    new = ClassModel("persona", "", True, "", [], [])
+    new = ClassModel("persona", [], True, "", [], [])
     new.show()
