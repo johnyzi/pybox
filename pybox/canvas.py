@@ -86,7 +86,7 @@ class Canvas(goocanvas.Canvas):
         #Reconecta un hijo de un box con los antiguos padres de este ultimo.
             for father in old_fathers:
                 self.create_line(child, father)
-                child.model.superclass.append(father)
+                child.model.superclass.append(father.model.name)
 
 
     def _search_relation(self, box, superclass, old_fathers):
@@ -95,6 +95,7 @@ class Canvas(goocanvas.Canvas):
         fathers = box.get_outgoing_lines()
         for line in fathers:
             if line.father == superclass:
+                line.child.model.superclass.remove(superclass.model.name)
                 self._reconnect_herency(line.child, old_fathers)
                 line.remove()
             self._search_relation(line.father, superclass, old_fathers)
@@ -131,6 +132,7 @@ class Canvas(goocanvas.Canvas):
 
         old_fathers = [line.fahter for line in self.box.get_outgoing_lines()]
         for line in self.box.get_incoming_lines():
+            line.child.model.superclass.remove(self.box.model.name)
             self._reconnect_herency(line.child, old_fathers)
 
         self.box.remove()

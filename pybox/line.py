@@ -80,13 +80,8 @@ class Line(goocanvas.Polyline):
 
     def remove(self):
 
-        father = self.father.model.name
-        print father
-
         self.child.lines_connected_to_me.remove(self)
         self.father.lines_connected_to_me.remove(self)
-        if father:
-            self.child.model.superclass.remove(father)
 
         goocanvas.Polyline.remove(self)
 
