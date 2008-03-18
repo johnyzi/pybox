@@ -3,7 +3,7 @@ import gtk
 import goocanvas
 import pango
 import math
-
+import config
 
 def distance((x1, y1), (x2, y2)):
     ca = x1 - x2
@@ -80,7 +80,7 @@ class Box:
 
     def _create_view(self, root):
         defaults_values_for_text = {
-                'font': 'Arial 10',
+                'font': config.FONT,
                 'text': '',
                 'alignment': pango.ALIGN_CENTER,
                 'fill_color': 'black',
