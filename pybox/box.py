@@ -211,7 +211,17 @@ class Box:
         return father_list
     
     def get_incoming_lines(self):
-
         child_list = [line for line in self.lines_connected_to_me
             if line.father == self]
+
         return child_list
+
+    def __repr__(self):
+        return "<Box instance of '%s' class>" %(self.model.name)
+
+    def inspect(self):
+        print self
+        self.model.inspect()
+
+        for i, line in enumerate(self.lines_connected_to_me):
+            print "\tlines_connected_to_me[%d]: %s" %(i, line)

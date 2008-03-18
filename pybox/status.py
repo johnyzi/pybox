@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 import gtk
 import re
+import config
+import dialogs
 
 class StatusBar(gtk.EventBox):
     """Muestra los mensajes de estado del programa.
@@ -18,7 +20,7 @@ class StatusBar(gtk.EventBox):
         gtk.main()
     """
 
-    def __init__(self):
+    def __init__(self, main):
         gtk.EventBox.__init__(self)
         self.ui = gtk.glade.XML('statusbar.glade')
         self.image = self.ui.get_widget('image')
@@ -27,7 +29,12 @@ class StatusBar(gtk.EventBox):
         vbox.reparent(self)
         self.set_border_width(3)
         self.clear()
-        self.show_all()
+        self.show()
+
+        if config.DEBUG:
+            debug = self.ui.get_widget('debug')
+            debug.connect('clicked', self._show_debugger, main)
+            debug.show()
 
     def warning(self, message, long=None):
         self._set_message(gtk.STOCK_DIALOG_WARNING, message, long)
@@ -51,3 +58,7 @@ class StatusBar(gtk.EventBox):
             self.status.set_tooltip_markup(long)
         else:
             self.status.set_text(" " + message)
+
+    def _show_debugger(self, widget, main):
+        debugger = dialogs.debugger.Debugger(main.view.main, main)
+        debugger.run()

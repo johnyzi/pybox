@@ -13,7 +13,6 @@ class ClassView(Window):
     y cuando se modifican los datos de una clase existente."""
 
     def __init__(self, model, classes):
-        model.show()
         Window.__init__(self, 'class.glade')
         self.view.accept.set_sensitive(False)
         self.view.addattr.set_sensitive(False)
@@ -65,7 +64,8 @@ class ClassView(Window):
         # Armamos el treeview de los atributos.
         # We build the attribute treeview
 
-        attribute_column = gtk.TreeViewColumn('Atributtes', gtk.CellRendererText(), text = 0)
+        attribute_column = gtk.TreeViewColumn('Atributtes', gtk.CellRendererText(), 
+                text=0)
         self.view.treeview_attributes.append_column(attribute_column)
         attribute_model = gtk.ListStore(str)
 
@@ -77,7 +77,8 @@ class ClassView(Window):
         # Armamos el treeview de los metodos.
         # We build the method treeview.
 
-        method_column = gtk.TreeViewColumn('Methods', gtk.CellRendererText(), text = 0)
+        method_column = gtk.TreeViewColumn('Methods', gtk.CellRendererText(), 
+                text=0)
         self.view.treeview_methods.append_column(method_column)
         method_model= gtk.ListStore(str)
         
@@ -105,6 +106,27 @@ class ClassView(Window):
         else:
             self.view.addattr.set_sensitive(False)
 
+        # validacion
+        text = self.view.attrentry.get_text() 
+        #print "text:", text
+        #print "lista:", self.model.variables
+        
+        model_attributes = self.view.treeview_attributes.get_model()
+        variables = [name[0] for name in model_attributes]
+
+        if text in variables:
+            import gtk
+            import gtk.gdk
+            self.view.error.show()
+            self.view.attrentry.modify_base(gtk.STATE_NORMAL,
+                gtk.gdk.color_parse('#FFDDDD'))
+        else:
+            import gtk
+            import gtk.gdk
+            self.view.error.hide()
+            self.view.attrentry.modify_base(gtk.STATE_NORMAL,
+                gtk.gdk.color_parse('#FFFFFF'))
+
     def on_methodentry__changed(self, widget):
         if len(self.view.methodentry.get_text()) > 0:
             self.view.addmethod.set_sensitive(True)
@@ -120,9 +142,9 @@ class ClassView(Window):
             self.on_addmethod__clicked(widget)
 
     def on_accept__clicked(self, widget):
-        print "Nombre anterior:", self.model.name
+        #print "Nombre anterior:", self.model.name
         self.model.name = self.view.name.get_text()
-        print "Nombre nuevo:", self.model.name
+        #print "Nombre nuevo:", self.model.name
         
         #TODO
         ''' para probar a superclasss como lista hago que el único string
@@ -141,7 +163,6 @@ class ClassView(Window):
 
         model_methods = self.view.treeview_methods.get_model()
         self.model.methods = [name[0] for name in model_methods]
-
         
         # Al presionar OK, cerramos la ventana.
         # When we press OK we close the window.
@@ -177,5 +198,3 @@ class ClassView(Window):
         model.append([self.view.methodentry.get_text()])
         self.view.treeview_methods.set_model(model)
         self.view.methodentry.set_text('')
-
-
