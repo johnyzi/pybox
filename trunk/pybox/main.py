@@ -22,7 +22,7 @@ class Main(Window):
         self.view.main.show()
         self.canvas = canvas.Canvas(self)
         self.view.scroll.add(self.canvas)
-        self.view.status = status.StatusBar()
+        self.view.status = status.StatusBar(self)
         self.view.status_placeholder.add(self.view.status)
         self.view.status.info("Starting program")
 

@@ -9,24 +9,22 @@ class Model:
         self.variables = variables
         self.methods = methods
 
-    def show(self):
-        print "Name : ", self.name
-
-        if self.abstract:
-            print "Is abstract : YES"
-        else:
-            print "Is abstract : NO"
-
-        print "Superclass : ", self.superclass
-        print "Comments : ", self.comment
-        print "Attributes : ", self.variables
-        print "Methods : ", self.methods
-
     def __repr__(self):
-        return "<Model name='%s'>" %(self.name)
+        return "<Model instance named='%s'>" %(self.name)
 
+    def inspect(self):
+        values = [
+                ('name', self.name),
+                ('superclass', self.superclass),
+                ('abstract', self.abstract),
+                ('attributes', self.variables),
+                ('methods', self.methods),
+                ]
+
+        print '\t', self
+        for key, value in values:
+            print "\t\t%s: %s" %(key, repr(value))
 
 if __name__ == '__main__':
-   
-    new = ClassModel("persona", [], True, "", [], [])
-    new.show()
+    new = Model("Person", [], True, "", [], [])
+    print new.inspect()

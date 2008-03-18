@@ -174,3 +174,21 @@ class Canvas(goocanvas.Canvas):
         if self.props.x1 < minus_left:
             self.props.x1 = minus_left
         '''
+
+    def __repr__(self):
+        return "<Canvas instance>"
+
+    def inspect(self):
+        print self
+
+        for i, line in enumerate(self.boxes):
+            print "\tboxes[%d]: %s" %(i, line)
+
+        for box in self.boxes:
+            print ""
+            box.inspect()
+
+if __name__ == '__main__':
+    canvas = Canvas(main=None)
+    canvas.inspect()
+    
