@@ -130,10 +130,11 @@ class Canvas(goocanvas.Canvas):
         name = self.box.model.name
         self.boxes.remove(self.box)
 
-        old_fathers = [line.fahter for line in self.box.get_outgoing_lines()]
+        old_fathers = [line.father for line in self.box.get_outgoing_lines()]
         for line in self.box.get_incoming_lines():
             line.child.model.superclass.remove(self.box.model.name)
             self._reconnect_herency(line.child, old_fathers)
+            line.remove()
 
         self.box.remove()
         self.main.view.status.info("Removing %s class" %(name))
