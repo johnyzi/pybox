@@ -188,9 +188,14 @@ class Box:
 
         dx3 = self.dx(self.methods)
         dy3 = self.dy(self.methods)
-
-        width = max(dx1, dx2, dx3) + 10
         
+        width = max(dx1, dx2, dx3) + 10
+        "Centra el texto de las cajas de atributo titulo y de metodos"
+        width_text = max(dx1, dx2, dx3)
+        self.title.props.width = width_text
+        self.attributes.props.width = width_text
+        self.methods.props.width = width_text
+        "Fin del centrado"
         self.box.props.x = -5
         self.box.props.y = -5
         self.box.props.width = width
