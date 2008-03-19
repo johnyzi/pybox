@@ -56,6 +56,7 @@ class Box:
                 self.drag_x = event.x
                 self.drag_y = event.y
 
+
     def on_drag_end(self, group, item, event):
         self.dragging = False
         self.canvas.update_area_to_contract()

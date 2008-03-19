@@ -60,6 +60,12 @@ class ClassView(Window):
         combo.add_attribute(cell, 'text', 0)
         combo.set_active(0)
 
+        # Solo permite elegir superclase en caso de tener disponibilidad.
+        if len(store) > 1:
+            combo.set_sensitive(True)
+        else:
+            combo.set_sensitive(False)
+
     def load_attributes(self):
         # Armamos el treeview de los atributos.
         # We build the attribute treeview
