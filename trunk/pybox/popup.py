@@ -9,7 +9,6 @@ class Popup(Window):
         Window.__init__(self, 'popup.glade')
         self.canvas = canvas
 
-
     def on_add__activate(self, widget):
         "Raise the window to create a new class."
         new_model = model.Model()
@@ -37,8 +36,6 @@ class Popup(Window):
         if response:
             box.update(box.model, last_name)
             self.canvas.connect_box(box, box.model)
-
-
 
     def show(self, event, new):
 

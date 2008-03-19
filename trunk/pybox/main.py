@@ -26,6 +26,9 @@ class Main(Window):
         self.view.status_placeholder.add(self.view.status)
         self.view.status.info("Starting program")
 
+    def on_new_item__activate(self, widget):
+        pass
+    
     def on_quit_item__activate(self, widget):
         self.on_main__destroy(widget)
 
