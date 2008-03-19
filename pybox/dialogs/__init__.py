@@ -4,3 +4,4 @@ import about
 import export
 import open
 import debugger
+import classlist
