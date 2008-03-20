@@ -5,6 +5,7 @@ import cairo
 import goocanvas
 
 class SaveDialog:
+    """Abstract save dialog."""
 
     def __init__(self, parent, canvas, status, pattern, name):
         self.canvas = canvas
@@ -24,15 +25,14 @@ class SaveDialog:
         dialog.set_do_overwrite_confirmation(True)
         dialog.set_current_name(name)
 
-
-        # Filtro personalizado
+        # Custom filter
         filter = gtk.FileFilter()
         label, mask = pattern
         filter.set_name(label)
         filter.add_pattern(mask)
         dialog.add_filter(filter)
 
-        # Filtro (*)
+        # All files filter (*)
         filter = gtk.FileFilter()
         filter.set_name("All Files")
         filter.add_pattern("*")
@@ -53,7 +53,7 @@ class PNG(SaveDialog):
 
     def __init__(self, parent, canvas, status):
         pattern = ("PNG Files", "*.png")
-        name = "untitled.png"
+        name = "%s.png" %(canvas.session.name)
         SaveDialog.__init__(self, parent, canvas, status, pattern, name)
 
     def _save_canvas_to(self, filename):
@@ -81,7 +81,7 @@ class PDF(SaveDialog):
 
     def __init__(self, parent, canvas, status):
         pattern = ("PDF Files", "*.pdf")
-        name = "untitled.pdf"
+        name = "%s.pdf" %(canvas.session.name)
         SaveDialog.__init__(self, parent, canvas, status, pattern, name)
 
     def _save_canvas_to(self, filename):
@@ -106,20 +106,21 @@ class Document(SaveDialog):
 
     def __init__(self, parent, canvas, status):
         pattern = ("pybox Files", "*.pybox")
-        name = "untitled.pybox"
+        name = "%s.pybox" %(canvas.session.name)
         SaveDialog.__init__(self, parent, canvas, status, pattern, name)
 
     def _save_canvas_to(self, filename):
-        file = open(filename, 'wb')
+        try:
+            file = open(filename, 'wb')
+        except IOError:
+            self.status.error("I can't write the file as %s." %filename)
+
         pickle = cPickle.Pickler(file)
 
-        # TODO: Quitar el nombre de modelo de la lista 'canvas.boxes'.
-        boxes = [box for (name, box) in self.canvas.boxes]
-        dump = [(box.x, box.y, box.model) for box in boxes]
-
-        #print "Modelo de datos a guardar:"
-        #print "\t", dump
+        dump = [(box.x, box.y, box.model) for box in self.canvas.boxes]
 
         # format: type list = [(x, y, model), ...]
         pickle.dump(dump)
         file.close()
+        self.status.info("File saved as %s" %filename)
+        self.canvas.session.save_document_notify(filename)

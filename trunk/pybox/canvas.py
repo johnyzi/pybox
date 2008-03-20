@@ -1,9 +1,13 @@
 # -*- encoding: utf-8 -*-
-import goocanvas
-from box import Box
-import line
 import gtk
+import goocanvas
+
+import line
 import popup
+import session
+from box import Box
+import dialogs
+
 
 class Canvas(goocanvas.Canvas):
 
@@ -15,23 +19,40 @@ class Canvas(goocanvas.Canvas):
         goocanvas.Canvas.__init__(self)
         self.main = main
         self.boxes = []
-        self.props.x2 = 100
-        self.props.y2 = 100
-        self.show()
         self.connect('event', self.on_event)
-
         self.popup = popup.Popup(self)
+        self.show()
+        self._create_session()
+        self.new()
 
-    def clear(self):
-        self.props.x1 = 0
-        self.props.y1 = 0
-        self.props.x2 = 100
-        self.props.y2 = 100
+    def _create_session(self):
+        self.session = session.Session(self.main)
+
+    def new(self):
+        """Returns: True if creates a new document."""
+        #TODO: Deshabilitar la pregunta si DEBUG está habilitado.
+        if self.session.can_leave(self.save):
+            self.session.new_document_notify()
+            self._clear()
+            return True
+
+    def open(self, filename):
+        self.session.open_document_notify(filename)
+        self._clear()
+
+    def _clear(self):
+        self._create_new_canvas_area()
 
         for box in self.boxes:
             box.remove()
 
         self.boxes = []
+
+    def _create_new_canvas_area(self):
+        self.props.x1 = 0
+        self.props.y1 = 0
+        self.props.x2 = 100
+        self.props.y2 = 100
 
     def on_event(self, widget, event):
         "Show a menu when right click is pressed over the canvas."
@@ -64,6 +85,7 @@ class Canvas(goocanvas.Canvas):
             self.connect_box(box, new_model)
 
         self.main.view.status.info("Creating %s class" %(new_model.name))
+        self.session.change_notify()
 
     def connect_box(self, box, new_model):
 
@@ -138,6 +160,7 @@ class Canvas(goocanvas.Canvas):
 
         self.box.remove()
         self.main.view.status.info("Removing %s class" %(name))
+        self.session.change_notify()
 
     def update_area_expanding(self, bounds):
         "Expand canvas area (if necessary) to content this box."
@@ -153,12 +176,17 @@ class Canvas(goocanvas.Canvas):
             self.props.y2 = bounds.y2
 
 
+    # TODO: cambiar el nombre de método, dado que el siguiente método se llama
+    # al terminar de arrastrar una caja, y su nombre actual es una
+    # consecuencia de esa acción y no es muy general.
     def update_area_to_contract(self):
         "Contract the canvas area to save space."
 
         #TODO: Buscar otra forma de reducir el area de pantalla, el siguiente
         #      código funciona correctamente pero hace poco manipulable el
         #      area de pantalla.
+
+        self.session.change_notify()
 
         '''
         box_list = [box for box in self.boxes]
@@ -188,7 +216,12 @@ class Canvas(goocanvas.Canvas):
             print ""
             box.inspect()
 
+    def save(self, extra=None):
+        dialogs.save.Document(self.main.view.main, self, self.main.view.status)
+
+    def save_as(self, extra=None):
+        self.save()
+
 if __name__ == '__main__':
     canvas = Canvas(main=None)
     canvas.inspect()
-    
