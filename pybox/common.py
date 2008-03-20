@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+import os
 
 GPL_TEXT = \
 """This program is free software: you can redistribute it and/or modify
@@ -21,3 +22,26 @@ AUTHORS = [
     'Sergio Montañez <ser52g@gmail.com>',
     'Adrián Fernando Fiore <krashx0@hotmail.com>',]
 
+def list_to_string(list):
+    """Convert a list of classes to a unique string.
+
+    ie: ['Man', 'Owner'] -> "Man, Owner"
+    """
+    return reduce(lambda a, b: "%s, %s" %(a, b), list)
+
+def string_to_list(string):
+    """Convert a strings of classes to a list of classes.
+
+    ie: "Man, Owner" -> ['Man', 'Owner']
+    """
+    return string.split(', ')
+
+def get_filename_without_extension(filename):
+    name = os.path.basename(filename)
+    return os.path.splitext(name)[0]
+
+if __name__ == '__main__':
+    print string_to_list("Man, Owner")
+    print list_to_string(['Man', 'Owner', 'b', 'c'])
+    print list_to_string(['Man'])
+    print list_to_string(['<None>'])

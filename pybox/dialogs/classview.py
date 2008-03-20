@@ -1,10 +1,13 @@
 # -*- encoding: utf-8 -*-
 import gtk
 import gtk.glade
+import dialogs
+import common
 
 from window import Window
 
 NONE_CLASS = "<None>"
+NONE_INDEX = 0
 
 class ClassView(Window):
     """Representa las propiedades de una clase de forma visual.
@@ -14,14 +17,24 @@ class ClassView(Window):
 
     def __init__(self, model, classes):
         Window.__init__(self, 'class.glade')
+        self.model = model
+        self.classes = classes
+        self._populate_ui()
+
+        self._change_selection_mode()
+
+        self._create_superclass_list(classes)
+        self._select_model_superclass()
+        self.load_attributes()
+
+    def _populate_ui(self):
         self.view.accept.set_sensitive(False)
         self.view.addattr.set_sensitive(False)
         self.view.addmethod.set_sensitive(False)
-        self.model = model
-        self.view.name.set_text(model.name)
-        #self.view.superclass.set_active(model.superclass)
-        self.view.abstract.set_active(model.abstract)
-
+        self.view.name.set_text(self.model.name)
+        self.view.abstract.set_active(self.model.abstract)
+    
+    def _change_selection_mode(self):
         # Permite realizar multiples selecciones sobre el treeview (con shift y ctrl)
         # Allows us to make multiple selections on the treeview.
 
@@ -31,20 +44,35 @@ class ClassView(Window):
         treeselection_mode = self.view.treeview_methods.get_selection()
         treeselection_mode.set_mode(gtk.SELECTION_MULTIPLE)
 
-        self._create_superclass_list(classes)
+    def _select_model_superclass(self):
+        "Set the selected superclass in UI from model class."
 
-        if model.superclass:
-            list = [n[0] for n in self.view.superclass.get_model()]
-            try:
-                #TODO
-                #Agrego el [0] para hacer pruebas para la herencia multiple
-                self.view.superclass.set_active(list.index(model.superclass[0]))
-            except:
-                print "Ups!, la superclase de este modelo se ha borrado."
+        if self.model.superclass:
+            if len(self.model.superclass) > 1:
+                # Multiple hierarchy
+                self._create_superclass_row_and_select_em(self.model.superclass)
+            else:
+                # Simple Hierarchy
+                self._select_single_superclass(self.model.superclass[0])
+        else:
+            self.view.superclass.set_active(NONE_INDEX)
 
-        self.load_attributes()
+    def _select_single_superclass(self, name):
+        superclass_name = name
+        elements_in_combo = [n[0] for n in self.view.superclass.get_model()]
+        index = elements_in_combo.index(superclass_name)
+        self.view.superclass.set_active(index)
+
+    def _create_superclass_row_and_select_em(self, list_of_classes_to_merge):
+        """Creates a new row in superclass combobox and select em."""
+
+        tree_model = self.view.superclass.get_model()
+        tree_model.append([common.list_to_string(list_of_classes_to_merge)])
+        index = len(tree_model) - 1
+        self.view.superclass.set_active(index)
 
     def _create_superclass_list(self, classes):
+        """Creates a combobox to select a superclass for a class model."""
         store = gtk.ListStore(str)
 
         store.append([NONE_CLASS])
@@ -61,12 +89,18 @@ class ClassView(Window):
         combo.set_active(0)
 
         # Solo permite elegir superclase en caso de tener disponibilidad.
+        self.view.classlist.set_sensitive(False)
+
         if len(store) > 1:
             combo.set_sensitive(True)
+            if len(store) > 2:
+                self.view.classlist.set_sensitive(True)
         else:
             combo.set_sensitive(False)
 
     def load_attributes(self):
+        """Creates both methods and variables treeviews."""
+
         # Armamos el treeview de los atributos.
         # We build the attribute treeview
 
@@ -155,10 +189,11 @@ class ClassView(Window):
         #TODO
         ''' para probar a superclasss como lista hago que el único string
         seleccionado pase a ser una lista de un elemento'''
-        superclass = [self.view.superclass.get_active_text()]
+        #superclass = [self.view.superclass.get_active_text()]
+        selected_classes = self.view.superclass.get_active_text()
 
-        if superclass and superclass != [NONE_CLASS]:
-            self.model.superclass = superclass
+        if selected_classes != NONE_CLASS:
+            self.model.superclass = common.string_to_list(selected_classes)
         else:
             self.model.superclass = []
 
@@ -204,3 +239,24 @@ class ClassView(Window):
         model.append([self.view.methodentry.get_text()])
         self.view.treeview_methods.set_model(model)
         self.view.methodentry.set_text('')
+
+    def on_classlist__clicked(self, widget):
+        current_superclass = self.view.superclass.get_active_text()
+
+        if current_superclass == NONE_CLASS:
+            selected_class = []
+        else:
+            selected_class = common.string_to_list(current_superclass)
+            
+        classes = [name for name in self.classes if name != self.model.name]
+
+        dialog = dialogs.classlist.ClassList(classes, selected_class)
+        selected_classes = dialog.run()
+
+        if selected_classes is not None:
+            if len(selected_classes) > 1:
+                self._create_superclass_row_and_select_em(selected_classes)
+            elif len(selected_classes) == 1:
+                self._select_single_superclass(selected_classes[0])
+            else:
+                self.view.superclass.set_active(NONE_INDEX)

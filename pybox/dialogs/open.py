@@ -2,6 +2,8 @@ import cPickle
 import gtk
 
 class OpenDialog:
+    """Abstract open dialog."""
+
     def __init__(self, parent, canvas, status, pattern, name):
         self.canvas = canvas
         self.parent = parent
@@ -54,12 +56,14 @@ class Document(OpenDialog):
         file = open(filename, 'rb')
         dump = cPickle.load(file)
 
-        self.canvas.clear()
+        self.canvas.open(filename)
 
         for (x, y, model) in dump:
             self.canvas.create_box(model, x, y, hierarchy_lines=False)
 
         # Connect lines
-        # TODO: Quitar el nombre de modelo de la lista Canvas.boxes
-        for (name, box) in self.canvas.boxes:
+        for box in self.canvas.boxes:
             self.canvas.connect_box(box, box.model)
+
+        self.status.info("File loaded as %s" %(filename))
+        self.canvas.session.open_document_notify(filename)
