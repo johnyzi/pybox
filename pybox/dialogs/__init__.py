@@ -6,3 +6,4 @@ import open
 import debugger
 import classlist
 import leave
+import settings

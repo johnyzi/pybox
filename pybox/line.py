@@ -10,6 +10,8 @@ class Line(goocanvas.Polyline):
         self.child = child_box
         self.father = father_box
         goocanvas.Polyline.__init__(self, end_arrow=True)
+        for a in self.props:
+            print a
         self.update()
         root.add_child(self)
         self.child.lines_connected_to_me.append(self)

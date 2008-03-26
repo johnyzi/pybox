@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 import gtk
 import goocanvas
-import pango
 import math
 import config
+import common
 
 def distance((x1, y1), (x2, y2)):
     ca = x1 - x2
@@ -79,22 +79,19 @@ class Box:
             line.update()
 
     def _create_view(self, root):
-        defaults_values_for_text = {
-                'font': config.FONT,
-                'text': '',
-                'alignment': pango.ALIGN_CENTER,
-                'fill_color': 'black',
-                'use_markup': True}
         self.group = goocanvas.Group()
         root.add_child(self.group)
 
-        self.box = goocanvas.Rect(stroke_color='black',
-                line_width=2.0, fill_color='white', radius_x=5, radius_y=5)
-        self.title = goocanvas.Text(**defaults_values_for_text)
-        self.attributes = goocanvas.Text(**defaults_values_for_text)
-        self.methods = goocanvas.Text(**defaults_values_for_text)
-        self.line1 = goocanvas.Path(stroke_color="black", line_width=2.0)
-        self.line2 = goocanvas.Path(stroke_color="black", line_width=2.0)
+        text_theme = common.config.text_theme
+        box_theme = common.config.box_theme
+        division_theme = common.config.division_theme
+
+        self.box = goocanvas.Rect(**box_theme)
+        self.title = goocanvas.Text(**text_theme)
+        self.attributes = goocanvas.Text(**text_theme)
+        self.methods = goocanvas.Text(**text_theme)
+        self.line1 = goocanvas.Path(**division_theme)
+        self.line2 = goocanvas.Path(**division_theme)
 
         self.group.add_child(self.box)
         self.group.add_child(self.title)
