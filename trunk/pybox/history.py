@@ -17,8 +17,7 @@ class History() :
         self.change_popup_status()
 
     def pop_undo(self) :
-        "Pops one element from the undo_stack, creates all the boxes y pushes it again in the
-        redo_stack"
+        "Pops one element from the undo_stack, creates all the boxes y pushes it again in the redo_stack"
 
         dump = self.undo_stack.pop()
         id = dump [0]
@@ -41,8 +40,7 @@ class History() :
         self.change_popup_status()
 
     def pop_redo(self) :
-        "Pops one element from the redo_stack, creates all the boxes y pushes it again in the
-        undo_stack"
+        "Pops one element from the redo_stack, creates all the boxes y pushes it again in the undo_stack"
 
         dump = self.redo_stack.pop()
         id = dump [0]
@@ -57,8 +55,7 @@ class History() :
         self.change_popup_status()
 
     def change_popup_status(self) :
-        "Checks both stacks to see if any of them are empty. In that case we disable
-        the undo and/or redo actions."
+        "Checks both stacks to see if any of them are empty. In that case we disable the undo and/or redo actions."
 
         if self.undo_stack == [] :
             self.canvas.popup.view.undo.set_sensitive(False)
