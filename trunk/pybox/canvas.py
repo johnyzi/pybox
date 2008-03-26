@@ -7,7 +7,7 @@ import popup
 import session
 from box import Box
 import dialogs
-
+import history
 
 class Canvas(goocanvas.Canvas):
 
@@ -21,6 +21,7 @@ class Canvas(goocanvas.Canvas):
         self.boxes = []
         self.connect('event', self.on_event)
         self.popup = popup.Popup(self)
+        self.history = history.History(self)
         self.show()
         self._create_session()
         self.new()
