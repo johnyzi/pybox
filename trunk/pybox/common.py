@@ -1,5 +1,8 @@
 # -*- encoding: utf-8 -*-
 import os
+from config import Config
+
+config = Config()
 
 GPL_TEXT = \
 """This program is free software: you can redistribute it and/or modify
