@@ -166,15 +166,23 @@ class Canvas(goocanvas.Canvas):
     def update_area_expanding(self, bounds):
         "Expand canvas area (if necessary) to content this box."
 
-        if bounds.x1 < self.props.x1:     # left border
-            self.props.x1 = bounds.x1
+        redraw = False
+
+        if bounds.x1 < 0:     # left border
+            self.props.x2 = self.props.x2 + abs(bounds.x1)
+            redraw = True
+        
         elif bounds.x2 > self.props.x2:   # right border
             self.props.x2 = bounds.x2
 
-        if bounds.y1 < self.props.y1:     # upper border
-            self.props.y1 = bounds.y1
+        if bounds.y1 < 0:     # upper border
+            self.props.y2 = self.props.y2 + abs(bounds.y1)
+            redraw = True
+        
         elif bounds.y2 > self.props.y2:   # bottom border
             self.props.y2 = bounds.y2
+
+        return redraw
 
 
     # TODO: cambiar el nombre de método, dado que el siguiente método se llama

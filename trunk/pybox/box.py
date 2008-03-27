@@ -63,13 +63,28 @@ class Box:
     def on_motion(self, group, item, event):
 
         if self.dragging:
-            group.translate(event.x - self.drag_x, event.y - self.drag_y)
+
+            dx = event.x - self.drag_x
+            dy = event.y - self.drag_y
+            group.translate(dx, dy)
             self.update_lines()
-            self.canvas.update_area_expanding(self.group.get_bounds())
-           
+            redraw = self.canvas.update_area_expanding(self.group.get_bounds())
+
+            if redraw:
+                self._redraw_boxes(-1*dx, -1*dy)
+
             bounds = group.get_bounds()
             self.x = bounds.x1 - 5
             self.y = bounds.y1 - 5
+
+    def _redraw_boxes(self, dx, dy):
+
+        #Redibuja boxes para simular un corrimiento hacia arriba o izquierda
+        for box in self.canvas.boxes:
+            box.group.translate(dx, dy)
+            box.update_lines()
+            box.canvas.update_area_expanding(box.group.get_bounds())
+
 
 
     def update_lines(self):
