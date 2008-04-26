@@ -54,10 +54,10 @@ class StatusBar(gtk.EventBox):
         self.image.set_from_stock(stock_item, gtk.ICON_SIZE_SMALL_TOOLBAR)
 
         if long:
-            self.status.set_text(" " + message + "...")
+            self.status.set_markup(" " + message + "...")
             self.status.set_tooltip_markup(long)
         else:
-            self.status.set_text(" " + message)
+            self.status.set_markup(" " + message)
 
     def _show_debugger(self, widget, main):
         debugger = dialogs.debugger.Debugger(main.view.main, main)

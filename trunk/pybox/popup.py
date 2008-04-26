@@ -9,6 +9,7 @@ class Popup(Window):
     def __init__(self, canvas):
         Window.__init__(self, 'popup.glade')
         self.canvas = canvas
+        self.session = canvas.session
 
     def on_add__activate(self, widget):
         "Raise the window to create a new class."
@@ -20,7 +21,6 @@ class Popup(Window):
 
         if response:
             self.canvas.create_box(new_model)
-            self.canvas.history.push_undo('BOX_CREATED') # Apilamos en undo_stack.
 
     def on_remove__activate(self, widget):
         self.canvas.remove_selected_box()
@@ -37,12 +37,14 @@ class Popup(Window):
         if response:
             box.update(box.model, last_name)
             self.canvas.connect_box(box, box.model)
+            self.canvas.session.on_notify_edit_class(box.model, last_name)
 
     def on_undo__activate(self, widget):
-        self.canvas.history.pop_undo()
+        self.session.on_notify_undo()
 
     def on_redo__activate(self, widget):
-        self.canvas.history.pop_redo()
+        self.session.on_notify_redo()
+        #canvas.history.pop_redo()
 
     def show(self, event, new):
         self.view.add.set_sensitive(new)

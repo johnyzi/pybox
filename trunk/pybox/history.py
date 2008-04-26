@@ -1,10 +1,12 @@
+# -*- encoding: utf-8 -*-
 import canvas
 import copy
 
 class History() :
 
-    def __init__(self, canvas) :
-        self.canvas = canvas
+    def __init__(self, main):
+        self.main = main
+        self.canvas = main.canvas
         self.undo_stack = []
         self.redo_stack = []
         self.change_popup_status()
@@ -27,7 +29,6 @@ class History() :
         if id == 'BOX_CREATED' :
             if self.undo_stack == [] :
                 self.canvas._clear()
-
             else :
                 self.canvas._clear()
                 last_element = self.undo_stack [len (self.undo_stack) - 1]
@@ -36,6 +37,9 @@ class History() :
 
                 for box in list_boxes :
                     self.canvas.create_box(box [2], box [0], box [1])
+        else:
+            # NOTE: nuevo el 26 de abril
+            print "History: se llama a pop_undo pero con una acción no reconocida (%s)." %id
 
         self.change_popup_status()
 
@@ -57,13 +61,16 @@ class History() :
     def change_popup_status(self) :
         "Checks both stacks to see if any of them are empty. In that case we disable the undo and/or redo actions."
 
-        if self.undo_stack == [] :
+        if self.undo_stack == []:
             self.canvas.popup.view.undo.set_sensitive(False)
+            self.main.view.undo_item.set_sensitive(False)
         else :
             self.canvas.popup.view.undo.set_sensitive(True)
+            self.main.view.undo_item.set_sensitive(True)
 
-        if self.redo_stack == [] :
+        if self.redo_stack == []:
             self.canvas.popup.view.redo.set_sensitive(False)
+            self.main.view.redo_item.set_sensitive(False)
         else :
             self.canvas.popup.view.redo.set_sensitive(True)
-
+            self.main.view.redo_item.set_sensitive(True)

@@ -58,6 +58,7 @@ class Box:
 
     def on_drag_end(self, group, item, event):
         self.dragging = False
+        self.canvas.session.on_notify_move_class(self.model)
         self.canvas.update_area_to_contract()
 
     def on_motion(self, group, item, event):

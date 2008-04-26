@@ -8,9 +8,14 @@ from dialogs.leave import Leave
 class Session:
     """Representa el estado del documento o diagrama.
 
-    Conoce el nombre de documento, cuando se grabó por última vez y que
-    archivo de disco representa.
+    Todos los componentes del sistema notifican a este objeto la acción
+    solicitada por el usuario, los métodos que reciben estas notificaciones
+    tienen la forma "on_notify_#" donde # puede ser "edit_class", "redo" etc.
+
+    Este objeto conoce el nombre de documento, cuando se grabó por última vez
+    y que archivo de disco representa. 
     """
+
     def __init__(self, main):
         self.main = main
         self.new_document_notify()
@@ -60,3 +65,44 @@ class Session:
             self.main.set_title("* %s - pybox" %self.name)
         else:
             self.main.set_title("%s - pybox" %self.name)
+
+
+
+    # Eventos de aplicación
+    # =====================
+
+    def on_notify_create_class(self, model):
+        print "Session:notify - Se ha creado la clase:", model
+        self.main.history.push_undo('BOX_CREATED')
+        self.main.view.status.info("Creating <b>%s</b> class" %(model.name))
+        self.change_notify()
+
+    def on_notify_move_class(self, model):
+        print "Session:notify - Se ha movido una caja llamada:", model
+        self.main.view.status.info("Moving <b>%s</b> class box" %(model.name))
+        self.main.history.push_undo('BOX_MOVED')
+        self.change_notify()
+
+    def on_notify_undo(self):
+        print "Session:notify - Se ha invocado al método undo."
+        self.main.history.pop_undo()
+
+    def on_notify_redo(self):
+        print "Session:notify - Se ha invocado al método redo."
+        self.main.history.pop_redo()
+
+    def on_notify_edit_class(self, model, last_name):
+        print "Session:notify - Se ha modificado una clase de modelo:", model
+        print "asdadsasdasdasd"
+
+        if model.name != last_name:
+            msg = "Editing <b>%s</b> class (that was called <b>%s</b> class)" %(model.name, last_name)
+            self.main.view.status.info(msg)
+        else:
+            self.main.view.status.info("Editing <b>%s</b> class" %(model.name))
+
+    def on_notify_remove_class(self, model):
+        print "Session:notify - Se elimina una caja de modelo:", model
+        self.main.view.status.info("Removing <b>%s</b> class" %(model.name))
+        self.main.history.push_undo('BOX_REMOVED')
+        self.change_notify()
