@@ -7,7 +7,6 @@ import popup
 import session
 from box import Box
 import dialogs
-import history
 
 class Canvas(goocanvas.Canvas):
 
@@ -20,10 +19,10 @@ class Canvas(goocanvas.Canvas):
         self.main = main
         self.boxes = []
         self.connect('event', self.on_event)
-        self.popup = popup.Popup(self)
-        self.history = history.History(self)
-        self.show()
         self._create_session()
+        self.popup = popup.Popup(self)
+
+        self.show()
         self.new()
 
     def _create_session(self):
@@ -31,10 +30,19 @@ class Canvas(goocanvas.Canvas):
 
     def new(self):
         """Returns: True if creates a new document."""
-        #TODO: Deshabilitar la pregunta si DEBUG está habilitado.
-        if self.session.can_leave(self.save):
+        if self.show_confirm_save_dialog():
             self.session.new_document_notify()
             self._clear()
+            return True
+
+    def show_confirm_save_dialog(self):
+        """Muestra un cuadro de dialogo consultando si desea guardar los cambios.
+
+        Si el usuario logra guardar al momento de mostrarse el cuadro o bien
+        acepta perder cualquier cambio se devuelve True, en caso contrario si el
+        usuario cancela la operación o no logra guardar devuelve False."""
+
+        if self.session.can_leave(self.save):
             return True
 
     def open(self, filename):
@@ -85,8 +93,7 @@ class Canvas(goocanvas.Canvas):
         if hierarchy_lines:
             self.connect_box(box, new_model)
 
-        self.main.view.status.info("Creating %s class" %(new_model.name))
-        self.session.change_notify()
+        self.session.on_notify_create_class(new_model)
 
     def connect_box(self, box, new_model):
 
@@ -160,8 +167,7 @@ class Canvas(goocanvas.Canvas):
             line.remove()
 
         self.box.remove()
-        self.main.view.status.info("Removing %s class" %(name))
-        self.session.change_notify()
+        self.session.on_notify_remove_class(self.box.model)
 
     def update_area_expanding(self, bounds):
         "Expand canvas area (if necessary) to content this box."
@@ -195,7 +201,7 @@ class Canvas(goocanvas.Canvas):
         #      código funciona correctamente pero hace poco manipulable el
         #      area de pantalla.
 
-        self.session.change_notify()
+        #self.session.on_notify_move_class(self.model)
 
         '''
         box_list = [box for box in self.boxes]
@@ -227,6 +233,9 @@ class Canvas(goocanvas.Canvas):
 
     def save(self, extra=None):
         dialogs.save.Document(self.main.view.main, self, self.main.view.status)
+
+    def open_dialog(self):
+        dialogs.open.Document(self.main.view.main, self, self.main.view.status)
 
     def save_as(self, extra=None):
         self.save()

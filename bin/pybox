@@ -3,7 +3,6 @@
 import sys
 import os
 
-os.chdir('..')
 
 try:
     path = os.path.join(os.path.dirname(__file__), 'pybox')
@@ -11,7 +10,9 @@ try:
 except:
     pass
 
-os.chdir('pybox')
+srcdir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'pybox'))
+print srcdir
+os.chdir(srcdir)
 
 import main
 import gtk
