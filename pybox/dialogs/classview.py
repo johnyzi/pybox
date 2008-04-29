@@ -140,6 +140,10 @@ class ClassView(Window):
         else:
             self.view.accept.set_sensitive(False)
 
+    def on_name__activate(self, widget):
+        if self.view.accept.get_property('sensitive'):
+            self.view.accept.clicked()
+
     def on_attrentry__changed(self, widget):
         if len(self.view.attrentry.get_text()) > 0:
             self.view.addattr.set_sensitive(True)
