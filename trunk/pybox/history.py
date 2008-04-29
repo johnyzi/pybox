@@ -3,6 +3,10 @@ import canvas
 import copy
 
 class History() :
+    """Gestiona el historial del documento para Deshacer y Rehacer acciones.
+
+    El objeto gestiona la funcionalidad de Deshacer, Rehacer y controla
+    los objetos que invocan estas acciones."""
 
     def __init__(self, main):
         self.main = main
@@ -64,13 +68,17 @@ class History() :
         if self.undo_stack == []:
             self.canvas.popup.view.undo.set_sensitive(False)
             self.main.view.undo_item.set_sensitive(False)
+            self.main.view.undo_button.set_sensitive(False)
         else :
             self.canvas.popup.view.undo.set_sensitive(True)
             self.main.view.undo_item.set_sensitive(True)
+            self.main.view.undo_button.set_sensitive(True)
 
         if self.redo_stack == []:
             self.canvas.popup.view.redo.set_sensitive(False)
             self.main.view.redo_item.set_sensitive(False)
+            self.main.view.redo_button.set_sensitive(False)
         else :
             self.canvas.popup.view.redo.set_sensitive(True)
             self.main.view.redo_item.set_sensitive(True)
+            self.main.view.redo_button.set_sensitive(True)

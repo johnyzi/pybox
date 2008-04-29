@@ -37,7 +37,7 @@ class Main(Window):
         "Define si habilita o no la posibilidad de guardar."
         self.view.saveas.set_sensitive(state)
         self.view.new.set_sensitive(state)
-        self.view.newbutton.set_sensitive(state)
+        self.view.new_button.set_sensitive(state)
 
     def set_can_export(self, state):
         "Define si habilita o no la posibilidad de exportar el documento."
@@ -61,10 +61,10 @@ class Main(Window):
         self.view.status.info("Starting program")
 
     # Manejadores de señal
-    # ====================
 
-    def on_newbutton__clicked(self, widget):
-        self.on_new__activate(widget)
+    def on_main__destroy(self, widget):
+        gtk.main_quit()
+
     
     def on_new__activate(self, widget):
         self.canvas.new()
@@ -80,8 +80,6 @@ class Main(Window):
         if not config.DEBUG:
             return not self.canvas.new()
 
-    def on_main__destroy(self, widget):
-        gtk.main_quit()
 
     def on_export_png_item__activate(self, widget):
         dialogs.save.PNG(self.view.main, self.canvas, self.view.status)
@@ -106,6 +104,17 @@ class Main(Window):
         self.view.status.info("Showing about dialog")
         dialog.run()
         self.view.status.info("About dialog has closed")
+
+    # Barra de botones
+
+    def on_new_button__clicked(self, widget):
+        self.on_new__activate(widget)
+
+    def on_undo_button__clicked(self, widget):
+        self.on_undo__activate(widget)
+
+    def on_redo_button__clicked(self, widget):
+        self.on_redo__activate(widget)
 
 if __name__ == '__main__':
     main = Main()
