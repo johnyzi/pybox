@@ -78,7 +78,11 @@ class Main(Window):
 
     def on_main__delete_event(self, widget, extra=None):
         if not config.DEBUG:
-            return not self.canvas.new()
+            if self.canvas.show_confirm_save_dialog():
+                gtk.main_quit()
+        else:
+            gtk.main_quit()
+            print "* Se cierra sin confirmar a causa de la constante DEBUG=True."
 
 
     def on_export_png_item__activate(self, widget):

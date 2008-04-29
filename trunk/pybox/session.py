@@ -56,7 +56,9 @@ class Session:
     def _show_confirm_dialog(self, save_callback):
         dialog = Leave(self.name, self.changes_not_saved, self.last_save_time, 
                 save_callback)
-        return dialog.run()
+        response = dialog.run()
+        print "Dialog.run devuelve", response
+        return response
 
     def _set_title(self):
         """Set main window title according to session state."""
