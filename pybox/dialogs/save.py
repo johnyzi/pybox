@@ -43,10 +43,8 @@ class SaveDialog:
         self.dialog.hide()
 
         if response == gtk.RESPONSE_OK:
-            print "------------- Dice OK"
             return self._save_canvas_to(self.dialog.get_filename())
         else:
-            print "------------- Cancela"
             return False
 
 
