@@ -3,6 +3,7 @@ import pango
 DEBUG = False
 SHOW_SESSION_TRACE = False
 FONT = 'sans 10'  
+SMALL_FONT = 'sans 9'
 
 class Config:
     "Singleton class"

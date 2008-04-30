@@ -72,8 +72,10 @@ class Main(Window):
         self.on_main__delete_event(widget)
 
     def on_setup_item__activate(self, widget):
+        self.view.status.info("Showing settings dialog")
         dialog = dialogs.settings.Settings()
         dialog.run()
+        self.view.status.info("Setting dialog was closed")
 
     def on_main__delete_event(self, widget, extra=None):
         if not config.DEBUG:

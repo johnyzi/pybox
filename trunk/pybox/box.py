@@ -47,19 +47,16 @@ class Box:
         group.raise_(None)
 
         if event.button == 1:
-            if event.type == gtk.gdk._2BUTTON_PRESS:
-                self.canvas.popup.on_edit__activate(None, box=self)
-                self.dragging = False
-            else:
-                # Arrastrar y soltar
-                self.dragging = True
-                self.drag_x = event.x
-                self.drag_y = event.y
+            self.dragging = True
+            self.drag_x = event.x
+            self.drag_y = event.y
+
 
     def on_drag_end(self, group, item, event):
         self.dragging = False
         self.canvas.session.on_notify_move_class(self.model)
         self.canvas.update_area_to_contract()
+        return True
 
     def on_motion(self, group, item, event):
 
@@ -77,6 +74,7 @@ class Box:
             bounds = group.get_bounds()
             self.x = bounds.x1 - 5
             self.y = bounds.y1 - 5
+        return True
 
     def _redraw_boxes(self, dx, dy):
 
