@@ -142,8 +142,6 @@ class Box:
 
     def _update_childs(self, last_name):
         for line in self.get_incoming_lines():
-            print "Antes se llamaba", last_name
-            print "   y ahora se llama", self.model.name
             line.child.model.superclass.remove(last_name)
             line.child.model.superclass.append(self.model.name)
 

@@ -5,37 +5,66 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
 Box	box.py	/^class Box:$/;"	c
-Box1	line.py	/^class Box1(goocanvas.Rect):$/;"	c
 Canvas	canvas.py	/^class Canvas(goocanvas.Canvas):$/;"	c
+Config	config.py	/^class Config:$/;"	c
+ConsoleView	ipython_view.py	/^class ConsoleView(gtk.TextView):$/;"	c
+History	history.py	/^class History() :$/;"	c
+IPythonView	ipython_view.py	/^class IPythonView(ConsoleView, IterableIPShell):$/;"	c
+IterableIPShell	ipython_view.py	/^class IterableIPShell:$/;"	c
 Line	line.py	/^class Line(goocanvas.Polyline):$/;"	c
 Main	main.py	/^class Main(Window):$/;"	c
 Model	model.py	/^class Model:$/;"	c
 Popup	popup.py	/^class Popup(Window):$/;"	c
+Session	session.py	/^class Session:$/;"	c
 StatusBar	status.py	/^class StatusBar(gtk.EventBox):$/;"	c
 View	window.py	/^class View:$/;"	c
 Window	window.py	/^class Window:$/;"	c
 __init__	box.py	/^    def __init__(self, x, y, model, root, canvas):$/;"	m	class:Box
 __init__	canvas.py	/^    def __init__(self, main):$/;"	m	class:Canvas
-__init__	line.py	/^    def __init__(self, child_box, parent_box, root):$/;"	m	class:Line
-__init__	line.py	/^    def __init__(self, x, y):$/;"	m	class:Box1
+__init__	config.py	/^    def __init__(self):$/;"	m	class:Config
+__init__	history.py	/^    def __init__(self, main):$/;"	m	class:History
+__init__	ipython_view.py	/^    def __init__(self):$/;"	m	class:ConsoleView
+__init__	ipython_view.py	/^    def __init__(self, main):$/;"	m	class:IPythonView
+__init__	ipython_view.py	/^    def __init__(self,argv=None,user_ns=None,user_global_ns=None,$/;"	m	class:IterableIPShell
+__init__	line.py	/^    def __init__(self, child_box, father_box, root):$/;"	m	class:Line
 __init__	main.py	/^    def __init__(self):$/;"	m	class:Main
-__init__	model.py	/^    def __init__(self, name="", superclass="", abstract=False, comment="",$/;"	m	class:Model
+__init__	model.py	/^    def __init__(self, name="", superclass=[], abstract=False, comment="",$/;"	m	class:Model
 __init__	popup.py	/^    def __init__(self, canvas):$/;"	m	class:Popup
-__init__	status.py	/^    def __init__(self):$/;"	m	class:StatusBar
+__init__	session.py	/^    def __init__(self, main):$/;"	m	class:Session
+__init__	status.py	/^    def __init__(self, main):$/;"	m	class:StatusBar
 __init__	window.py	/^    def __init__(self, ui_file):$/;"	m	class:Window
+__repr__	box.py	/^    def __repr__(self):$/;"	m	class:Box	file:
+__repr__	canvas.py	/^    def __repr__(self):$/;"	m	class:Canvas	file:
+__repr__	line.py	/^    def __repr__(self):$/;"	m	class:Line	file:
 __repr__	model.py	/^    def __repr__(self):$/;"	m	class:Model	file:
+_clear	canvas.py	/^    def _clear(self):$/;"	m	class:Canvas
+_commonPrefix	ipython_view.py	/^    def _commonPrefix(self, str1, str2):$/;"	m	class:IterableIPShell
 _connect_callbacks	window.py	/^    def _connect_callbacks(self, ui):$/;"	m	class:Window
+_create_canvas	main.py	/^    def _create_canvas(self):$/;"	m	class:Main
+_create_history	main.py	/^    def _create_history(self):$/;"	m	class:Main
+_create_new_canvas_area	canvas.py	/^    def _create_new_canvas_area(self):$/;"	m	class:Canvas
+_create_session	canvas.py	/^    def _create_session(self):$/;"	m	class:Canvas
+_create_status_bar	main.py	/^    def _create_status_bar(self):$/;"	m	class:Main
+_create_theme_classic	config.py	/^    def _create_theme_classic(self):$/;"	m	class:Config
+_create_theme_round	config.py	/^    def _create_theme_round(self):$/;"	m	class:Config
 _create_view	box.py	/^    def _create_view(self, root):$/;"	m	class:Box
 _create_view	window.py	/^    def _create_view(self, ui):$/;"	m	class:Window
+_getHistory	ipython_view.py	/^    def _getHistory(self):$/;"	m	class:IterableIPShell
 _init_drag_feature	box.py	/^    def _init_drag_feature(self):$/;"	m	class:Box
+_onKeypress	ipython_view.py	/^    def _onKeypress(self, obj, event):$/;"	m	class:ConsoleView
+_processLine	ipython_view.py	/^    def _processLine(self):$/;"	m	class:IPythonView
+_reconnect_herency	canvas.py	/^    def _reconnect_herency(self, child, old_fathers):$/;"	m	class:Canvas
+_redraw_boxes	box.py	/^    def _redraw_boxes(self, dx, dy):$/;"	m	class:Box
+_search_relation	canvas.py	/^    def _search_relation(self, box, superclass, old_fathers):$/;"	m	class:Canvas
 _set_message	status.py	/^    def _set_message(self, stock_item, message, long):$/;"	m	class:StatusBar
+_show_debugger	status.py	/^    def _show_debugger(self, widget, main):$/;"	m	class:StatusBar
 _update_childs	box.py	/^    def _update_childs(self, last_name):$/;"	m	class:Box
-aults_values_for_text	box.py	/^        defaults_values_for_text = {$/;"	f	function:Box._create_view
-aults_values_for_text	box.py	/^        self.attributes = goocanvas.Text(**defaults_values_for_text)$/;"	f	function:Box._create_view
-aults_values_for_text	box.py	/^        self.methods = goocanvas.Text(**defaults_values_for_text)$/;"	f	function:Box._create_view
-aults_values_for_text	box.py	/^        self.title = goocanvas.Text(**defaults_values_for_text)$/;"	f	function:Box._create_view
-clear	canvas.py	/^    def clear(self):$/;"	m	class:Canvas
+can_leave	session.py	/^    def can_leave(self, save_callback):$/;"	m	class:Session
+changeLine	ipython_view.py	/^    def changeLine(self, text):$/;"	m	class:ConsoleView
+change_notify	session.py	/^    def change_notify(self):$/;"	m	class:Session
+change_popup_status	history.py	/^    def change_popup_status(self) :$/;"	m	class:History
 clear	status.py	/^    def clear(self):$/;"	m	class:StatusBar
+complete	ipython_view.py	/^    def complete(self, line):$/;"	m	class:IterableIPShell
 concatenate	box.py	/^    def concatenate(self, a, b):$/;"	m	class:Box
 connect_box	canvas.py	/^    def connect_box(self, box, new_model):$/;"	m	class:Canvas
 create_box	canvas.py	/^    def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):$/;"	m	class:Canvas
@@ -44,47 +73,86 @@ distance	box.py	/^def distance((x1, y1), (x2, y2)):$/;"	f
 dx	box.py	/^    def dx(self, object):$/;"	m	class:Box
 dy	box.py	/^    def dy(self, object):$/;"	m	class:Box
 error	status.py	/^    def error(self, message, long=None):$/;"	m	class:StatusBar
+execute	ipython_view.py	/^    def execute(self):$/;"	m	class:IterableIPShell
+getCurrentLine	ipython_view.py	/^    def getCurrentLine(self):$/;"	m	class:ConsoleView
 get_box_by_name	canvas.py	/^    def get_box_by_name(self, name):$/;"	m	class:Canvas
 get_class_names	canvas.py	/^    def get_class_names(self):$/;"	m	class:Canvas
 get_connection_more_closer_to	box.py	/^    def get_connection_more_closer_to(self, other):$/;"	m	class:Box
-get_connection_more_closer_to	line.py	/^    def get_connection_more_closer_to(self, other):$/;"	m	class:Box1
 get_control_points	box.py	/^    def get_control_points(self):$/;"	m	class:Box
-get_control_points	line.py	/^    def get_control_points(self):$/;"	m	class:Box1
+get_filename_without_extension	common.py	/^def get_filename_without_extension(filename):$/;"	f
 get_incoming_lines	box.py	/^    def get_incoming_lines(self):$/;"	m	class:Box
 get_left	box.py	/^    def get_left(self):$/;"	m	class:Box
 get_model_by_name	canvas.py	/^    def get_model_by_name(self, name):$/;"	m	class:Canvas
 get_outgoing_lines	box.py	/^    def get_outgoing_lines(self):$/;"	m	class:Box
+historyBack	ipython_view.py	/^    def historyBack(self):$/;"	m	class:IterableIPShell
+historyForward	ipython_view.py	/^    def historyForward(self):$/;"	m	class:IterableIPShell
 info	status.py	/^    def info(self, message, long=None):$/;"	m	class:StatusBar
+inspect	box.py	/^    def inspect(self):$/;"	m	class:Box
+inspect	canvas.py	/^    def inspect(self):$/;"	m	class:Canvas
+inspect	model.py	/^    def inspect(self):$/;"	m	class:Model
+keyPress	ipython_view.py	/^    def keyPress(self, widget, event):$/;"	m	class:IPythonView
+list_to_string	common.py	/^def list_to_string(list):$/;"	f
+new	canvas.py	/^    def new(self):$/;"	m	class:Canvas
+new_document_notify	session.py	/^    def new_document_notify(self):$/;"	m	class:Session
 on_aboutitem__activate	main.py	/^    def on_aboutitem__activate(self, item):$/;"	m	class:Main
 on_add__activate	popup.py	/^    def on_add__activate(self, widget):$/;"	m	class:Popup
 on_button_press	box.py	/^    def on_button_press(self, group, item, event):$/;"	m	class:Box
 on_button_press_event	canvas.py	/^    def on_button_press_event(self, group, widget, event, box):$/;"	m	class:Canvas
-on_button_press_event	line.py	/^def on_button_press_event(item, target, event):$/;"	f
-on_button_release_event	line.py	/^def on_button_release_event(item, target, event):$/;"	f
 on_drag_end	box.py	/^    def on_drag_end(self, group, item, event):$/;"	m	class:Box
 on_edit__activate	popup.py	/^    def on_edit__activate(self, widget, box=None):$/;"	m	class:Popup
 on_event	canvas.py	/^    def on_event(self, widget, event):$/;"	m	class:Canvas
 on_export_pdf_item__activate	main.py	/^    def on_export_pdf_item__activate(self, widget):$/;"	m	class:Main
 on_export_png_item__activate	main.py	/^    def on_export_png_item__activate(self, widget):$/;"	m	class:Main
+on_main__delete_event	main.py	/^    def on_main__delete_event(self, widget, extra=None):$/;"	m	class:Main
 on_main__destroy	main.py	/^    def on_main__destroy(self, widget):$/;"	m	class:Main
 on_motion	box.py	/^    def on_motion(self, group, item, event):$/;"	m	class:Box
-on_motion_notify_event	line.py	/^def on_motion_notify_event(item, target, event):$/;"	f
+on_new__activate	main.py	/^    def on_new__activate(self, widget):$/;"	m	class:Main
+on_new_button__clicked	main.py	/^    def on_new_button__clicked(self, widget):$/;"	m	class:Main
+on_notify_create_class	session.py	/^    def on_notify_create_class(self, model):$/;"	m	class:Session
+on_notify_edit_class	session.py	/^    def on_notify_edit_class(self, model, last_name):$/;"	m	class:Session
+on_notify_move_class	session.py	/^    def on_notify_move_class(self, model):$/;"	m	class:Session
+on_notify_redo	session.py	/^    def on_notify_redo(self):$/;"	m	class:Session
+on_notify_remove_class	session.py	/^    def on_notify_remove_class(self, model):$/;"	m	class:Session
+on_notify_undo	session.py	/^    def on_notify_undo(self):$/;"	m	class:Session
 on_open__activate	main.py	/^    def on_open__activate(self, widget):$/;"	m	class:Main
 on_quit_item__activate	main.py	/^    def on_quit_item__activate(self, widget):$/;"	m	class:Main
+on_redo__activate	popup.py	/^    def on_redo__activate(self, widget):$/;"	m	class:Popup
+on_redo_button__clicked	main.py	/^    def on_redo_button__clicked(self, widget):$/;"	m	class:Main
+on_redo_item__activate	main.py	/^    def on_redo_item__activate(self, widget):$/;"	m	class:Main
 on_remove__activate	popup.py	/^    def on_remove__activate(self, widget):$/;"	m	class:Popup
 on_saveas__activate	main.py	/^    def on_saveas__activate(self, widget):$/;"	m	class:Main
+on_setup_item__activate	main.py	/^    def on_setup_item__activate(self, widget):$/;"	m	class:Main
+on_undo__activate	popup.py	/^    def on_undo__activate(self, widget):$/;"	m	class:Popup
+on_undo_button__clicked	main.py	/^    def on_undo_button__clicked(self, widget):$/;"	m	class:Main
+on_undo_item__activate	main.py	/^    def on_undo_item__activate(self, widget):$/;"	m	class:Main
+open	canvas.py	/^    def open(self, filename):$/;"	m	class:Canvas
+open_dialog	canvas.py	/^    def open_dialog(self):$/;"	m	class:Canvas
+open_document_notify	session.py	/^    def open_document_notify(self, filename):$/;"	m	class:Session
+pop_redo	history.py	/^    def pop_redo(self) :$/;"	m	class:History
+pop_undo	history.py	/^    def pop_undo(self) :$/;"	m	class:History
+push_undo	history.py	/^    def push_undo(self, id) :$/;"	m	class:History
+raw_input	ipython_view.py	/^    def raw_input(self, prompt=''):$/;"	m	class:IPythonView
 remove	box.py	/^    def remove(self):$/;"	m	class:Box
 remove	line.py	/^    def remove(self):$/;"	m	class:Line
 remove_selected_box	canvas.py	/^    def remove_selected_box(self):$/;"	m	class:Canvas
-search_relation	canvas.py	/^    def search_relation(self, box, superclass):$/;"	m	class:Canvas
-show	model.py	/^    def show(self):$/;"	m	class:Model
+save	canvas.py	/^    def save(self, extra=None):$/;"	m	class:Canvas
+save_as	canvas.py	/^    def save_as(self, extra=None):$/;"	m	class:Canvas
+save_document_notify	session.py	/^    def save_document_notify(self, filename):$/;"	m	class:Session
+set_can_export	main.py	/^    def set_can_export(self, state):$/;"	m	class:Main
+set_can_save	main.py	/^    def set_can_save(self, state):$/;"	m	class:Main
+set_title	main.py	/^    def set_title(self, string):$/;"	m	class:Main
+shell	ipython_view.py	/^    def shell(self, cmd,verbose=0,debug=0,header=''):$/;"	m	class:IterableIPShell
 show	popup.py	/^    def show(self, event, new):$/;"	m	class:Popup
+showPrompt	ipython_view.py	/^    def showPrompt(self, prompt):$/;"	m	class:ConsoleView
+showReturned	ipython_view.py	/^    def showReturned(self, text):$/;"	m	class:ConsoleView
+show_confirm_save_dialog	canvas.py	/^    def show_confirm_save_dialog(self):$/;"	m	class:Canvas
+string_to_list	common.py	/^def string_to_list(string):$/;"	f
 update	box.py	/^    def update(self, model, last_name=None):$/;"	m	class:Box
 update	line.py	/^    def update(self):$/;"	m	class:Line
+updateNamespace	ipython_view.py	/^    def updateNamespace(self, ns_dict):$/;"	m	class:IterableIPShell
 update_area_expanding	canvas.py	/^    def update_area_expanding(self, bounds):$/;"	m	class:Canvas
 update_area_to_contract	canvas.py	/^    def update_area_to_contract(self):$/;"	m	class:Canvas
 update_lines	box.py	/^    def update_lines(self):$/;"	m	class:Box
 update_positions	box.py	/^    def update_positions(self):$/;"	m	class:Box
-view	popup.py	/^        new_dialog = dialogs.classview.ClassView(box.model,$/;"	c	function:Popup.on_edit__activate
-view	popup.py	/^        new_dialog = dialogs.classview.ClassView(new_model,$/;"	c	function:Popup.on_add__activate
 warning	status.py	/^    def warning(self, message, long=None):$/;"	m	class:StatusBar
+write	ipython_view.py	/^    def write(self, text, editable=False):$/;"	m	class:ConsoleView

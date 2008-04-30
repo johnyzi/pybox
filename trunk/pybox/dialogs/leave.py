@@ -3,6 +3,7 @@ from window import Window
 import time
 
 class Leave(Window):
+    "Consulta al usuario si desea guardar los cambios del documento."
 
     def __init__(self, name, changes, time_last_save, save_callback):
         Window.__init__(self, 'leave.glade')
@@ -25,8 +26,7 @@ class Leave(Window):
         self.view.msg_2.set_text(long_text)
 
     def on_save__clicked(self, widget):
-        self.save_callback(widget)
-        self.can_continue = True
+        self.can_continue = self.save_callback(widget)
 
     def on_discard__clicked(self, widget):
         self.can_continue = True
@@ -38,5 +38,4 @@ class Leave(Window):
         """Returns True if it posible to continue or False if user cancel."""
         self.view.leave.run()
         self.view.leave.hide()
-
         return self.can_continue

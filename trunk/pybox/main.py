@@ -64,7 +64,6 @@ class Main(Window):
 
     def on_main__destroy(self, widget):
         gtk.main_quit()
-
     
     def on_new__activate(self, widget):
         self.canvas.new()
@@ -80,9 +79,10 @@ class Main(Window):
         if not config.DEBUG:
             if self.canvas.show_confirm_save_dialog():
                 gtk.main_quit()
+            else:
+                return True
         else:
             gtk.main_quit()
-            print "* Se cierra sin confirmar a causa de la constante DEBUG=True."
 
 
     def on_export_png_item__activate(self, widget):

@@ -12,7 +12,6 @@ class SaveDialog:
         self.parent = parent
         self.status = status
         self._create_dialog(pattern, name)
-        self._run()
 
     def _create_dialog(self, pattern, name):
         buttons = (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, 
@@ -39,13 +38,16 @@ class SaveDialog:
         dialog.add_filter(filter)
         self.dialog = dialog
 
-    def _run(self):
+    def run(self):
         response = self.dialog.run()
+        self.dialog.hide()
 
         if response == gtk.RESPONSE_OK:
-            self._save_canvas_to(self.dialog.get_filename())
-
-        self.dialog.hide()
+            print "------------- Dice OK"
+            return self._save_canvas_to(self.dialog.get_filename())
+        else:
+            print "------------- Cancela"
+            return False
 
 
 class PNG(SaveDialog):
@@ -74,6 +76,7 @@ class PNG(SaveDialog):
             return
 
         self.status.info("File saved as %s" %filename)
+        return True
 
 
 class PDF(SaveDialog):
@@ -100,6 +103,7 @@ class PDF(SaveDialog):
         self.canvas.render(cr, bounds, 1.0)
         cr.show_page()
         self.status.info("File saved as %s" %filename)
+        return True
 
 class Document(SaveDialog):
     "Allow to save all diagram in a the program format."
@@ -114,6 +118,7 @@ class Document(SaveDialog):
             file = open(filename, 'wb')
         except IOError:
             self.status.error("I can't write the file as %s." %filename)
+            return
 
         pickle = cPickle.Pickler(file)
 
@@ -124,3 +129,4 @@ class Document(SaveDialog):
         file.close()
         self.status.info("File saved as %s" %filename)
         self.canvas.session.save_document_notify(filename)
+        return True

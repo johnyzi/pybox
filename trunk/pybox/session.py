@@ -57,7 +57,6 @@ class Session:
         dialog = Leave(self.name, self.changes_not_saved, self.last_save_time, 
                 save_callback)
         response = dialog.run()
-        print "Dialog.run devuelve", response
         return response
 
     def _set_title(self):
@@ -95,7 +94,6 @@ class Session:
 
     def on_notify_edit_class(self, model, last_name):
         print "Session:notify - Se ha modificado una clase de modelo:", model
-        print "asdadsasdasdasd"
 
         if model.name != last_name:
             msg = "Editing <b>%s</b> class (that was called <b>%s</b> class)" %(model.name, last_name)
