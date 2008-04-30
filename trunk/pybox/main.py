@@ -96,7 +96,8 @@ class Main(Window):
         self.canvas.save_as()
 
     def on_open__activate(self, widget):
-        self.canvas.open_dialog()
+        if self.canvas.show_confirm_save_dialog():
+            self.canvas.open_dialog()
 
     def on_undo_item__activate(self, widget):
         self.canvas.session.on_notify_undo()
