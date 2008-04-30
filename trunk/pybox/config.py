@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 import pango
 DEBUG = False
+SHOW_SESSION_TRACE = False
 FONT = 'sans 10'  
 
 class Config:
