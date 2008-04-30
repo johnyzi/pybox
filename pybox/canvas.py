@@ -7,6 +7,8 @@ import popup
 import session
 from box import Box
 import dialogs
+import config
+import pango
 
 class Canvas(goocanvas.Canvas):
 
@@ -19,11 +21,30 @@ class Canvas(goocanvas.Canvas):
         self.main = main
         self.boxes = []
         self.connect('event', self.on_event)
+        #self.connect('button_press_event', self.on_button_press)
         self._create_session()
         self.popup = popup.Popup(self)
 
+        #self._create_help_text()
         self.show()
         self.new()
+
+    '''
+    def _create_help_text(self):
+        text = "use double click to create a class."
+        props = {
+                'font': config.SMALL_FONT,
+                'text': text,
+                'alignment': pango.ALIGN_LEFT,
+                'fill_color': '#777',
+                'use_markup': True,
+                'x': 20,
+                'y': 20,
+                }
+        root = self.get_root_item()
+        self._help_text = goocanvas.Text(** props)
+        root.add_child(self._help_text)
+    '''
 
     def _create_session(self):
         self.session = session.Session(self.main)
@@ -51,6 +72,7 @@ class Canvas(goocanvas.Canvas):
 
     def _clear(self):
         self._create_new_canvas_area()
+        #self._set_help_text_visible(True)
 
         for box in self.boxes:
             box.remove()
@@ -60,8 +82,8 @@ class Canvas(goocanvas.Canvas):
     def _create_new_canvas_area(self):
         self.props.x1 = 0
         self.props.y1 = 0
-        self.props.x2 = 100
-        self.props.y2 = 100
+        self.props.x2 = 300
+        self.props.y2 = 170
 
     def on_event(self, widget, event):
         "Show a menu when right click is pressed over the canvas."
@@ -70,6 +92,14 @@ class Canvas(goocanvas.Canvas):
             self.popup.show(event, new=True)
             self.x_position = event.x
             self.y_position = event.y
+            return True
+        '''
+        elif event.type == gtk.gdk._2BUTTON_PRESS:
+            # TODO: Modularizar la creacion en otra clase
+            self.x_position = event.x
+            self.y_position = event.y
+            self.popup.on_add__activate(None)
+        '''
 
     def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):
         """Create a graphical Box that shows a class model.
@@ -94,6 +124,12 @@ class Canvas(goocanvas.Canvas):
             self.connect_box(box, new_model)
 
         self.session.on_notify_create_class(new_model)
+        #self._set_help_text_visible(False)
+
+    '''
+    def _set_help_text_visible(self, state):
+        pass
+    '''
 
     def connect_box(self, box, new_model):
 

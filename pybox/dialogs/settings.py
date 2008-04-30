@@ -12,9 +12,11 @@ class Settings(Window):
 
     def on_ok__clicked(self, widget, extra=None):
         self.view.settings.hide()
+        print "No implementado"
         
     def on_cancel__clicked(self, widget, extra=None):
         self.view.settings.hide()
+        print "No implementado"
 
     def run(self):
         self.view.settings.run()
