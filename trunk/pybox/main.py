@@ -84,12 +84,13 @@ class Main(Window):
         else:
             gtk.main_quit()
 
-
     def on_export_png_item__activate(self, widget):
-        dialogs.save.PNG(self.view.main, self.canvas, self.view.status)
+        d = dialogs.save.PNG(self.view.main, self.canvas, self.view.status)
+        d.run()
 
     def on_export_pdf_item__activate(self, widget):
-        dialogs.save.PDF(self.view.main, self.canvas, self.view.status)
+        d = dialogs.save.PDF(self.view.main, self.canvas, self.view.status)
+        d.run()
 
     def on_saveas__activate(self, widget):
         self.canvas.save_as()
@@ -107,7 +108,7 @@ class Main(Window):
         dialog = dialogs.about.About()
         self.view.status.info("Showing about dialog")
         dialog.run()
-        self.view.status.info("About dialog has closed")
+        self.view.status.info("About dialog was closed")
 
     # Barra de botones
 
@@ -115,10 +116,11 @@ class Main(Window):
         self.on_new__activate(widget)
 
     def on_undo_button__clicked(self, widget):
-        self.on_undo__activate(widget)
+        self.on_undo_item__activate(widget)
 
     def on_redo_button__clicked(self, widget):
-        self.on_redo__activate(widget)
+        self.on_redo_item__activate(widget)
+
 
 if __name__ == '__main__':
     main = Main()

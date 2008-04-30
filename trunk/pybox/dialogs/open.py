@@ -54,7 +54,12 @@ class Document(OpenDialog):
 
     def _open(self, filename):
         file = open(filename, 'rb')
-        dump = cPickle.load(file)
+
+        try:
+            dump = cPickle.load(file)
+        except cPickle.UnpicklingError:
+            self.status.error("Can't read: %s" %(filename))
+            return 
 
         self.canvas.open(filename)
 
