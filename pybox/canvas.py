@@ -232,7 +232,8 @@ class Canvas(goocanvas.Canvas):
             box.inspect()
 
     def save(self, extra=None):
-        dialogs.save.Document(self.main.view.main, self, self.main.view.status)
+        d = dialogs.save.Document(self.main.view.main, self, self.main.view.status)
+        return d.run()
 
     def open_dialog(self):
         dialogs.open.Document(self.main.view.main, self, self.main.view.status)
