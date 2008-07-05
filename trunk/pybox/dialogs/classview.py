@@ -1,8 +1,10 @@
 # -*- encoding: utf-8 -*-
 import gtk
 import gtk.glade
+import gtk.gdk
 import dialogs
 import common
+import re
 
 from window import Window
 
@@ -140,49 +142,95 @@ class ClassView(Window):
         else:
             self.view.accept.set_sensitive(False)
 
-    def on_name__activate(self, widget):
-        if self.view.accept.get_property('sensitive'):
-            self.view.accept.clicked()
+    def check_syntax(self, string_to_chk, reg_exp, error_msg, hbox,
+            label_widget, entry_widget, ok_button):
+        reg_ex = re.compile(reg_exp)
+            
+        if not reg_ex.match(string_to_chk):
+            if len(string_to_chk) :
+                ok_button.set_sensitive(False)
+                label_widget.set_markup(error_msg)
+                hbox.show()
+
+                entry_widget.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse('#FFDDDD'))
+                #print "Entre en MOSTRAR."
+
+                return True
+        else:
+            hbox.hide()
+            entry_widget.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse('#FFFFFF'))
+            #print "Entre en OCULTAR."
+
+            return False
+
+    def check_duplicated(self, string_to_chk, treeview, error_msg, hbox,
+            label_widget, entry_widget, ok_button):
+        
+        elements = treeview.get_model()
+        variables = [name[0] for name in elements]
+
+        if string_to_chk in variables:
+            ok_button.set_sensitive(False)
+            label_widget.set_markup(error_msg)
+            hbox.show()
+            entry_widget.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse('#FFDDDD'))
+
+            return True
+
+        else:
+            hbox.hide()
+            label_widget.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse('#FFFFFF'))
+
+            return False
 
     def on_attrentry__changed(self, widget):
         if len(self.view.attrentry.get_text()) > 0:
             self.view.addattr.set_sensitive(True)
         else:
             self.view.addattr.set_sensitive(False)
+            #self.view.error.hide()
 
         # validacion
-        text = self.view.attrentry.get_text() 
-        #print "text:", text
-        #print "lista:", self.model.variables
-        
-        model_attributes = self.view.treeview_attributes.get_model()
-        variables = [name[0] for name in model_attributes]
+        entry_text = self.view.attrentry.get_text()
 
-        if text in variables:
-            import gtk
-            import gtk.gdk
-            self.view.error.show()
-            self.view.attrentry.modify_base(gtk.STATE_NORMAL,
-                gtk.gdk.color_parse('#FFDDDD'))
-        else:
-            import gtk
-            import gtk.gdk
-            self.view.error.hide()
-            self.view.attrentry.modify_base(gtk.STATE_NORMAL,
-                gtk.gdk.color_parse('#FFFFFF'))
+        if self.check_syntax(entry_text, "^([a-z,A-Z,_]+\d*)+$", "<i>Invalid attribute name.</i>", self.view.error,
+                self.view.attrentry_error, self.view.attrentry, self.view.addattr):
+            return
+        
+        if self.check_duplicated(entry_text,
+                self.view.treeview_attributes, "<i>Attribute already defined.</i>", self.view.error, self.view.attrentry_error, self.view.attrentry,
+                self.view.addattr):
+            return
 
     def on_methodentry__changed(self, widget):
         if len(self.view.methodentry.get_text()) > 0:
             self.view.addmethod.set_sensitive(True)
         else:
             self.view.addmethod.set_sensitive(False)
+            #self.view.hbox_method_error.hide()
 
+        entry_text = self.view.methodentry.get_text()
+
+        if self.check_syntax(entry_text, "^([a-z,A-Z,_]+[\d,\(,\),\,,\;\:\ \"\'\=]*)+$", "<i>Invalid method name.</i>", 
+                self.view.hbox_method_error, self.view.methodentry_error, self.view.methodentry,
+                self.view.addmethod):
+            return
+
+        if self.check_duplicated(entry_text,
+                self.view.treeview_methods, "<i>Method already defined.</i>", self.view.hbox_method_error, self.view.methodentry_error,
+                self.view.methodentry, self.view.addmethod):
+            return
+    
     def on_attrentry__activate(self, widget):
-        if len(self.view.attrentry.get_text()) > 0:
+        state = self.view.addattr.get_property('sensitive')
+
+        if state:
             self.on_addattr__clicked(widget)
 
     def on_methodentry__activate(self, widget):
-        if len(self.view.methodentry.get_text()) > 0:
+        state = self.view.addmethod.get_property('sensitive')
+
+        if state:
             self.on_addmethod__clicked(widget)
 
     def on_accept__clicked(self, widget):

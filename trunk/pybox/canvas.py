@@ -92,7 +92,6 @@ class Canvas(goocanvas.Canvas):
             self.popup.show(event, new=True)
             self.x_position = event.x
             self.y_position = event.y
-            return True
         '''
         elif event.type == gtk.gdk._2BUTTON_PRESS:
             # TODO: Modularizar la creacion en otra clase
