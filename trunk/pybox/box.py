@@ -47,13 +47,9 @@ class Box:
         group.raise_(None)
 
         if event.button == 1:
-            if event.type == gtk.gdk._2BUTTON_PRESS:
-                self.canvas.popup.on_edit__activate(None, box=self)
-                self.dragging = False
-            else:
-                self.dragging = True
-                self.drag_x = event.x
-                self.drag_y = event.y
+            self.dragging = True
+            self.drag_x = event.x
+            self.drag_y = event.y
 
 
     def on_drag_end(self, group, item, event):
