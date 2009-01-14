@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 import gtk
 import goocanvas
+import gobject
 
 import line
 import popup
@@ -29,22 +30,13 @@ class Canvas(goocanvas.Canvas):
         self.show()
         self.new()
 
-    '''
-    def _create_help_text(self):
-        text = "use double click to create a class."
-        props = {
-                'font': config.SMALL_FONT,
-                'text': text,
-                'alignment': pango.ALIGN_LEFT,
-                'fill_color': '#777',
-                'use_markup': True,
-                'x': 20,
-                'y': 20,
-                }
-        root = self.get_root_item()
-        self._help_text = goocanvas.Text(** props)
-        root.add_child(self._help_text)
-    '''
+        gobject.timeout_add(1000, self._periodical_canvas_size_check)
+
+    def _periodical_canvas_size_check(self):
+        self.update_area_to_contract()
+        #print "Tick en la funcion:", self
+        return True
+
 
     def _create_session(self):
         self.session = session.Session(self.main)
@@ -72,7 +64,6 @@ class Canvas(goocanvas.Canvas):
 
     def _clear(self):
         self._create_new_canvas_area()
-        #self._set_help_text_visible(True)
 
         for box in self.boxes:
             box.remove()
@@ -92,13 +83,6 @@ class Canvas(goocanvas.Canvas):
             self.popup.show(event, new=True)
             self.x_position = event.x
             self.y_position = event.y
-        '''
-        elif event.type == gtk.gdk._2BUTTON_PRESS:
-            # TODO: Modularizar la creacion en otra clase
-            self.x_position = event.x
-            self.y_position = event.y
-            self.popup.on_add__activate(None)
-        '''
 
     def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):
         """Create a graphical Box that shows a class model.
@@ -124,11 +108,6 @@ class Canvas(goocanvas.Canvas):
 
         self.session.on_notify_create_class(new_model)
         #self._set_help_text_visible(False)
-
-    '''
-    def _set_help_text_visible(self, state):
-        pass
-    '''
 
     def connect_box(self, box, new_model):
 
@@ -214,7 +193,13 @@ class Canvas(goocanvas.Canvas):
             redraw = True
         
         elif bounds.x2 > self.props.x2:   # right border
-            self.props.x2 = bounds.x2
+            self.props.x2 = bounds.x2 + 40
+            hscroll = self.main.view.scroll.get_hscrollbar()
+
+            actual_value = hscroll.get_value()
+            hscroll.set_value(actual_value + 20)
+
+
 
         if bounds.y1 < 0:     # upper border
             self.props.y2 = self.props.y2 + abs(bounds.y1)
@@ -236,22 +221,7 @@ class Canvas(goocanvas.Canvas):
         #      código funciona correctamente pero hace poco manipulable el
         #      area de pantalla.
 
-        #self.session.on_notify_move_class(self.model)
-
-        '''
-        box_list = [box for box in self.boxes]
-
-        minus_left = box_list[0].get_left()
-
-        for box in box_list:
-            left = box.get_left()
-
-            if left < minus_left:
-                left = minus_left
-
-        if self.props.x1 < minus_left:
-            self.props.x1 = minus_left
-        '''
+        pass
 
     def __repr__(self):
         return "<Canvas instance>"

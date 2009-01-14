@@ -25,6 +25,8 @@ class Model:
         for key, value in values:
             print "\t\t%s: %s" %(key, repr(value))
 
+
 if __name__ == '__main__':
-    new = Model("Person", None, True, "", [], [])
-    new.inspect()
+    new = Model("Person", ['pepe', 'other'], True, "", ['name', 'more', 'mas',
+        'other'], ['sdf', 'otro'])
+    #new.inspect()
