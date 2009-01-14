@@ -6,6 +6,8 @@ import gaphas
 import popup
 import session
 
+import box
+
 class Canvas(gaphas.view.GtkView):
 
     def __init__(self, main):
@@ -68,5 +70,12 @@ class Canvas(gaphas.view.GtkView):
             `y`: vertical position.
             `hierarchy_lines`: if must do connect hierarchy lines.
         """
-        box = box.Box(x, y, new_model, self)
-        self.boxes.append(box)
+        new_box = box.Box(new_model, self)
+        self.boxes.append(new_box)
+
+        if x is None and y is None:
+            x = self.x_position
+            y = self.y_position
+
+        self.canvas.add(new_box)
+        new_box.matrix.translate(x, y)
