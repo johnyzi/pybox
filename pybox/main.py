@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 import gtk
 import gtk.glade
-import goocanvas
 
 import common
 import dialogs
@@ -48,7 +47,7 @@ class Main(Window):
     def _create_canvas(self):
         "Construye el area de dibujo."
         self.canvas = canvas.Canvas(self)
-        self.view.scroll.add(self.canvas)
+        self.view.scroll.add_with_viewport(self.canvas)
 
     def _create_history(self):
         "Construye el historial de cambios (deshacer y reahacer)."
