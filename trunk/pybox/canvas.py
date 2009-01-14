@@ -247,7 +247,3 @@ class Canvas(goocanvas.Canvas):
 
     def save_as(self, extra=None):
         self.save()
-
-if __name__ == '__main__':
-    canvas = Canvas(main=None)
-    canvas.inspect()
