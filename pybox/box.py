@@ -51,7 +51,6 @@ class Box:
             self.drag_x = event.x
             self.drag_y = event.y
 
-
     def on_drag_end(self, group, item, event):
         self.dragging = False
         self.canvas.session.on_notify_move_class(self.model)
@@ -61,9 +60,9 @@ class Box:
     def on_motion(self, group, item, event):
 
         if self.dragging:
-
             dx = event.x - self.drag_x
             dy = event.y - self.drag_y
+
             group.translate(dx, dy)
             self.update_lines()
             redraw = self.canvas.update_area_expanding(self.group.get_bounds())
@@ -74,6 +73,7 @@ class Box:
             bounds = group.get_bounds()
             self.x = bounds.x1 - 5
             self.y = bounds.y1 - 5
+
         return True
 
     def _redraw_boxes(self, dx, dy):

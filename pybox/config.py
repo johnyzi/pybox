@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 import pango
-DEBUG = False
+DEBUG = True
 SHOW_SESSION_TRACE = True
 FONT = 'sans 10'  
 SMALL_FONT = 'sans 9'
