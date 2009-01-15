@@ -47,9 +47,12 @@ class Main(Window):
     def _create_canvas(self):
         "Construye el area de dibujo."
         self.canvas = canvas.Canvas(self)
-        self.view.scroll.add_with_viewport(self.canvas)
-        self.view.scroll.set_hadjustment(self.canvas.hadjustment)
-        self.view.scroll.set_vadjustment(self.canvas.vadjustment)
+        self.view.canvas_placeholder.add(self.canvas)
+
+        self.canvas.set_size_request(150, 120)
+        self.view.hscrollbar.set_adjustment(self.canvas.hadjustment)
+        self.view.vscrollbar.set_adjustment(self.canvas.vadjustment)
+
 
     def _create_history(self):
         "Construye el historial de cambios (deshacer y reahacer)."
