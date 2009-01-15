@@ -7,8 +7,10 @@ import popup
 import session
 
 import box
+import model
 
 class Canvas(gaphas.view.GtkView):
+    """Representa el objeto GTK que muestra el diagrama de clases."""
 
     def __init__(self, main):
         gaphas.view.GtkView.__init__(self)
@@ -26,7 +28,6 @@ class Canvas(gaphas.view.GtkView):
         # Event handlers
         self.connect('event', self.on_event)
 
-
     def on_event(self, widget, event):
         """This method is called by gtk when user iteract with canvas.
         
@@ -36,7 +37,6 @@ class Canvas(gaphas.view.GtkView):
             self.popup.show(event, new=True)
             self.x_position = event.x
             self.y_position = event.y
-
 
     def get_class_names(self):
         """Get a list with all class names."""
