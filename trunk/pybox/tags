@@ -4,155 +4,795 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
-Box	box.py	/^class Box:$/;"	c
-Canvas	canvas.py	/^class Canvas(goocanvas.Canvas):$/;"	c
-Config	config.py	/^class Config:$/;"	c
-ConsoleView	ipython_view.py	/^class ConsoleView(gtk.TextView):$/;"	c
-History	history.py	/^class History() :$/;"	c
-IPythonView	ipython_view.py	/^class IPythonView(ConsoleView, IterableIPShell):$/;"	c
-IterableIPShell	ipython_view.py	/^class IterableIPShell:$/;"	c
-Line	line.py	/^class Line(goocanvas.Polyline):$/;"	c
-Main	main.py	/^class Main(Window):$/;"	c
-Model	model.py	/^class Model:$/;"	c
-Popup	popup.py	/^class Popup(Window):$/;"	c
-Session	session.py	/^class Session:$/;"	c
-StatusBar	status.py	/^class StatusBar(gtk.EventBox):$/;"	c
-View	window.py	/^class View:$/;"	c
-Window	window.py	/^class Window:$/;"	c
-__init__	box.py	/^    def __init__(self, x, y, model, root, canvas):$/;"	m	class:Box
-__init__	canvas.py	/^    def __init__(self, main):$/;"	m	class:Canvas
-__init__	config.py	/^    def __init__(self):$/;"	m	class:Config
-__init__	history.py	/^    def __init__(self, main):$/;"	m	class:History
-__init__	ipython_view.py	/^    def __init__(self):$/;"	m	class:ConsoleView
-__init__	ipython_view.py	/^    def __init__(self, main):$/;"	m	class:IPythonView
-__init__	ipython_view.py	/^    def __init__(self,argv=None,user_ns=None,user_global_ns=None,$/;"	m	class:IterableIPShell
-__init__	line.py	/^    def __init__(self, child_box, father_box, root):$/;"	m	class:Line
-__init__	main.py	/^    def __init__(self):$/;"	m	class:Main
-__init__	model.py	/^    def __init__(self, name="", superclass=[], abstract=False, comment="",$/;"	m	class:Model
-__init__	popup.py	/^    def __init__(self, canvas):$/;"	m	class:Popup
-__init__	session.py	/^    def __init__(self, main):$/;"	m	class:Session
-__init__	status.py	/^    def __init__(self, main):$/;"	m	class:StatusBar
-__init__	window.py	/^    def __init__(self, ui_file):$/;"	m	class:Window
-__repr__	box.py	/^    def __repr__(self):$/;"	m	class:Box	file:
-__repr__	canvas.py	/^    def __repr__(self):$/;"	m	class:Canvas	file:
-__repr__	line.py	/^    def __repr__(self):$/;"	m	class:Line	file:
-__repr__	model.py	/^    def __repr__(self):$/;"	m	class:Model	file:
-_clear	canvas.py	/^    def _clear(self):$/;"	m	class:Canvas
-_commonPrefix	ipython_view.py	/^    def _commonPrefix(self, str1, str2):$/;"	m	class:IterableIPShell
-_connect_callbacks	window.py	/^    def _connect_callbacks(self, ui):$/;"	m	class:Window
-_create_canvas	main.py	/^    def _create_canvas(self):$/;"	m	class:Main
-_create_history	main.py	/^    def _create_history(self):$/;"	m	class:Main
-_create_new_canvas_area	canvas.py	/^    def _create_new_canvas_area(self):$/;"	m	class:Canvas
-_create_session	canvas.py	/^    def _create_session(self):$/;"	m	class:Canvas
-_create_status_bar	main.py	/^    def _create_status_bar(self):$/;"	m	class:Main
-_create_theme_classic	config.py	/^    def _create_theme_classic(self):$/;"	m	class:Config
-_create_theme_round	config.py	/^    def _create_theme_round(self):$/;"	m	class:Config
-_create_view	box.py	/^    def _create_view(self, root):$/;"	m	class:Box
-_create_view	window.py	/^    def _create_view(self, ui):$/;"	m	class:Window
-_getHistory	ipython_view.py	/^    def _getHistory(self):$/;"	m	class:IterableIPShell
-_init_drag_feature	box.py	/^    def _init_drag_feature(self):$/;"	m	class:Box
-_onKeypress	ipython_view.py	/^    def _onKeypress(self, obj, event):$/;"	m	class:ConsoleView
-_processLine	ipython_view.py	/^    def _processLine(self):$/;"	m	class:IPythonView
-_reconnect_herency	canvas.py	/^    def _reconnect_herency(self, child, old_fathers):$/;"	m	class:Canvas
-_redraw_boxes	box.py	/^    def _redraw_boxes(self, dx, dy):$/;"	m	class:Box
-_search_relation	canvas.py	/^    def _search_relation(self, box, superclass, old_fathers):$/;"	m	class:Canvas
-_set_message	status.py	/^    def _set_message(self, stock_item, message, long):$/;"	m	class:StatusBar
-_show_debugger	status.py	/^    def _show_debugger(self, widget, main):$/;"	m	class:StatusBar
-_update_childs	box.py	/^    def _update_childs(self, last_name):$/;"	m	class:Box
-can_leave	session.py	/^    def can_leave(self, save_callback):$/;"	m	class:Session
-changeLine	ipython_view.py	/^    def changeLine(self, text):$/;"	m	class:ConsoleView
-change_notify	session.py	/^    def change_notify(self):$/;"	m	class:Session
-change_popup_status	history.py	/^    def change_popup_status(self) :$/;"	m	class:History
-clear	status.py	/^    def clear(self):$/;"	m	class:StatusBar
-complete	ipython_view.py	/^    def complete(self, line):$/;"	m	class:IterableIPShell
-concatenate	box.py	/^    def concatenate(self, a, b):$/;"	m	class:Box
-connect_box	canvas.py	/^    def connect_box(self, box, new_model):$/;"	m	class:Canvas
-create_box	canvas.py	/^    def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):$/;"	m	class:Canvas
-create_line	canvas.py	/^    def create_line(self, child_model, parent_model):$/;"	m	class:Canvas
-distance	box.py	/^def distance((x1, y1), (x2, y2)):$/;"	f
-dx	box.py	/^    def dx(self, object):$/;"	m	class:Box
-dy	box.py	/^    def dy(self, object):$/;"	m	class:Box
-error	status.py	/^    def error(self, message, long=None):$/;"	m	class:StatusBar
-execute	ipython_view.py	/^    def execute(self):$/;"	m	class:IterableIPShell
-getCurrentLine	ipython_view.py	/^    def getCurrentLine(self):$/;"	m	class:ConsoleView
-get_box_by_name	canvas.py	/^    def get_box_by_name(self, name):$/;"	m	class:Canvas
-get_class_names	canvas.py	/^    def get_class_names(self):$/;"	m	class:Canvas
-get_connection_more_closer_to	box.py	/^    def get_connection_more_closer_to(self, other):$/;"	m	class:Box
-get_control_points	box.py	/^    def get_control_points(self):$/;"	m	class:Box
-get_filename_without_extension	common.py	/^def get_filename_without_extension(filename):$/;"	f
-get_incoming_lines	box.py	/^    def get_incoming_lines(self):$/;"	m	class:Box
-get_left	box.py	/^    def get_left(self):$/;"	m	class:Box
-get_model_by_name	canvas.py	/^    def get_model_by_name(self, name):$/;"	m	class:Canvas
-get_outgoing_lines	box.py	/^    def get_outgoing_lines(self):$/;"	m	class:Box
-historyBack	ipython_view.py	/^    def historyBack(self):$/;"	m	class:IterableIPShell
-historyForward	ipython_view.py	/^    def historyForward(self):$/;"	m	class:IterableIPShell
-info	status.py	/^    def info(self, message, long=None):$/;"	m	class:StatusBar
-inspect	box.py	/^    def inspect(self):$/;"	m	class:Box
-inspect	canvas.py	/^    def inspect(self):$/;"	m	class:Canvas
-inspect	model.py	/^    def inspect(self):$/;"	m	class:Model
-keyPress	ipython_view.py	/^    def keyPress(self, widget, event):$/;"	m	class:IPythonView
-list_to_string	common.py	/^def list_to_string(list):$/;"	f
-new	canvas.py	/^    def new(self):$/;"	m	class:Canvas
-new_document_notify	session.py	/^    def new_document_notify(self):$/;"	m	class:Session
-on_aboutitem__activate	main.py	/^    def on_aboutitem__activate(self, item):$/;"	m	class:Main
-on_add__activate	popup.py	/^    def on_add__activate(self, widget):$/;"	m	class:Popup
-on_button_press	box.py	/^    def on_button_press(self, group, item, event):$/;"	m	class:Box
-on_button_press_event	canvas.py	/^    def on_button_press_event(self, group, widget, event, box):$/;"	m	class:Canvas
-on_drag_end	box.py	/^    def on_drag_end(self, group, item, event):$/;"	m	class:Box
-on_edit__activate	popup.py	/^    def on_edit__activate(self, widget, box=None):$/;"	m	class:Popup
-on_event	canvas.py	/^    def on_event(self, widget, event):$/;"	m	class:Canvas
-on_export_pdf_item__activate	main.py	/^    def on_export_pdf_item__activate(self, widget):$/;"	m	class:Main
-on_export_png_item__activate	main.py	/^    def on_export_png_item__activate(self, widget):$/;"	m	class:Main
-on_main__delete_event	main.py	/^    def on_main__delete_event(self, widget, extra=None):$/;"	m	class:Main
-on_main__destroy	main.py	/^    def on_main__destroy(self, widget):$/;"	m	class:Main
-on_motion	box.py	/^    def on_motion(self, group, item, event):$/;"	m	class:Box
-on_new__activate	main.py	/^    def on_new__activate(self, widget):$/;"	m	class:Main
-on_new_button__clicked	main.py	/^    def on_new_button__clicked(self, widget):$/;"	m	class:Main
-on_notify_create_class	session.py	/^    def on_notify_create_class(self, model):$/;"	m	class:Session
-on_notify_edit_class	session.py	/^    def on_notify_edit_class(self, model, last_name):$/;"	m	class:Session
-on_notify_move_class	session.py	/^    def on_notify_move_class(self, model):$/;"	m	class:Session
-on_notify_redo	session.py	/^    def on_notify_redo(self):$/;"	m	class:Session
-on_notify_remove_class	session.py	/^    def on_notify_remove_class(self, model):$/;"	m	class:Session
-on_notify_undo	session.py	/^    def on_notify_undo(self):$/;"	m	class:Session
-on_open__activate	main.py	/^    def on_open__activate(self, widget):$/;"	m	class:Main
-on_quit_item__activate	main.py	/^    def on_quit_item__activate(self, widget):$/;"	m	class:Main
-on_redo__activate	popup.py	/^    def on_redo__activate(self, widget):$/;"	m	class:Popup
-on_redo_button__clicked	main.py	/^    def on_redo_button__clicked(self, widget):$/;"	m	class:Main
-on_redo_item__activate	main.py	/^    def on_redo_item__activate(self, widget):$/;"	m	class:Main
-on_remove__activate	popup.py	/^    def on_remove__activate(self, widget):$/;"	m	class:Popup
-on_saveas__activate	main.py	/^    def on_saveas__activate(self, widget):$/;"	m	class:Main
-on_setup_item__activate	main.py	/^    def on_setup_item__activate(self, widget):$/;"	m	class:Main
-on_undo__activate	popup.py	/^    def on_undo__activate(self, widget):$/;"	m	class:Popup
-on_undo_button__clicked	main.py	/^    def on_undo_button__clicked(self, widget):$/;"	m	class:Main
-on_undo_item__activate	main.py	/^    def on_undo_item__activate(self, widget):$/;"	m	class:Main
-open	canvas.py	/^    def open(self, filename):$/;"	m	class:Canvas
-open_dialog	canvas.py	/^    def open_dialog(self):$/;"	m	class:Canvas
-open_document_notify	session.py	/^    def open_document_notify(self, filename):$/;"	m	class:Session
-pop_redo	history.py	/^    def pop_redo(self) :$/;"	m	class:History
-pop_undo	history.py	/^    def pop_undo(self) :$/;"	m	class:History
-push_undo	history.py	/^    def push_undo(self, id) :$/;"	m	class:History
-raw_input	ipython_view.py	/^    def raw_input(self, prompt=''):$/;"	m	class:IPythonView
-remove	box.py	/^    def remove(self):$/;"	m	class:Box
-remove	line.py	/^    def remove(self):$/;"	m	class:Line
-remove_selected_box	canvas.py	/^    def remove_selected_box(self):$/;"	m	class:Canvas
-save	canvas.py	/^    def save(self, extra=None):$/;"	m	class:Canvas
-save_as	canvas.py	/^    def save_as(self, extra=None):$/;"	m	class:Canvas
-save_document_notify	session.py	/^    def save_document_notify(self, filename):$/;"	m	class:Session
-set_can_export	main.py	/^    def set_can_export(self, state):$/;"	m	class:Main
-set_can_save	main.py	/^    def set_can_save(self, state):$/;"	m	class:Main
-set_title	main.py	/^    def set_title(self, string):$/;"	m	class:Main
-shell	ipython_view.py	/^    def shell(self, cmd,verbose=0,debug=0,header=''):$/;"	m	class:IterableIPShell
-show	popup.py	/^    def show(self, event, new):$/;"	m	class:Popup
-showPrompt	ipython_view.py	/^    def showPrompt(self, prompt):$/;"	m	class:ConsoleView
-showReturned	ipython_view.py	/^    def showReturned(self, text):$/;"	m	class:ConsoleView
-show_confirm_save_dialog	canvas.py	/^    def show_confirm_save_dialog(self):$/;"	m	class:Canvas
-string_to_list	common.py	/^def string_to_list(string):$/;"	f
-update	box.py	/^    def update(self, model, last_name=None):$/;"	m	class:Box
-update	line.py	/^    def update(self):$/;"	m	class:Line
-updateNamespace	ipython_view.py	/^    def updateNamespace(self, ns_dict):$/;"	m	class:IterableIPShell
-update_area_expanding	canvas.py	/^    def update_area_expanding(self, bounds):$/;"	m	class:Canvas
-update_area_to_contract	canvas.py	/^    def update_area_to_contract(self):$/;"	m	class:Canvas
-update_lines	box.py	/^    def update_lines(self):$/;"	m	class:Box
-update_positions	box.py	/^    def update_positions(self):$/;"	m	class:Box
-warning	status.py	/^    def warning(self, message, long=None):$/;"	m	class:StatusBar
-write	ipython_view.py	/^    def write(self, text, editable=False):$/;"	m	class:ConsoleView
+About	dialogs/about.py	/^class About:$/;"	c	inherits:
+BalanceConstraint	gaphas/constraint.py	/^class BalanceConstraint(Constraint):$/;"	c	inherits:Constraint
+BoundingBoxPainter	gaphas/painter.py	/^class BoundingBoxPainter(ItemPainter):$/;"	c	inherits:ItemPainter
+Box	box.py	/^class Box(gaphas.examples.Item):$/;"	c	inherits:gaphas.examples.Item
+Box	gaphas/examples.py	/^class Box(Element):$/;"	c	inherits:Element
+Box	last_box.py	/^class Box:$/;"	c	inherits:
+CairoBoundingBoxContext	gaphas/painter.py	/^class CairoBoundingBoxContext(object):$/;"	c	inherits:object
+Canvas	canvas.py	/^class Canvas(gaphas.view.GtkView):$/;"	c	inherits:gaphas.view.GtkView
+Canvas	gaphas/canvas.py	/^class Canvas(object):$/;"	c	inherits:object
+Canvas	last_canvas.py	/^class Canvas(goocanvas.Canvas):$/;"	c	inherits:goocanvas.Canvas
+CanvasProjection	gaphas/canvas.py	/^class CanvasProjection(object):$/;"	c	inherits:object
+CenterConstraint	gaphas/constraint.py	/^class CenterConstraint(Constraint):$/;"	c	inherits:Constraint
+Circle	gaphas/examples.py	/^class Circle(Item):$/;"	c	inherits:Item
+ClassList	dialogs/classlist.py	/^class ClassList(Window):$/;"	c	inherits:Window
+ClassView	dialogs/classview.py	/^class ClassView(Window):$/;"	c	inherits:Window
+Config	config.py	/^class Config:$/;"	c	inherits:
+ConnectingHandleTool	gaphas/examples.py	/^class ConnectingHandleTool(tool.HandleTool):$/;"	c	inherits:tool.HandleTool
+ConsoleView	ipython_view.py	/^class ConsoleView(gtk.TextView):$/;"	c	inherits:gtk.TextView
+Constraint	gaphas/constraint.py	/^class Constraint(object):$/;"	c	inherits:object
+Context	gaphas/canvas.py	/^class Context(object):$/;"	c	inherits:object
+Debugger	dialogs/debugger.py	/^class Debugger(Window):$/;"	c	inherits:Window
+DefaultExampleTool	gaphas/examples.py	/^def DefaultExampleTool():$/;"	f	access:public
+DefaultPainter	gaphas/painter.py	/^def DefaultPainter():$/;"	f	access:public
+DefaultTool	gaphas/tool.py	/^def DefaultTool():$/;"	f	access:public
+Document	dialogs/open.py	/^class Document(OpenDialog):$/;"	c	inherits:OpenDialog
+Document	dialogs/save.py	/^class Document(SaveDialog):$/;"	c	inherits:SaveDialog
+DrawContext	gaphas/painter.py	/^class DrawContext(Context):$/;"	c	inherits:Context
+Element	gaphas/item.py	/^class Element(Item):$/;"	c	inherits:Item
+ElementTestCase	gaphas/tests/test_element.py	/^class ElementTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+EqualsConstraint	gaphas/constraint.py	/^class EqualsConstraint(Constraint):$/;"	c	inherits:Constraint
+EquationConstraint	gaphas/constraint.py	/^class EquationConstraint(Constraint):$/;"	c	inherits:Constraint
+FatLine	gaphas/examples.py	/^class FatLine(Item):$/;"	c	inherits:Item
+FunctionMaker	decorator.py	/^class FunctionMaker(object):$/;"	c	inherits:object
+GtkView	gaphas/view.py	/^class GtkView(gtk.DrawingArea, View):$/;"	c	inherits:gtk.DrawingArea, View
+Handle	gaphas/item.py	/^class Handle(object):$/;"	c	inherits:object
+HandlePainter	gaphas/painter.py	/^class HandlePainter(Painter):$/;"	c	inherits:Painter
+HandleTool	gaphas/tool.py	/^class HandleTool(Tool):$/;"	c	inherits:Tool
+History	history.py	/^class History() :$/;"	c	inherits:
+HoverTool	gaphas/tool.py	/^class HoverTool(Tool):$/;"	c	inherits:Tool
+IPythonView	ipython_view.py	/^class IPythonView(ConsoleView, IterableIPShell):$/;"	c	inherits:ConsoleView, IterableIPShell
+Item	gaphas/item.py	/^class Item(object):$/;"	c	inherits:object
+ItemPainter	gaphas/painter.py	/^class ItemPainter(Painter):$/;"	c	inherits:Painter
+ItemTool	gaphas/tool.py	/^class ItemTool(Tool):$/;"	c	inherits:Tool
+IterableIPShell	ipython_view.py	/^class IterableIPShell:$/;"	c	inherits:
+JuggleError	gaphas/solver.py	/^class JuggleError(AssertionError):$/;"	c	inherits:AssertionError
+Leave	dialogs/leave.py	/^class Leave(Window):$/;"	c	inherits:Window
+LessThanConstraint	gaphas/constraint.py	/^class LessThanConstraint(Constraint):$/;"	c	inherits:Constraint
+Line	gaphas/item.py	/^class Line(Item):$/;"	c	inherits:Item
+Line	line.py	/^class Line(goocanvas.Polyline):$/;"	c	inherits:goocanvas.Polyline
+LineConstraint	gaphas/constraint.py	/^class LineConstraint(Constraint):$/;"	c	inherits:Constraint
+LineTestCase	gaphas/tests/test_line.py	/^class LineTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Main	main.py	/^class Main(Window):$/;"	c	inherits:Window
+MatricesTestCase	gaphas/tests/test_canvas.py	/^class MatricesTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Matrix	gaphas/matrix.py	/^class Matrix(object):$/;"	c	inherits:object
+Model	model.py	/^class Model:$/;"	c	inherits:
+OpenDialog	dialogs/open.py	/^class OpenDialog:$/;"	c	inherits:
+PDF	dialogs/save.py	/^class PDF(SaveDialog):$/;"	c	inherits:SaveDialog
+PNG	dialogs/save.py	/^class PNG(SaveDialog):$/;"	c	inherits:SaveDialog
+Painter	gaphas/painter.py	/^class Painter(object):$/;"	c	inherits:object
+PainterChain	gaphas/painter.py	/^class PainterChain(Painter):$/;"	c	inherits:Painter
+PlacementTool	gaphas/tool.py	/^class PlacementTool(Tool):$/;"	c	inherits:Tool
+Popup	popup.py	/^class Popup(Window):$/;"	c	inherits:Window
+Projection	gaphas/solver.py	/^class Projection(object):$/;"	c	inherits:object
+Quadtree	gaphas/quadtree.py	/^class Quadtree(object):$/;"	c	inherits:object
+QuadtreeBucket	gaphas/quadtree.py	/^class QuadtreeBucket(object):$/;"	c	inherits:object
+QuadtreeTestCase	gaphas/tests/test_quadtree.py	/^class QuadtreeTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Rectangle	gaphas/geometry.py	/^class Rectangle(object):$/;"	c	inherits:object
+RubberbandTool	gaphas/tool.py	/^class RubberbandTool(Tool):$/;"	c	inherits:Tool
+SaveDialog	dialogs/save.py	/^class SaveDialog:$/;"	c	inherits:
+Session	session.py	/^class Session:$/;"	c	inherits:
+Settings	dialogs/settings.py	/^class Settings(Window):$/;"	c	inherits:Window
+SizeTestCase	gaphas/tests/test_solver.py	/^class SizeTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Solver	gaphas/solver.py	/^class Solver(object):$/;"	c	inherits:object
+SolverSpeedTestCase	gaphas/tests/test_solver.py	/^class SolverSpeedTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Sorted	gaphas/sorter.py	/^class Sorted(object):$/;"	c	inherits:object
+SortedTestCase	gaphas/tests/test_sorter.py	/^class SortedTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Sorter	gaphas/sorter.py	/^class Sorter(object):$/;"	c	inherits:object
+StatusBar	status.py	/^class StatusBar(gtk.EventBox):$/;"	c	inherits:gtk.EventBox
+Text	gaphas/examples.py	/^class Text(Item):$/;"	c	inherits:Item
+TextEditTool	gaphas/tool.py	/^class TextEditTool(Tool):$/;"	c	inherits:Tool
+Tool	gaphas/tool.py	/^class Tool(object):$/;"	c	inherits:object
+ToolChain	gaphas/tool.py	/^class ToolChain(Tool):$/;"	c	inherits:Tool
+ToolChainContext	gaphas/tool.py	/^class ToolChainContext(Context):$/;"	c	inherits:Context
+ToolContext	gaphas/tool.py	/^class ToolContext(Context):$/;"	c	inherits:Context
+ToolPainter	gaphas/painter.py	/^class ToolPainter(Painter):$/;"	c	inherits:Painter
+Tree	gaphas/tree.py	/^class Tree(object):$/;"	c	inherits:object
+TreeTestCase	gaphas/tests/test_tree.py	/^class TreeTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Variable	gaphas/solver.py	/^class Variable(object):$/;"	c	inherits:object
+VariableProjection	gaphas/canvas.py	/^class VariableProjection(solver.Projection):$/;"	c	inherits:solver.Projection
+View	gaphas/view.py	/^class View(object):$/;"	c	inherits:object
+View	window.py	/^class View:$/;"	c	inherits:
+ViewTestCase	gaphas/tests/test_view.py	/^class ViewTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+WeakestVariableTestCase	gaphas/tests/test_solver.py	/^class WeakestVariableTestCase(unittest.TestCase):$/;"	c	inherits:unittest.TestCase
+Window	window.py	/^class Window:$/;"	c	inherits:
+__add__	gaphas/geometry.py	/^    def __add__(self, obj):$/;"	m	class:Rectangle	file:	access:private
+__add__	gaphas/solver.py	/^    def __add__(self, other):$/;"	m	class:Variable	file:	access:private
+__call__	gaphas/decorators.py	/^    def __call__(self, func):$/;"	m	class:async	file:	access:private
+__call__	gaphas/decorators.py	/^    def __call__(self, func):$/;"	m	class:recursive	file:	access:private
+__contains__	gaphas/geometry.py	/^    def __contains__(self, obj):$/;"	m	class:Rectangle	file:	access:private
+__contains__	gaphas/quadtree.py	/^    def __contains__(self, item):$/;"	m	class:Quadtree	file:	access:private
+__contains__	gaphas/sorter.py	/^    def __contains__(self, item):$/;"	m	class:Sorted	file:	access:private
+__div__	gaphas/solver.py	/^    def __div__(self, other):$/;"	m	class:Variable	file:	access:private
+__divmod__	gaphas/solver.py	/^    def __divmod__(self, other):$/;"	m	class:Variable	file:	access:private
+__eq__	gaphas/geometry.py	/^    def __eq__(self, other):$/;"	m	class:Rectangle	file:	access:private
+__eq__	gaphas/matrix.py	/^    def __eq__(self, other):$/;"	m	class:Matrix	file:	access:private
+__eq__	gaphas/solver.py	/^    def __eq__(self, other):$/;"	m	class:Variable	file:	access:private
+__float__	gaphas/solver.py	/^    def __float__(self):$/;"	m	class:Projection	file:	access:private
+__float__	gaphas/solver.py	/^    def __float__(self):$/;"	m	class:Variable	file:	access:private
+__floordiv__	gaphas/solver.py	/^    def __floordiv__(self, other):$/;"	m	class:Variable	file:	access:private
+__ge__	gaphas/matrix.py	/^    def __ge__(self, other):$/;"	m	class:Matrix	file:	access:private
+__ge__	gaphas/solver.py	/^    def __ge__(self, other):$/;"	m	class:Variable	file:	access:private
+__get__	gaphas/solver.py	/^    def __get__(self, obj, class_=None):$/;"	m	class:solvable	file:	access:private
+__getattr__	gaphas/constraint.py	/^    def __getattr__(self, name):$/;"	m	class:EquationConstraint	file:	access:private
+__getattr__	gaphas/painter.py	/^    def __getattr__(self, key):$/;"	m	class:CairoBoundingBoxContext	file:	access:private
+__getattr__	gaphas/tool.py	/^    def __getattr__(self, key):$/;"	m	class:ToolChainContext	file:	access:private
+__getitem__	gaphas/canvas.py	/^    def __getitem__(self, key):$/;"	m	class:CanvasProjection	file:	access:private
+__getitem__	gaphas/geometry.py	/^    def __getitem__(self, index):$/;"	m	class:Rectangle	file:	access:private
+__getitem__	gaphas/item.py	/^    def __getitem__(self, index):$/;"	m	class:Handle	file:	access:private
+__getitem__	gaphas/matrix.py	/^    def __getitem__(self, val):$/;"	m	class:Matrix	file:	access:private
+__gt__	gaphas/matrix.py	/^    def __gt__(self, other):$/;"	m	class:Matrix	file:	access:private
+__gt__	gaphas/solver.py	/^    def __gt__(self, other):$/;"	m	class:Variable	file:	access:private
+__iadd__	gaphas/geometry.py	/^    def __iadd__(self, obj):$/;"	m	class:Rectangle	file:	access:private
+__init__	box.py	/^    def __init__(self, model, canvas_view):$/;"	m	class:Box	access:public
+__init__	canvas.py	/^    def __init__(self, main):$/;"	m	class:Canvas	access:public
+__init__	config.py	/^    def __init__(self):$/;"	m	class:Config	access:public
+__init__	decorator.py	/^    def __init__(self, func=None, name=None, signature=None,$/;"	m	class:FunctionMaker	access:public
+__init__	dialogs/about.py	/^    def __init__(self):$/;"	m	class:About	access:public
+__init__	dialogs/classlist.py	/^    def __init__(self, classes, selected_classes):$/;"	m	class:ClassList	access:public
+__init__	dialogs/classview.py	/^    def __init__(self, model, classes):$/;"	m	class:ClassView	access:public
+__init__	dialogs/debugger.py	/^    def __init__(self, parent, main):$/;"	m	class:Debugger	access:public
+__init__	dialogs/leave.py	/^    def __init__(self, name, changes, time_last_save, save_callback):$/;"	m	class:Leave	access:public
+__init__	dialogs/open.py	/^    def __init__(self, parent, canvas, status):$/;"	m	class:Document	access:public
+__init__	dialogs/open.py	/^    def __init__(self, parent, canvas, status, pattern, name):$/;"	m	class:OpenDialog	access:public
+__init__	dialogs/save.py	/^    def __init__(self, parent, canvas, status):$/;"	m	class:Document	access:public
+__init__	dialogs/save.py	/^    def __init__(self, parent, canvas, status):$/;"	m	class:PDF	access:public
+__init__	dialogs/save.py	/^    def __init__(self, parent, canvas, status):$/;"	m	class:PNG	access:public
+__init__	dialogs/save.py	/^    def __init__(self, parent, canvas, status, pattern, name):$/;"	m	class:SaveDialog	access:public
+__init__	dialogs/settings.py	/^    def __init__(self):$/;"	m	class:Settings	access:public
+__init__	gaphas/canvas.py	/^    def __init__(self):$/;"	m	class:Canvas	access:public
+__init__	gaphas/canvas.py	/^    def __init__(self, **kwargs):$/;"	m	class:Context	access:public
+__init__	gaphas/canvas.py	/^    def __init__(self, point, item):$/;"	m	class:CanvasProjection	access:public
+__init__	gaphas/canvas.py	/^    def __init__(self, var, value, callback):$/;"	m	class:VariableProjection	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, *variables):$/;"	m	class:Constraint	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, a=None, b=None):$/;"	m	class:EqualsConstraint	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, a=None, b=None, center=None):$/;"	m	class:CenterConstraint	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, band=None, v=None, balance=None):$/;"	m	class:BalanceConstraint	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, f, **args):$/;"	m	class:EquationConstraint	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, line, point):$/;"	m	class:LineConstraint	access:public
+__init__	gaphas/constraint.py	/^    def __init__(self, smaller=None, bigger=None, delta=0.0):$/;"	m	class:LessThanConstraint	access:public
+__init__	gaphas/decorators.py	/^    def __init__(self, limit=10000):$/;"	m	class:recursive	access:public
+__init__	gaphas/decorators.py	/^    def __init__(self, single=False, priority=gobject.PRIORITY_DEFAULT):$/;"	m	class:async	access:public
+__init__	gaphas/examples.py	/^    def __init__(self):$/;"	m	class:Circle	access:public
+__init__	gaphas/examples.py	/^    def __init__(self):$/;"	m	class:FatLine	access:public
+__init__	gaphas/examples.py	/^    def __init__(self, text=None, plain=False, multiline=False, align_x=1, align_y=-1):$/;"	m	class:Text	access:public
+__init__	gaphas/examples.py	/^    def __init__(self, width=10, height=10):$/;"	m	class:Box	access:public
+__init__	gaphas/geometry.py	/^    def __init__(self, x=0, y=0, width=None, height=None, x1=0, y1=0):$/;"	m	class:Rectangle	access:public
+__init__	gaphas/item.py	/^    def __init__(self):$/;"	m	class:Item	access:public
+__init__	gaphas/item.py	/^    def __init__(self):$/;"	m	class:Line	access:public
+__init__	gaphas/item.py	/^    def __init__(self, width=10, height=10):$/;"	m	class:Element	access:public
+__init__	gaphas/item.py	/^    def __init__(self, x=0, y=0, strength=NORMAL, connectable=False, movable=True):$/;"	m	class:Handle	access:public
+__init__	gaphas/matrix.py	/^    def __init__(self, xx=1.0, yx=0.0, xy=0.0, yy=1.0, x0=0.0, y0=0.0):$/;"	m	class:Matrix	access:public
+__init__	gaphas/painter.py	/^    def __init__(self):$/;"	m	class:PainterChain	access:public
+__init__	gaphas/painter.py	/^    def __init__(self, **kwargs):$/;"	m	class:DrawContext	access:public
+__init__	gaphas/painter.py	/^    def __init__(self, cairo):$/;"	m	class:CairoBoundingBoxContext	access:public
+__init__	gaphas/quadtree.py	/^    def __init__(self, bounds, capacity):$/;"	m	class:QuadtreeBucket	access:public
+__init__	gaphas/quadtree.py	/^    def __init__(self, bounds=(0, 0, 0, 0), capacity=10):$/;"	m	class:Quadtree	access:public
+__init__	gaphas/solver.py	/^    def __init__(self):$/;"	m	class:Solver	access:public
+__init__	gaphas/solver.py	/^    def __init__(self, strength=NORMAL, varname=None):$/;"	m	class:solvable	access:public
+__init__	gaphas/solver.py	/^    def __init__(self, value=0.0, strength=NORMAL):$/;"	m	class:Variable	access:public
+__init__	gaphas/solver.py	/^    def __init__(self, var):$/;"	m	class:Projection	access:public
+__init__	gaphas/sorter.py	/^    def __init__(self, canvas = None):$/;"	m	class:Sorted	access:public
+__init__	gaphas/sorter.py	/^    def __init__(self, tree):$/;"	m	class:Sorter	access:public
+__init__	gaphas/tool.py	/^    def __init__(self):$/;"	m	class:HandleTool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self):$/;"	m	class:HoverTool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self):$/;"	m	class:RubberbandTool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self):$/;"	m	class:TextEditTool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self):$/;"	m	class:Tool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self):$/;"	m	class:ToolChain	access:public
+__init__	gaphas/tool.py	/^    def __init__(self, **kwargs):$/;"	m	class:ToolContext	access:public
+__init__	gaphas/tool.py	/^    def __init__(self, buttons=(1,)):$/;"	m	class:ItemTool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self, factory, handle_tool, handle_index):$/;"	m	class:PlacementTool	access:public
+__init__	gaphas/tool.py	/^    def __init__(self, tool_chain, tool_context, **kwargs):$/;"	m	class:ToolChainContext	access:public
+__init__	gaphas/tree.py	/^    def __init__(self):$/;"	m	class:Tree	access:public
+__init__	gaphas/view.py	/^    def __init__(self, canvas=None):$/;"	m	class:GtkView	access:public
+__init__	gaphas/view.py	/^    def __init__(self, canvas=None):$/;"	m	class:View	access:public
+__init__	history.py	/^    def __init__(self, main):$/;"	m	class:History	access:public
+__init__	ipython_view.py	/^    def __init__(self):$/;"	m	class:ConsoleView	access:public
+__init__	ipython_view.py	/^    def __init__(self, main):$/;"	m	class:IPythonView	access:public
+__init__	ipython_view.py	/^    def __init__(self,argv=None,user_ns=None,user_global_ns=None,$/;"	m	class:IterableIPShell	access:public
+__init__	last_box.py	/^    def __init__(self, x, y, model, root, canvas):$/;"	m	class:Box	access:public
+__init__	last_canvas.py	/^    def __init__(self, main):$/;"	m	class:Canvas	access:public
+__init__	line.py	/^    def __init__(self, child_box, father_box, root):$/;"	m	class:Line	access:public
+__init__	main.py	/^    def __init__(self):$/;"	m	class:Main	access:public
+__init__	model.py	/^    def __init__(self, name="", superclass=[], abstract=False, comment="",$/;"	m	class:Model	access:public
+__init__	popup.py	/^    def __init__(self, canvas):$/;"	m	class:Popup	access:public
+__init__	session.py	/^    def __init__(self, main):$/;"	m	class:Session	access:public
+__init__	status.py	/^    def __init__(self, main):$/;"	m	class:StatusBar	access:public
+__init__	window.py	/^    def __init__(self, ui_file):$/;"	m	class:Window	access:public
+__isub__	gaphas/geometry.py	/^    def __isub__(self, obj):$/;"	m	class:Rectangle	file:	access:private
+__iter__	gaphas/canvas.py	/^    def __iter__(self):$/;"	m	class:CanvasProjection	file:	access:private
+__iter__	gaphas/geometry.py	/^    def __iter__(self):$/;"	m	class:Rectangle	file:	access:private
+__iter__	gaphas/sorter.py	/^    def __iter__(self):$/;"	m	class:Sorted	file:	access:private
+__le__	gaphas/matrix.py	/^    def __le__(self, other):$/;"	m	class:Matrix	file:	access:private
+__le__	gaphas/solver.py	/^    def __le__(self, other):$/;"	m	class:Variable	file:	access:private
+__len__	gaphas/quadtree.py	/^    def __len__(self):$/;"	m	class:Quadtree	file:	access:private
+__len__	gaphas/sorter.py	/^    def __len__(self):$/;"	m	class:Sorted	file:	access:private
+__lt__	gaphas/matrix.py	/^    def __lt__(self, other):$/;"	m	class:Matrix	file:	access:private
+__lt__	gaphas/solver.py	/^    def __lt__(self, other):$/;"	m	class:Variable	file:	access:private
+__mod__	gaphas/solver.py	/^    def __mod__(self, other):$/;"	m	class:Variable	file:	access:private
+__mul__	gaphas/matrix.py	/^    def __mul__(self, other):$/;"	m	class:Matrix	file:	access:private
+__mul__	gaphas/solver.py	/^    def __mul__(self, other):$/;"	m	class:Variable	file:	access:private
+__ne__	gaphas/matrix.py	/^    def __ne__(self, other):$/;"	m	class:Matrix	file:	access:private
+__ne__	gaphas/solver.py	/^    def __ne__(self, other):$/;"	m	class:Variable	file:	access:private
+__nonzero__	gaphas/geometry.py	/^    def __nonzero__(self):$/;"	m	class:Rectangle	file:	access:private
+__pow__	gaphas/solver.py	/^    def __pow__(self, other):$/;"	m	class:Variable	file:	access:private
+__radd__	gaphas/solver.py	/^    def __radd__(self, other):$/;"	m	class:Variable	file:	access:private
+__rdiv__	gaphas/solver.py	/^    def __rdiv__(self, other):$/;"	m	class:Variable	file:	access:private
+__rdivmod__	gaphas/solver.py	/^    def __rdivmod__(self, other):$/;"	m	class:Variable	file:	access:private
+__repr__	gaphas/constraint.py	/^    def __repr__(self):$/;"	m	class:EquationConstraint	file:	access:private
+__repr__	gaphas/geometry.py	/^    def __repr__(self):$/;"	m	class:Rectangle	file:	access:private
+__repr__	gaphas/matrix.py	/^    def __repr__(self):$/;"	m	class:Matrix	file:	access:private
+__repr__	gaphas/sorter.py	/^    def __repr__(self):$/;"	m	class:Sorted	file:	access:private
+__repr__	last_box.py	/^    def __repr__(self):$/;"	m	class:Box	file:	access:private
+__repr__	last_canvas.py	/^    def __repr__(self):$/;"	m	class:Canvas	file:	access:private
+__repr__	line.py	/^    def __repr__(self):$/;"	m	class:Line	file:	access:private
+__repr__	model.py	/^    def __repr__(self):$/;"	m	class:Model	file:	access:private
+__rfloordiv__	gaphas/solver.py	/^    def __rfloordiv__(self, other):$/;"	m	class:Variable	file:	access:private
+__rmod__	gaphas/solver.py	/^    def __rmod__(self, other):$/;"	m	class:Variable	file:	access:private
+__rmul__	gaphas/matrix.py	/^    def __rmul__(self, other):$/;"	m	class:Matrix	file:	access:private
+__rmul__	gaphas/solver.py	/^    def __rmul__(self, other):$/;"	m	class:Variable	file:	access:private
+__rpow__	gaphas/solver.py	/^    def __rpow__(self, other):$/;"	m	class:Variable	file:	access:private
+__rsub__	gaphas/solver.py	/^    def __rsub__(self, other):$/;"	m	class:Variable	file:	access:private
+__rtruediv__	gaphas/solver.py	/^    def __rtruediv__(self, other):$/;"	m	class:Variable	file:	access:private
+__set__	gaphas/solver.py	/^    def __set__(self, obj, value):$/;"	m	class:solvable	file:	access:private
+__setattr__	gaphas/canvas.py	/^    def __setattr__(self, key, value):$/;"	m	class:Context	file:	access:private
+__setattr__	gaphas/constraint.py	/^    def __setattr__(self, name, value):$/;"	m	class:EquationConstraint	file:	access:private
+__str__	gaphas/item.py	/^    def __str__(self):$/;"	m	class:Handle	file:	access:private
+__str__	gaphas/solver.py	/^    def __str__(self):$/;"	m	class:Projection	file:	access:private
+__str__	gaphas/solver.py	/^    def __str__(self):$/;"	m	class:Variable	file:	access:private
+__sub__	gaphas/geometry.py	/^    def __sub__(self, obj):$/;"	m	class:Rectangle	file:	access:private
+__sub__	gaphas/solver.py	/^    def __sub__(self, other):$/;"	m	class:Variable	file:	access:private
+__truediv__	gaphas/solver.py	/^    def __truediv__(self, other):$/;"	m	class:Variable	file:	access:private
+_add_to_nodes	gaphas/tree.py	/^    def _add_to_nodes(self, node, parent):$/;"	m	class:Tree	access:public
+_change_selection_mode	dialogs/classview.py	/^    def _change_selection_mode(self):$/;"	m	class:ClassView	access:public
+_clear	last_canvas.py	/^    def _clear(self):$/;"	m	class:Canvas	access:public
+_clear_matrices	gaphas/view.py	/^    def _clear_matrices(self):$/;"	m	class:View	access:public
+_commonPrefix	ipython_view.py	/^    def _commonPrefix(self, str1, str2):$/;"	m	class:IterableIPShell	access:public
+_connect_callbacks	window.py	/^    def _connect_callbacks(self, ui):$/;"	m	class:Window	access:public
+_create_canvas	main.py	/^    def _create_canvas(self):$/;"	m	class:Main	access:public
+_create_dialog	dialogs/open.py	/^    def _create_dialog(self, pattern, name):$/;"	m	class:OpenDialog	access:public
+_create_dialog	dialogs/save.py	/^    def _create_dialog(self, pattern, name):$/;"	m	class:SaveDialog	access:public
+_create_history	main.py	/^    def _create_history(self):$/;"	m	class:Main	access:public
+_create_item	gaphas/tool.py	/^    def _create_item(self, context, x, y):$/;"	m	class:PlacementTool	access:public
+_create_list	dialogs/classlist.py	/^    def _create_list(self):$/;"	m	class:ClassList	access:public
+_create_new_canvas_area	last_canvas.py	/^    def _create_new_canvas_area(self):$/;"	m	class:Canvas	access:public
+_create_session	last_canvas.py	/^    def _create_session(self):$/;"	m	class:Canvas	access:public
+_create_status_bar	main.py	/^    def _create_status_bar(self):$/;"	m	class:Main	access:public
+_create_superclass_list	dialogs/classview.py	/^    def _create_superclass_list(self, classes):$/;"	m	class:ClassView	access:public
+_create_superclass_row_and_select_em	dialogs/classview.py	/^    def _create_superclass_row_and_select_em(self, list_of_classes_to_merge):$/;"	m	class:ClassView	access:public
+_create_text_view	dialogs/debugger.py	/^    def _create_text_view(self, canvas):$/;"	m	class:Debugger	access:public
+_create_theme_classic	config.py	/^    def _create_theme_classic(self):$/;"	m	class:Config	access:public
+_create_theme_round	config.py	/^    def _create_theme_round(self):$/;"	m	class:Config	access:public
+_create_view	last_box.py	/^    def _create_view(self, root):$/;"	m	class:Box	access:public
+_create_view	window.py	/^    def _create_view(self, ui):$/;"	m	class:Window	access:public
+_del_dropzone_item	gaphas/view.py	/^    def _del_dropzone_item(self):$/;"	m	class:View	access:public
+_del_focused_item	gaphas/view.py	/^    def _del_focused_item(self):$/;"	m	class:View	access:public
+_del_hovered_item	gaphas/view.py	/^    def _del_hovered_item(self):$/;"	m	class:View	access:public
+_draw_bounds	gaphas/painter.py	/^    def _draw_bounds(self, item, view, cairo):$/;"	m	class:ItemPainter	access:public
+_draw_box	box.py	/^    def _draw_box(self, context, cr, width, height, p):$/;"	m	class:Box	access:public
+_draw_handles	gaphas/painter.py	/^    def _draw_handles(self, item, view, cairo, opacity=None):$/;"	m	class:HandlePainter	access:public
+_draw_horizontal_line	box.py	/^    def _draw_horizontal_line(self, cr, x, y, width):$/;"	m	class:Box	access:public
+_draw_item	gaphas/painter.py	/^    def _draw_item(self, item, view, cairo, area=None):$/;"	m	class:BoundingBoxPainter	access:public
+_draw_item	gaphas/painter.py	/^    def _draw_item(self, item, view, cairo, area=None):$/;"	m	class:ItemPainter	access:public
+_draw_items	gaphas/painter.py	/^    def _draw_items(self, items, view, cairo, area=None):$/;"	m	class:BoundingBoxPainter	access:public
+_draw_items	gaphas/painter.py	/^    def _draw_items(self, items, view, cairo, area=None):$/;"	m	class:ItemPainter	access:public
+_draw_lines	box.py	/^    def _draw_lines(self, context, cr, sizes, width, p):$/;"	m	class:Box	access:public
+_extents	gaphas/painter.py	/^    def _extents(self, extents_func, line_width=False):$/;"	m	class:CairoBoundingBoxContext	access:public
+_find_handle	gaphas/tool.py	/^    def _find_handle(self, view, event, item):$/;"	m	class:HandleTool	access:public
+_getHistory	ipython_view.py	/^    def _getHistory(self):$/;"	m	class:IterableIPShell	access:public
+_get_height	gaphas/examples.py	/^    def _get_height(self):$/;"	m	class:FatLine	access:public
+_get_height	gaphas/item.py	/^    def _get_height(self):$/;"	m	class:Element	access:public
+_get_radius	gaphas/examples.py	/^    def _get_radius(self):$/;"	m	class:Circle	access:public
+_get_state	gaphas/matrix.py	/^    def _get_state(self):$/;"	m	class:Matrix	access:public
+_get_value	gaphas/canvas.py	/^    def _get_value(self):$/;"	m	class:CanvasProjection	access:public
+_get_width	gaphas/item.py	/^    def _get_width(self):$/;"	m	class:Element	access:public
+_handle	gaphas/tool.py	/^    def _handle(self, func, context, event):$/;"	m	class:ToolChain	access:public
+_init_drag_feature	last_box.py	/^    def _init_drag_feature(self):$/;"	m	class:Box	access:public
+_inner_set_horizontal	gaphas/item.py	/^    def _inner_set_horizontal(self, horizontal):$/;"	m	class:Line	access:public
+_normalize	gaphas/canvas.py	/^    def _normalize(self, items):$/;"	m	class:Canvas	access:public
+_obtain_cairo_context	gaphas/canvas.py	/^    def _obtain_cairo_context(self):$/;"	m	class:Canvas	access:public
+_onKeypress	ipython_view.py	/^    def _onKeypress(self, obj, event):$/;"	m	class:ConsoleView	access:public
+_on_change_x	gaphas/canvas.py	/^    def _on_change_x(self, value):$/;"	m	class:CanvasProjection	access:public
+_on_change_y	gaphas/canvas.py	/^    def _on_change_y(self, value):$/;"	m	class:CanvasProjection	access:public
+_on_focus_out_event	gaphas/tool.py	/^    def _on_focus_out_event(self, widget, event, buffer):$/;"	m	class:TextEditTool	access:public
+_on_key_press_event	gaphas/tool.py	/^    def _on_key_press_event(self, widget, event, buffer):$/;"	m	class:TextEditTool	access:public
+_on_toggle	dialogs/classlist.py	/^    def _on_toggle(self, widget, index):$/;"	m	class:ClassList	access:public
+_open	dialogs/open.py	/^    def _open(self, filename):$/;"	m	class:Document	access:public
+_periodical_canvas_size_check	last_canvas.py	/^    def _periodical_canvas_size_check(self):$/;"	m	class:Canvas	access:public
+_populate_model	dialogs/classlist.py	/^    def _populate_model(self, classes, selected_classes):$/;"	m	class:ClassList	access:public
+_populate_template	dialogs/leave.py	/^    def _populate_template(self, name, changes, time_last_save):$/;"	m	class:Leave	access:public
+_populate_ui	dialogs/classview.py	/^    def _populate_ui(self):$/;"	m	class:ClassView	access:public
+_post_update_items	gaphas/canvas.py	/^    def _post_update_items(self, items, cr):$/;"	m	class:Canvas	access:public
+_pre_update_items	gaphas/canvas.py	/^    def _pre_update_items(self, items, cr):$/;"	m	class:Canvas	access:public
+_processLine	ipython_view.py	/^    def _processLine(self):$/;"	m	class:IPythonView	access:public
+_reconnect_herency	last_canvas.py	/^    def _reconnect_herency(self, child, old_fathers):$/;"	m	class:Canvas	access:public
+_redraw_boxes	last_box.py	/^    def _redraw_boxes(self, dx, dy):$/;"	m	class:Box	access:public
+_remove	gaphas/canvas.py	/^    def _remove(self, item):$/;"	m	class:Canvas	access:public
+_remove	gaphas/tree.py	/^    def _remove(self, node):$/;"	m	class:Tree	access:public
+_reparent_nodes	gaphas/tree.py	/^    def _reparent_nodes(self, node, parent):$/;"	m	class:Tree	access:public
+_reversible_insert_handle	gaphas/item.py	/^    def _reversible_insert_handle(self, index, handle):$/;"	m	class:Line	access:public
+_reversible_remove_handle	gaphas/item.py	/^    def _reversible_remove_handle(self, handle):$/;"	m	class:Line	access:public
+_revert_state	gaphas/matrix.py	/^    def _revert_state(self, matrix):$/;"	m	class:Matrix	access:public
+_run	dialogs/open.py	/^    def _run(self):$/;"	m	class:OpenDialog	access:public
+_save_canvas_to	dialogs/save.py	/^    def _save_canvas_to(self, filename):$/;"	m	class:Document	access:public
+_save_canvas_to	dialogs/save.py	/^    def _save_canvas_to(self, filename):$/;"	m	class:PDF	access:public
+_save_canvas_to	dialogs/save.py	/^    def _save_canvas_to(self, filename):$/;"	m	class:PNG	access:public
+_search_relation	last_canvas.py	/^    def _search_relation(self, box, superclass, old_fathers):$/;"	m	class:Canvas	access:public
+_select_model_superclass	dialogs/classview.py	/^    def _select_model_superclass(self):$/;"	m	class:ClassView	access:public
+_select_single_superclass	dialogs/classview.py	/^    def _select_single_superclass(self, name):$/;"	m	class:ClassView	access:public
+_set	gaphas/constraint.py	/^    def _set(self, **args):$/;"	m	class:EquationConstraint	access:public
+_set_canvas	gaphas/item.py	/^    def _set_canvas(self, canvas):$/;"	m	class:Item	access:public
+_set_canvas	gaphas/sorter.py	/^    def _set_canvas(self, canvas):$/;"	m	class:Sorted	access:public
+_set_canvas	gaphas/view.py	/^    def _set_canvas(self, canvas):$/;"	m	class:GtkView	access:public
+_set_canvas	gaphas/view.py	/^    def _set_canvas(self, canvas):$/;"	m	class:View	access:public
+_set_connectable	gaphas/item.py	/^    def _set_connectable(self, connectable):$/;"	m	class:Handle	access:public
+_set_connected_to	gaphas/item.py	/^    def _set_connected_to(self, connected_to):$/;"	m	class:Handle	access:public
+_set_connection_data	gaphas/item.py	/^    def _set_connection_data(self, connection_data):$/;"	m	class:Handle	access:public
+_set_disconnect	gaphas/item.py	/^    def _set_disconnect(self, disconnect):$/;"	m	class:Handle	access:public
+_set_dropzone_item	gaphas/view.py	/^    def _set_dropzone_item(self, item):$/;"	m	class:View	access:public
+_set_focused_item	gaphas/view.py	/^    def _set_focused_item(self, item):$/;"	m	class:View	access:public
+_set_fuzziness	gaphas/item.py	/^    def _set_fuzziness(self, fuzziness):$/;"	m	class:Line	access:public
+_set_height	gaphas/examples.py	/^    def _set_height(self, height):$/;"	m	class:FatLine	access:public
+_set_height	gaphas/item.py	/^    def _set_height(self, height):$/;"	m	class:Element	access:public
+_set_horizontal	gaphas/item.py	/^    def _set_horizontal(self, horizontal):$/;"	m	class:Line	access:public
+_set_hovered_item	gaphas/view.py	/^    def _set_hovered_item(self, item):$/;"	m	class:View	access:public
+_set_line_width	gaphas/item.py	/^    def _set_line_width(self, line_width):$/;"	m	class:Line	access:public
+_set_matrix	gaphas/item.py	/^    def _set_matrix(self, matrix):$/;"	m	class:Item	access:public
+_set_message	status.py	/^    def _set_message(self, stock_item, message, long):$/;"	m	class:StatusBar	access:public
+_set_min_height	gaphas/item.py	/^    def _set_min_height(self, min_height):$/;"	m	class:Element	access:public
+_set_min_width	gaphas/item.py	/^    def _set_min_width(self, min_width):$/;"	m	class:Element	access:public
+_set_movable	gaphas/item.py	/^    def _set_movable(self, movable):$/;"	m	class:Handle	access:public
+_set_orthogonal	gaphas/item.py	/^    def _set_orthogonal(self, orthogonal):$/;"	m	class:Line	access:public
+_set_orthogonal_constraints	gaphas/item.py	/^    def _set_orthogonal_constraints(self, orthogonal_constraints):$/;"	m	class:Line	access:public
+_set_painter	gaphas/view.py	/^    def _set_painter(self, painter):$/;"	m	class:View	access:public
+_set_pos	gaphas/item.py	/^    def _set_pos(self, pos):$/;"	m	class:Handle	access:public
+_set_radius	gaphas/examples.py	/^    def _set_radius(self, r):$/;"	m	class:Circle	access:public
+_set_strength	gaphas/solver.py	/^    def _set_strength(self, strength):$/;"	m	class:Variable	access:public
+_set_tool	gaphas/view.py	/^    def _set_tool(self, tool):$/;"	m	class:GtkView	access:public
+_set_value	gaphas/canvas.py	/^    def _set_value(self, value):$/;"	m	class:VariableProjection	access:public
+_set_value	gaphas/solver.py	/^    def _set_value(self, value):$/;"	m	class:Projection	access:public
+_set_visible	gaphas/item.py	/^    def _set_visible(self, visible):$/;"	m	class:Handle	access:public
+_set_width	gaphas/item.py	/^    def _set_width(self, width):$/;"	m	class:Element	access:public
+_set_x	gaphas/item.py	/^    def _set_x(self, x):$/;"	m	class:Handle	access:public
+_set_x1	gaphas/geometry.py	/^    def _set_x1(self, x1):$/;"	m	class:Rectangle	access:public
+_set_y	gaphas/item.py	/^    def _set_y(self, y):$/;"	m	class:Handle	access:public
+_set_y1	gaphas/geometry.py	/^    def _set_y1(self, y1):$/;"	m	class:Rectangle	access:public
+_show_debugger	status.py	/^    def _show_debugger(self, widget, main):$/;"	m	class:StatusBar	access:public
+_solve	gaphas/constraint.py	/^    def _solve(self):$/;"	m	class:LineConstraint	access:public
+_solve_for	gaphas/constraint.py	/^    def _solve_for(self, arg, args):$/;"	m	class:EquationConstraint	access:public
+_test_speed_run_weakest	gaphas/tests/test_solver.py	/^    def _test_speed_run_weakest(self):$/;"	m	class:SolverSpeedTestCase	access:public
+_update	gaphas/constraint.py	/^def _update(variable, value):$/;"	f	access:public
+_update_adjustment	gaphas/view.py	/^    def _update_adjustment(self, adjustment, value, canvas_size, canvas_offset, viewport_size):$/;"	m	class:GtkView	access:public
+_update_bounds	gaphas/painter.py	/^    def _update_bounds(self, bounds):$/;"	m	class:CairoBoundingBoxContext	access:public
+_update_childs	last_box.py	/^    def _update_childs(self, last_name):$/;"	m	class:Box	access:public
+_update_orthogonal_constraints	gaphas/item.py	/^    def _update_orthogonal_constraints(self, orthogonal):$/;"	m	class:Line	access:public
+_update_views	gaphas/canvas.py	/^    def _update_views(self, dirty_items=(), dirty_matrix_items=(), removed_items=()):$/;"	m	class:Canvas	access:public
+add	gaphas/canvas.py	/^    def add(self, item, parent=None):$/;"	m	class:Canvas	access:public
+add	gaphas/quadtree.py	/^    def add(self, item, bounds):$/;"	m	class:QuadtreeBucket	access:public
+add	gaphas/quadtree.py	/^    def add(self, item, bounds, data=None, debug=False):$/;"	m	class:Quadtree	access:public
+add	gaphas/sorter.py	/^    def add(self, item):$/;"	m	class:Sorted	access:public
+add	gaphas/tree.py	/^    def add(self, node, parent=None):$/;"	m	class:Tree	access:public
+add_constraint	gaphas/solver.py	/^    def add_constraint(self, constraint):$/;"	m	class:Solver	access:public
+append	gaphas/painter.py	/^    def append(self, painter):$/;"	m	class:PainterChain	access:public
+append	gaphas/tool.py	/^    def append(self, tool):$/;"	m	class:ToolChain	access:public
+async	gaphas/decorators.py	/^class async(object):$/;"	c	inherits:object
+async_wrapper	gaphas/decorators.py	/^                    def async_wrapper():$/;"	f	function:async.__call__/wrapper/async_wrapper	access:public
+async_wrapper	gaphas/decorators.py	/^                def async_wrapper():$/;"	f	function:async.__call__/wrapper	access:public
+can_leave	session.py	/^    def can_leave(self, save_callback):$/;"	m	class:Session	access:public
+changeLine	ipython_view.py	/^    def changeLine(self, text):$/;"	m	class:ConsoleView	access:public
+change_notify	session.py	/^    def change_notify(self):$/;"	m	class:Session	access:public
+change_popup_status	history.py	/^    def change_popup_status(self) :$/;"	m	class:History	access:public
+check_duplicated	dialogs/classview.py	/^    def check_duplicated(self, string_to_chk, treeview, error_msg, hbox,$/;"	m	class:ClassView	access:public
+check_syntax	dialogs/classview.py	/^    def check_syntax(self, string_to_chk, reg_exp, error_msg, hbox,$/;"	m	class:ClassView	access:public
+clear	gaphas/quadtree.py	/^    def clear(self):$/;"	m	class:QuadtreeBucket	access:public
+clear	gaphas/sorter.py	/^    def clear(self):$/;"	m	class:Sorted	access:public
+clear	status.py	/^    def clear(self):$/;"	m	class:StatusBar	access:public
+closest_segment	gaphas/item.py	/^    def closest_segment(self, x, y):$/;"	m	class:Line	access:public
+complete	ipython_view.py	/^    def complete(self, line):$/;"	m	class:IterableIPShell	access:public
+concatenate	last_box.py	/^    def concatenate(self, a, b):$/;"	m	class:Box	access:public
+connect	gaphas/examples.py	/^    def connect(self, view, item, handle, wx, wy):$/;"	m	class:ConnectingHandleTool	access:public
+connect	gaphas/tool.py	/^    def connect(self, view, item, handle, vx, vy):$/;"	m	class:HandleTool	access:public
+connect_box	last_canvas.py	/^    def connect_box(self, box, new_model):$/;"	m	class:Canvas	access:public
+constraints_with_variable	gaphas/solver.py	/^    def constraints_with_variable(self, *variables):$/;"	m	class:Solver	access:public
+create_box	canvas.py	/^    def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):$/;"	m	class:Canvas	access:public
+create_box	last_canvas.py	/^    def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):$/;"	m	class:Canvas	access:public
+create_line	last_canvas.py	/^    def create_line(self, child_model, parent_model):$/;"	m	class:Canvas	access:public
+create_weakest_list	gaphas/constraint.py	/^    def create_weakest_list(self):$/;"	m	class:Constraint	access:public
+decorator	decorator.py	/^def decorator(caller, func=None):$/;"	f	access:public
+deprecated	decorator.py	/^def deprecated(func, *args, **kw):$/;"	f	access:public
+dirty	gaphas/solver.py	/^    def dirty(self):$/;"	m	class:Variable	access:public
+disable_dispatching	gaphas/state.py	/^def disable_dispatching(func, disable=True):$/;"	f	access:public
+discard	gaphas/sorter.py	/^    def discard(self, item):$/;"	m	class:Sorted	access:public
+disconnect	gaphas/examples.py	/^    def disconnect(self, view, item, handle):$/;"	m	class:ConnectingHandleTool	access:public
+disconnect	gaphas/tool.py	/^    def disconnect(self, view, item, handle):$/;"	m	class:HandleTool	access:public
+dispatch	gaphas/state.py	/^def dispatch(event, queue):$/;"	f	access:public
+distance	box.py	/^def distance((x1, y1), (x2, y2)):$/;"	f	access:public
+distance	last_box.py	/^def distance((x1, y1), (x2, y2)):$/;"	f	access:public
+distance_line_point	gaphas/geometry.py	/^def distance_line_point(line_start, line_end, point):$/;"	f	access:public
+distance_point_point	gaphas/geometry.py	/^def distance_point_point(point1, point2=(0., 0.)):$/;"	f	access:public
+distance_point_point_fast	gaphas/geometry.py	/^def distance_point_point_fast(point1, point2):$/;"	f	access:public
+distance_rectangle_point	gaphas/geometry.py	/^def distance_rectangle_point(rect, point):$/;"	f	access:public
+do_event	gaphas/view.py	/^    def do_event(self, event):$/;"	m	class:GtkView	access:public
+do_expose_event	gaphas/view.py	/^    def do_expose_event(self, event):$/;"	m	class:GtkView	access:public
+do_realize	gaphas/view.py	/^    def do_realize(self):$/;"	m	class:GtkView	access:public
+do_size_allocate	gaphas/view.py	/^    def do_size_allocate(self, allocation):$/;"	m	class:GtkView	access:public
+do_split	gaphas/item.py	/^        def do_split(segment, parts):$/;"	f	function:Line.split_segment	access:public
+do_unrealize	gaphas/view.py	/^    def do_unrealize(self):$/;"	m	class:GtkView	access:public
+draw	box.py	/^    def draw(self, context):$/;"	m	class:Box	access:public
+draw	gaphas/examples.py	/^    def draw(self, context):$/;"	m	class:Box	access:public
+draw	gaphas/examples.py	/^    def draw(self, context):$/;"	m	class:Circle	access:public
+draw	gaphas/examples.py	/^    def draw(self, context):$/;"	m	class:FatLine	access:public
+draw	gaphas/examples.py	/^    def draw(self, context):$/;"	m	class:Text	access:public
+draw	gaphas/item.py	/^    def draw(self, context):$/;"	m	class:Item	access:public
+draw	gaphas/item.py	/^    def draw(self, context):$/;"	m	class:Line	access:public
+draw	gaphas/tool.py	/^    def draw(self, context):$/;"	m	class:RubberbandTool	access:public
+draw	gaphas/tool.py	/^    def draw(self, context):$/;"	m	class:Tool	access:public
+draw	gaphas/tool.py	/^    def draw(self, context):$/;"	m	class:ToolChain	access:public
+draw_children	gaphas/painter.py	/^    def draw_children(self):$/;"	m	class:DrawContext	access:public
+draw_head	gaphas/item.py	/^    def draw_head(self, context):$/;"	m	class:Line	access:public
+draw_line_end	gaphas/item.py	/^        def draw_line_end(handle, angle, draw):$/;"	f	function:Line.draw	access:public
+draw_qtree_bucket	gaphas/view.py	/^            def draw_qtree_bucket(bucket):$/;"	f	function:GtkView.do_expose_event	access:public
+draw_tail	gaphas/item.py	/^    def draw_tail(self, context):$/;"	m	class:Line	access:public
+dump	gaphas/quadtree.py	/^    def dump(self):$/;"	m	class:Quadtree	access:public
+dump	gaphas/quadtree.py	/^    def dump(self, indent=''):$/;"	m	class:QuadtreeBucket	access:public
+dx	last_box.py	/^    def dx(self, object):$/;"	m	class:Box	access:public
+dy	last_box.py	/^    def dy(self, object):$/;"	m	class:Box	access:public
+emit	gaphas/view.py	/^    def emit(self, *args, **kwargs):$/;"	m	class:GtkView	access:public
+emit	gaphas/view.py	/^    def emit(self, args, **kwargs):$/;"	m	class:View	access:public
+enable_dispatching	gaphas/state.py	/^def enable_dispatching(func, enable=True):$/;"	f	access:public
+error	status.py	/^    def error(self, message, long=None):$/;"	m	class:StatusBar	access:public
+execute	ipython_view.py	/^    def execute(self):$/;"	m	class:IterableIPShell	access:public
+expand	gaphas/geometry.py	/^    def expand(self, delta):$/;"	m	class:Rectangle	access:public
+f	gaphas/constraint.py	/^        def f(x):$/;"	f	function:EquationConstraint._solve_for	access:public
+fill	gaphas/painter.py	/^    def fill(self, b=None):$/;"	m	class:CairoBoundingBoxContext	access:public
+fill_preserve	gaphas/painter.py	/^    def fill_preserve(self, b=None):$/;"	m	class:CairoBoundingBoxContext	access:public
+find	gaphas/quadtree.py	/^    def find(self, rect, method):$/;"	m	class:QuadtreeBucket	access:public
+find_bucket	gaphas/quadtree.py	/^    def find_bucket(self, bounds):$/;"	m	class:QuadtreeBucket	access:public
+find_handle	gaphas/tool.py	/^    def find_handle(self, view, event):$/;"	m	class:HandleTool	access:public
+find_inside	gaphas/quadtree.py	/^    def find_inside(self, rect):$/;"	m	class:Quadtree	access:public
+find_intersect	gaphas/quadtree.py	/^    def find_intersect(self, rect):$/;"	m	class:Quadtree	access:public
+focus	canvas.py	/^    def focus(self):$/;"	m	class:Canvas	access:public
+getCurrentLine	ipython_view.py	/^    def getCurrentLine(self):$/;"	m	class:ConsoleView	access:public
+get_all_children	gaphas/canvas.py	/^    def get_all_children(self, item):$/;"	m	class:Canvas	access:public
+get_all_children	gaphas/tree.py	/^    def get_all_children(self, node):$/;"	m	class:Tree	access:public
+get_all_items	gaphas/canvas.py	/^    def get_all_items(self):$/;"	m	class:Canvas	access:public
+get_ancestors	gaphas/canvas.py	/^    def get_ancestors(self, item):$/;"	m	class:Canvas	access:public
+get_ancestors	gaphas/tree.py	/^    def get_ancestors(self, node):$/;"	m	class:Tree	access:public
+get_bounds	gaphas/painter.py	/^    def get_bounds(self):$/;"	m	class:CairoBoundingBoxContext	access:public
+get_bounds	gaphas/quadtree.py	/^    def get_bounds(self, item):$/;"	m	class:Quadtree	access:public
+get_box_by_name	canvas.py	/^    def get_box_by_name(self, name):$/;"	m	class:Canvas	access:public
+get_box_by_name	last_canvas.py	/^    def get_box_by_name(self, name):$/;"	m	class:Canvas	access:public
+get_children	gaphas/canvas.py	/^    def get_children(self, item):$/;"	m	class:Canvas	access:public
+get_children	gaphas/tree.py	/^    def get_children(self, node):$/;"	m	class:Tree	access:public
+get_class_names	canvas.py	/^    def get_class_names(self):$/;"	m	class:Canvas	access:public
+get_class_names	last_canvas.py	/^    def get_class_names(self):$/;"	m	class:Canvas	access:public
+get_clipped_bounds	gaphas/quadtree.py	/^    def get_clipped_bounds(self, item):$/;"	m	class:Quadtree	access:public
+get_connected_items	gaphas/canvas.py	/^    def get_connected_items(self, item):$/;"	m	class:Canvas	access:public
+get_connection_more_closer_to	last_box.py	/^    def get_connection_more_closer_to(self, other):$/;"	m	class:Box	access:public
+get_control_points	last_box.py	/^    def get_control_points(self):$/;"	m	class:Box	access:public
+get_data	gaphas/quadtree.py	/^    def get_data(self, item):$/;"	m	class:Quadtree	access:public
+get_filename_without_extension	common.py	/^def get_filename_without_extension(filename):$/;"	f	access:public
+get_filetype_by_content	load.py	/^def get_filetype_by_content(text):$/;"	f	access:public
+get_incoming_lines	last_box.py	/^    def get_incoming_lines(self):$/;"	m	class:Box	access:public
+get_item_at_point	gaphas/view.py	/^    def get_item_at_point(self, x, y, selected=True):$/;"	m	class:View	access:public
+get_item_bounding_box	gaphas/view.py	/^    def get_item_bounding_box(self, item):$/;"	m	class:View	access:public
+get_items_in_rectangle	gaphas/view.py	/^    def get_items_in_rectangle(self, rect, intersect=True, reverse=False):$/;"	m	class:View	access:public
+get_key	gaphas/sorter.py	/^    def get_key(self, item):$/;"	m	class:Sorter	access:public
+get_left	last_box.py	/^    def get_left(self):$/;"	m	class:Box	access:public
+get_matrix_c2i	gaphas/canvas.py	/^    def get_matrix_c2i(self, item, calculate=False):$/;"	m	class:Canvas	access:public
+get_matrix_i2c	gaphas/canvas.py	/^    def get_matrix_i2c(self, item, calculate=False):$/;"	m	class:Canvas	access:public
+get_matrix_i2v	gaphas/view.py	/^    def get_matrix_i2v(self, item):$/;"	m	class:View	access:public
+get_matrix_v2i	gaphas/view.py	/^    def get_matrix_v2i(self, item):$/;"	m	class:View	access:public
+get_model_by_name	last_canvas.py	/^    def get_model_by_name(self, name):$/;"	m	class:Canvas	access:public
+get_next_sibling	gaphas/tree.py	/^    def get_next_sibling(self, node):$/;"	m	class:Tree	access:public
+get_outgoing_lines	last_box.py	/^    def get_outgoing_lines(self):$/;"	m	class:Box	access:public
+get_parent	gaphas/canvas.py	/^    def get_parent(self, item):$/;"	m	class:Canvas	access:public
+get_parent	gaphas/tree.py	/^    def get_parent(self, node):$/;"	m	class:Tree	access:public
+get_previous_sibling	gaphas/tree.py	/^    def get_previous_sibling(self, node):$/;"	m	class:Tree	access:public
+get_root_items	gaphas/canvas.py	/^    def get_root_items(self):$/;"	m	class:Canvas	access:public
+get_siblings	gaphas/tree.py	/^    def get_siblings(self, node):$/;"	m	class:Tree	access:public
+get_soft_bounds	gaphas/quadtree.py	/^    def get_soft_bounds(self):$/;"	m	class:Quadtree	access:public
+getfunction	gaphas/state.py	/^def getfunction(func):$/;"	f	access:public
+getinfo	decorator.py	/^def getinfo(func):$/;"	f	access:public
+glue	gaphas/examples.py	/^    def glue(self, item, handle, x, y):$/;"	m	class:Box	access:public
+glue	gaphas/examples.py	/^    def glue(self, view, item, handle, wx, wy):$/;"	m	class:ConnectingHandleTool	access:public
+glue	gaphas/tool.py	/^    def glue(self, view, item, handle, vx, vy):$/;"	m	class:HandleTool	access:public
+grab	gaphas/tool.py	/^    def grab(self):$/;"	m	class:ToolChainContext	access:public
+grab	gaphas/tool.py	/^    def grab(self):$/;"	m	class:ToolContext	access:public
+grab	gaphas/tool.py	/^    def grab(self, tool):$/;"	m	class:ToolChain	access:public
+grab_handle	gaphas/tool.py	/^    def grab_handle(self, item, handle):$/;"	m	class:HandleTool	access:public
+handle_disconnect	gaphas/examples.py	/^        def handle_disconnect():$/;"	f	function:ConnectingHandleTool.connect	access:public
+handles	gaphas/item.py	/^    def handles(self):$/;"	m	class:Item	access:public
+historyBack	ipython_view.py	/^    def historyBack(self):$/;"	m	class:IterableIPShell	access:public
+historyForward	ipython_view.py	/^    def historyForward(self):$/;"	m	class:IterableIPShell	access:public
+info	status.py	/^    def info(self, message, long=None):$/;"	m	class:StatusBar	access:public
+init_rotate	gaphas/matrix.py	/^    def init_rotate(radians):$/;"	m	class:Matrix	access:public
+inspect	canvas.py	/^    def inspect(self):$/;"	m	class:Canvas	access:public
+inspect	last_box.py	/^    def inspect(self):$/;"	m	class:Box	access:public
+inspect	last_canvas.py	/^    def inspect(self):$/;"	m	class:Canvas	access:public
+inspect	model.py	/^    def inspect(self):$/;"	m	class:Model	access:public
+intersect_line_line	gaphas/geometry.py	/^def intersect_line_line(line1_start, line1_end, line2_start, line2_end):$/;"	f	access:public
+invert	gaphas/matrix.py	/^    def invert(self):$/;"	m	class:Matrix	access:public
+keyPress	ipython_view.py	/^    def keyPress(self, widget, event):$/;"	m	class:IPythonView	access:public
+list_to_string	common.py	/^def list_to_string(list):$/;"	f	access:public
+load_attributes	dialogs/classview.py	/^    def load_attributes(self):$/;"	m	class:ClassView	access:public
+make	decorator.py	/^    def make(self, src_templ, evaldict=None, addsource=False, **attrs):$/;"	m	class:FunctionMaker	access:public
+mark_dirty	gaphas/constraint.py	/^    def mark_dirty(self, v):$/;"	m	class:Constraint	access:public
+merge_segment	gaphas/item.py	/^    def merge_segment(self, segment, parts=2):$/;"	m	class:Line	access:public
+move	gaphas/tool.py	/^    def move(self, view, item, handle, x, y):$/;"	m	class:HandleTool	access:public
+new	last_canvas.py	/^    def new(self):$/;"	m	class:Canvas	access:public
+new_document_notify	session.py	/^    def new_document_notify(self):$/;"	m	class:Session	access:public
+new_wrapper	decorator.py	/^def new_wrapper(wrapper, model):$/;"	f	access:public
+nonrecursive	gaphas/decorators.py	/^def nonrecursive(func):$/;"	f	access:public
+observed	gaphas/state.py	/^def observed(func):$/;"	f	access:public
+on_aboutitem__activate	main.py	/^    def on_aboutitem__activate(self, item):$/;"	m	class:Main	access:public
+on_accept__clicked	dialogs/classview.py	/^    def on_accept__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_add__activate	popup.py	/^    def on_add__activate(self, widget):$/;"	m	class:Popup	access:public
+on_addattr__clicked	dialogs/classview.py	/^    def on_addattr__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_addmethod__clicked	dialogs/classview.py	/^    def on_addmethod__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_adjustment_changed	gaphas/view.py	/^    def on_adjustment_changed(self, adj):$/;"	m	class:GtkView	access:public
+on_attrentry__activate	dialogs/classview.py	/^    def on_attrentry__activate(self, widget):$/;"	m	class:ClassView	access:public
+on_attrentry__changed	dialogs/classview.py	/^    def on_attrentry__changed(self, widget):$/;"	m	class:ClassView	access:public
+on_button_press	gaphas/tool.py	/^    def on_button_press(self, context, event):$/;"	m	class:HandleTool	access:public
+on_button_press	gaphas/tool.py	/^    def on_button_press(self, context, event):$/;"	m	class:ItemTool	access:public
+on_button_press	gaphas/tool.py	/^    def on_button_press(self, context, event):$/;"	m	class:PlacementTool	access:public
+on_button_press	gaphas/tool.py	/^    def on_button_press(self, context, event):$/;"	m	class:RubberbandTool	access:public
+on_button_press	gaphas/tool.py	/^    def on_button_press(self, context, event):$/;"	m	class:Tool	access:public
+on_button_press	gaphas/tool.py	/^    def on_button_press(self, context, event):$/;"	m	class:ToolChain	access:public
+on_button_press	last_box.py	/^    def on_button_press(self, group, item, event):$/;"	m	class:Box	access:public
+on_button_press_event	last_canvas.py	/^    def on_button_press_event(self, group, widget, event, box):$/;"	m	class:Canvas	access:public
+on_button_release	gaphas/tool.py	/^    def on_button_release(self, context, event):$/;"	m	class:HandleTool	access:public
+on_button_release	gaphas/tool.py	/^    def on_button_release(self, context, event):$/;"	m	class:ItemTool	access:public
+on_button_release	gaphas/tool.py	/^    def on_button_release(self, context, event):$/;"	m	class:PlacementTool	access:public
+on_button_release	gaphas/tool.py	/^    def on_button_release(self, context, event):$/;"	m	class:RubberbandTool	access:public
+on_button_release	gaphas/tool.py	/^    def on_button_release(self, context, event):$/;"	m	class:Tool	access:public
+on_button_release	gaphas/tool.py	/^    def on_button_release(self, context, event):$/;"	m	class:ToolChain	access:public
+on_cancel__clicked	dialogs/classview.py	/^    def on_cancel__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_cancel__clicked	dialogs/leave.py	/^    def on_cancel__clicked(self, widget):$/;"	m	class:Leave	access:public
+on_cancel__clicked	dialogs/settings.py	/^    def on_cancel__clicked(self, widget, extra=None):$/;"	m	class:Settings	access:public
+on_classlist__clicked	dialogs/classview.py	/^    def on_classlist__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_dialog1__delete_event	dialogs/classview.py	/^    def on_dialog1__delete_event(self, widget, extra):$/;"	m	class:ClassView	access:public
+on_discard__clicked	dialogs/leave.py	/^    def on_discard__clicked(self, widget):$/;"	m	class:Leave	access:public
+on_double_click	gaphas/tool.py	/^    def on_double_click(self, context, event):$/;"	m	class:TextEditTool	access:public
+on_double_click	gaphas/tool.py	/^    def on_double_click(self, context, event):$/;"	m	class:Tool	access:public
+on_double_click	gaphas/tool.py	/^    def on_double_click(self, context, event):$/;"	m	class:ToolChain	access:public
+on_drag_end	last_box.py	/^    def on_drag_end(self, group, item, event):$/;"	m	class:Box	access:public
+on_edit__activate	popup.py	/^    def on_edit__activate(self, widget, box=None):$/;"	m	class:Popup	access:public
+on_event	canvas.py	/^    def on_event(self, widget, event):$/;"	m	class:Canvas	access:public
+on_event	last_canvas.py	/^    def on_event(self, widget, event):$/;"	m	class:Canvas	access:public
+on_export_pdf_item__activate	main.py	/^    def on_export_pdf_item__activate(self, widget):$/;"	m	class:Main	access:public
+on_export_png_item__activate	main.py	/^    def on_export_png_item__activate(self, widget):$/;"	m	class:Main	access:public
+on_key_press	gaphas/tool.py	/^    def on_key_press(self, context, event):$/;"	m	class:Tool	access:public
+on_key_press	gaphas/tool.py	/^    def on_key_press(self, context, event):$/;"	m	class:ToolChain	access:public
+on_key_release	gaphas/tool.py	/^    def on_key_release(self, context, event):$/;"	m	class:Tool	access:public
+on_key_release	gaphas/tool.py	/^    def on_key_release(self, context, event):$/;"	m	class:ToolChain	access:public
+on_main__delete_event	main.py	/^    def on_main__delete_event(self, widget, extra=None):$/;"	m	class:Main	access:public
+on_main__destroy	main.py	/^    def on_main__destroy(self, widget):$/;"	m	class:Main	access:public
+on_methodentry__activate	dialogs/classview.py	/^    def on_methodentry__activate(self, widget):$/;"	m	class:ClassView	access:public
+on_methodentry__changed	dialogs/classview.py	/^    def on_methodentry__changed(self, widget):$/;"	m	class:ClassView	access:public
+on_motion	last_box.py	/^    def on_motion(self, group, item, event):$/;"	m	class:Box	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:HandleTool	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:HoverTool	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:ItemTool	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:PlacementTool	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:RubberbandTool	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:Tool	access:public
+on_motion_notify	gaphas/tool.py	/^    def on_motion_notify(self, context, event):$/;"	m	class:ToolChain	access:public
+on_name__changed	dialogs/classview.py	/^    def on_name__changed(self, widget):$/;"	m	class:ClassView	access:public
+on_new__activate	main.py	/^    def on_new__activate(self, widget):$/;"	m	class:Main	access:public
+on_new_button__clicked	main.py	/^    def on_new_button__clicked(self, widget):$/;"	m	class:Main	access:public
+on_notify_create_class	session.py	/^    def on_notify_create_class(self, model):$/;"	m	class:Session	access:public
+on_notify_edit_class	session.py	/^    def on_notify_edit_class(self, model, last_name):$/;"	m	class:Session	access:public
+on_notify_move_class	session.py	/^    def on_notify_move_class(self, model):$/;"	m	class:Session	access:public
+on_notify_redo	session.py	/^    def on_notify_redo(self):$/;"	m	class:Session	access:public
+on_notify_remove_class	session.py	/^    def on_notify_remove_class(self, model):$/;"	m	class:Session	access:public
+on_notify_undo	session.py	/^    def on_notify_undo(self):$/;"	m	class:Session	access:public
+on_ok__clicked	dialogs/settings.py	/^    def on_ok__clicked(self, widget, extra=None):$/;"	m	class:Settings	access:public
+on_open__activate	main.py	/^    def on_open__activate(self, widget):$/;"	m	class:Main	access:public
+on_quit_item__activate	main.py	/^    def on_quit_item__activate(self, widget):$/;"	m	class:Main	access:public
+on_redo__activate	popup.py	/^    def on_redo__activate(self, widget):$/;"	m	class:Popup	access:public
+on_redo_button__clicked	main.py	/^    def on_redo_button__clicked(self, widget):$/;"	m	class:Main	access:public
+on_redo_item__activate	main.py	/^    def on_redo_item__activate(self, widget):$/;"	m	class:Main	access:public
+on_remove__activate	popup.py	/^    def on_remove__activate(self, widget):$/;"	m	class:Popup	access:public
+on_removeattr__clicked	dialogs/classview.py	/^    def on_removeattr__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_removemethod__clicked	dialogs/classview.py	/^    def on_removemethod__clicked(self, widget):$/;"	m	class:ClassView	access:public
+on_save__clicked	dialogs/leave.py	/^    def on_save__clicked(self, widget):$/;"	m	class:Leave	access:public
+on_saveas__activate	main.py	/^    def on_saveas__activate(self, widget):$/;"	m	class:Main	access:public
+on_setup_item__activate	main.py	/^    def on_setup_item__activate(self, widget):$/;"	m	class:Main	access:public
+on_triple_click	gaphas/tool.py	/^    def on_triple_click(self, context, event):$/;"	m	class:Tool	access:public
+on_triple_click	gaphas/tool.py	/^    def on_triple_click(self, context, event):$/;"	m	class:ToolChain	access:public
+on_undo__activate	popup.py	/^    def on_undo__activate(self, widget):$/;"	m	class:Popup	access:public
+on_undo_button__clicked	main.py	/^    def on_undo_button__clicked(self, widget):$/;"	m	class:Main	access:public
+on_undo_item__activate	main.py	/^    def on_undo_item__activate(self, widget):$/;"	m	class:Main	access:public
+on_zoomin_button__clicked	main.py	/^    def on_zoomin_button__clicked(self, widget):$/;"	m	class:Main	access:public
+on_zoomout_button__clicked	main.py	/^    def on_zoomout_button__clicked(self, widget):$/;"	m	class:Main	access:public
+open	last_canvas.py	/^    def open(self, filename):$/;"	m	class:Canvas	access:public
+open_dialog	last_canvas.py	/^    def open_dialog(self):$/;"	m	class:Canvas	access:public
+open_document_notify	session.py	/^    def open_document_notify(self, filename):$/;"	m	class:Session	access:public
+opposite	gaphas/item.py	/^    def opposite(self, handle):$/;"	m	class:Line	access:public
+or	decorator.py	/^        if func: # func can also be a class or a callable$/;"	c	function:FunctionMaker.__init__	inherits:
+paint	gaphas/painter.py	/^    def paint(self, context):$/;"	m	class:BoundingBoxPainter	access:public
+paint	gaphas/painter.py	/^    def paint(self, context):$/;"	m	class:HandlePainter	access:public
+paint	gaphas/painter.py	/^    def paint(self, context):$/;"	m	class:ItemPainter	access:public
+paint	gaphas/painter.py	/^    def paint(self, context):$/;"	m	class:Painter	access:public
+paint	gaphas/painter.py	/^    def paint(self, context):$/;"	m	class:PainterChain	access:public
+paint	gaphas/painter.py	/^    def paint(self, context):$/;"	m	class:ToolPainter	access:public
+paint	gaphas/view.py	/^    def paint(self, cr):$/;"	m	class:View	access:public
+path_ellipse	gaphas/util.py	/^def path_ellipse (cr, x, y, width, height, angle=0):$/;"	f	access:public
+point	gaphas/examples.py	/^    def point(self, x, y):$/;"	m	class:Text	access:public
+point	gaphas/item.py	/^    def point(self, x, y):$/;"	m	class:Element	access:public
+point	gaphas/item.py	/^    def point(self, x, y):$/;"	m	class:Item	access:public
+point	gaphas/item.py	/^    def point(self, x, y):$/;"	m	class:Line	access:public
+point_on_rectangle	gaphas/geometry.py	/^def point_on_rectangle(rect, point, border=False):$/;"	f	access:public
+pop_redo	history.py	/^    def pop_redo(self) :$/;"	m	class:History	access:public
+pop_undo	history.py	/^    def pop_undo(self) :$/;"	m	class:History	access:public
+post_update	gaphas/item.py	/^    def post_update(self, context):$/;"	m	class:Item	access:public
+post_update	gaphas/item.py	/^    def post_update(self, context):$/;"	m	class:Line	access:public
+pre_update	gaphas/item.py	/^    def pre_update(self, context):$/;"	m	class:Item	access:public
+prepend	gaphas/painter.py	/^    def prepend(self, painter):$/;"	m	class:PainterChain	access:public
+prepend	gaphas/tool.py	/^    def prepend(self, tool):$/;"	m	class:ToolChain	access:public
+push_undo	history.py	/^    def push_undo(self, id) :$/;"	m	class:History	access:public
+queue_draw	gaphas/tool.py	/^    def queue_draw(self, view):$/;"	m	class:RubberbandTool	access:public
+queue_draw_area	gaphas/view.py	/^    def queue_draw_area(self, x, y, w, h):$/;"	m	class:GtkView	access:public
+queue_draw_item	gaphas/view.py	/^    def queue_draw_item(self, *items):$/;"	m	class:GtkView	access:public
+queue_draw_refresh	gaphas/view.py	/^    def queue_draw_refresh(self):$/;"	m	class:GtkView	access:public
+raw_input	ipython_view.py	/^    def raw_input(self, prompt=''):$/;"	m	class:IPythonView	access:public
+rebuild	gaphas/quadtree.py	/^    def rebuild(self):$/;"	m	class:Quadtree	access:public
+rectangle_clip	gaphas/geometry.py	/^def rectangle_clip(recta, rectb):$/;"	f	access:public
+rectangle_contains	gaphas/geometry.py	/^def rectangle_contains(inner, outer):$/;"	f	access:public
+rectangle_intersects	gaphas/geometry.py	/^def rectangle_intersects(recta, rectb):$/;"	f	access:public
+recursive	gaphas/decorators.py	/^class recursive(object):$/;"	c	inherits:object
+register_view	gaphas/canvas.py	/^    def register_view(self, view):$/;"	m	class:Canvas	access:public
+remove	gaphas/canvas.py	/^    def remove(self, item):$/;"	m	class:Canvas	access:public
+remove	gaphas/quadtree.py	/^    def remove(self, item):$/;"	m	class:Quadtree	access:public
+remove	gaphas/quadtree.py	/^    def remove(self, item):$/;"	m	class:QuadtreeBucket	access:public
+remove	gaphas/tree.py	/^    def remove(self, node):$/;"	m	class:Tree	access:public
+remove	last_box.py	/^    def remove(self):$/;"	m	class:Box	access:public
+remove	line.py	/^    def remove(self):$/;"	m	class:Line	access:public
+remove_connections_to_item	gaphas/canvas.py	/^    def remove_connections_to_item(self, item):$/;"	m	class:Canvas	access:public
+remove_constraint	gaphas/solver.py	/^    def remove_constraint(self, constraint):$/;"	m	class:Solver	access:public
+remove_selected_box	last_canvas.py	/^    def remove_selected_box(self):$/;"	m	class:Canvas	access:public
+reparent	gaphas/canvas.py	/^    def reparent(self, item, parent):$/;"	m	class:Canvas	access:public
+reparent	gaphas/tree.py	/^    def reparent(self, node, parent):$/;"	m	class:Tree	access:public
+request_matrix_update	gaphas/canvas.py	/^    def request_matrix_update(self, item):$/;"	m	class:Canvas	access:public
+request_resolve	gaphas/solver.py	/^    def request_resolve(self, variable, projections_only=False):$/;"	m	class:Solver	access:public
+request_resolve_constraint	gaphas/solver.py	/^    def request_resolve_constraint(self, c):$/;"	m	class:Solver	access:public
+request_update	gaphas/canvas.py	/^    def request_update(self, item, update=True, matrix=True):$/;"	m	class:Canvas	access:public
+request_update	gaphas/item.py	/^    def request_update(self, update=True, matrix=True):$/;"	m	class:Item	access:public
+request_update	gaphas/view.py	/^    def request_update(self, items, matrix_only_items=(), removed_items=()):$/;"	m	class:GtkView	access:public
+require_update	gaphas/canvas.py	/^    def require_update(self):$/;"	m	class:Canvas	access:public
+resize	gaphas/quadtree.py	/^    def resize(self, bounds):$/;"	m	class:Quadtree	access:public
+reversible_function	gaphas/state.py	/^def reversible_function(func, reverse, bind={}):$/;"	f	access:public
+reversible_pair	gaphas/state.py	/^def reversible_pair(func1, func2, bind1={}, bind2={}):$/;"	f	access:public
+reversible_property	gaphas/state.py	/^def reversible_property(fget=None, fset=None, fdel=None, doc=None, bind={}):$/;"	f	access:public
+revert_handler	gaphas/state.py	/^def revert_handler(event):$/;"	f	access:public
+rotate	gaphas/matrix.py	/^    def rotate(self, radians):$/;"	m	class:Matrix	access:public
+run	dialogs/about.py	/^    def run(self):$/;"	m	class:About	access:public
+run	dialogs/classlist.py	/^    def run(self):$/;"	m	class:ClassList	access:public
+run	dialogs/debugger.py	/^    def run(self):$/;"	m	class:Debugger	access:public
+run	dialogs/leave.py	/^    def run(self):$/;"	m	class:Leave	access:public
+run	dialogs/save.py	/^    def run(self):$/;"	m	class:SaveDialog	access:public
+run	dialogs/settings.py	/^    def run(self):$/;"	m	class:Settings	access:public
+save	last_canvas.py	/^    def save(self, extra=None):$/;"	m	class:Canvas	access:public
+save_as	last_canvas.py	/^    def save_as(self, extra=None):$/;"	m	class:Canvas	access:public
+save_document_notify	session.py	/^    def save_document_notify(self, filename):$/;"	m	class:Session	access:public
+saveapply	gaphas/state.py	/^def saveapply(func, kw):$/;"	f	access:public
+scale	gaphas/matrix.py	/^    def scale(self, sx, sy):$/;"	m	class:Matrix	access:public
+select_all	gaphas/view.py	/^    def select_all(self):$/;"	m	class:View	access:public
+select_in_rectangle	gaphas/view.py	/^    def select_in_rectangle(self, rect):$/;"	m	class:View	access:public
+select_item	gaphas/view.py	/^    def select_item(self, item):$/;"	m	class:View	access:public
+setUp	gaphas/tests/test_line.py	/^    def setUp(self):$/;"	m	class:LineTestCase	access:public
+set_can_export	main.py	/^    def set_can_export(self, state):$/;"	m	class:Main	access:public
+set_can_save	main.py	/^    def set_can_save(self, state):$/;"	m	class:Main	access:public
+set_item_bounding_box	gaphas/view.py	/^    def set_item_bounding_box(self, item, bounds):$/;"	m	class:View	access:public
+set_title	main.py	/^    def set_title(self, string):$/;"	m	class:Main	access:public
+set_tool	gaphas/tool.py	/^    def set_tool(self, tool):$/;"	m	class:ToolChainContext	access:public
+set_value	gaphas/solver.py	/^    def set_value(self, value):$/;"	m	class:Variable	access:public
+setup_canvas	gaphas/examples.py	/^    def setup_canvas(self):$/;"	m	class:Circle	access:public
+setup_canvas	gaphas/item.py	/^    def setup_canvas(self):$/;"	m	class:Element	access:public
+setup_canvas	gaphas/item.py	/^    def setup_canvas(self):$/;"	m	class:Item	access:public
+setup_canvas	gaphas/item.py	/^    def setup_canvas(self):$/;"	m	class:Line	access:public
+shell	ipython_view.py	/^    def shell(self, cmd,verbose=0,debug=0,header=''):$/;"	m	class:IterableIPShell	access:public
+show	popup.py	/^    def show(self, event, new):$/;"	m	class:Popup	access:public
+showPrompt	ipython_view.py	/^    def showPrompt(self, prompt):$/;"	m	class:ConsoleView	access:public
+showReturned	ipython_view.py	/^    def showReturned(self, text):$/;"	m	class:ConsoleView	access:public
+show_confirm_save_dialog	last_canvas.py	/^    def show_confirm_save_dialog(self):$/;"	m	class:Canvas	access:public
+show_create_class_dialog	canvas.py	/^    def show_create_class_dialog(self):$/;"	m	class:Canvas	access:public
+show_text	gaphas/painter.py	/^    def show_text(self, utf8, b=None):$/;"	m	class:CairoBoundingBoxContext	access:public
+side	gaphas/examples.py	/^        def side(handle, glued):$/;"	f	function:ConnectingHandleTool.connect	access:public
+solvable	gaphas/solver.py	/^class solvable(object):$/;"	c	inherits:object
+solve	gaphas/solver.py	/^    def solve(self):$/;"	m	class:Solver	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var):$/;"	m	class:BalanceConstraint	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var):$/;"	m	class:CenterConstraint	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var):$/;"	m	class:Constraint	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var):$/;"	m	class:EqualsConstraint	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var):$/;"	m	class:EquationConstraint	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var):$/;"	m	class:LessThanConstraint	access:public
+solve_for	gaphas/constraint.py	/^    def solve_for(self, var=None):$/;"	m	class:LineConstraint	access:public
+sort	gaphas/sorter.py	/^    def sort(self, items, reverse=False):$/;"	m	class:Sorter	access:public
+split_segment	gaphas/item.py	/^    def split_segment(self, segment, parts=2):$/;"	m	class:Line	access:public
+string_to_list	common.py	/^def string_to_list(string):$/;"	f	access:public
+stroke	gaphas/painter.py	/^    def stroke(self, b=None):$/;"	m	class:CairoBoundingBoxContext	access:public
+stroke_preserve	gaphas/painter.py	/^    def stroke_preserve(self, b=None):$/;"	m	class:CairoBoundingBoxContext	access:public
+swap	gaphas/tool.py	/^    def swap(self, old_tool_class, new_tool):$/;"	m	class:ToolChain	access:public
+tearDown	gaphas/tests/test_line.py	/^    def tearDown(self):$/;"	m	class:LineTestCase	access:public
+teardown_canvas	gaphas/item.py	/^    def teardown_canvas(self):$/;"	m	class:Item	access:public
+teardown_canvas	gaphas/item.py	/^    def teardown_canvas(self):$/;"	m	class:Line	access:public
+test_add	gaphas/tests/test_tree.py	/^    def test_add(self):$/;"	m	class:TreeTestCase	access:public
+test_bounding_box_calculations	gaphas/tests/test_view.py	/^    def test_bounding_box_calculations(self):$/;"	m	class:ViewTestCase	access:public
+test_discard	gaphas/tests/test_sorter.py	/^    def test_discard(self):$/;"	m	class:SortedTestCase	access:public
+test_get_item_at_point	gaphas/tests/test_view.py	/^    def test_get_item_at_point(self):$/;"	m	class:ViewTestCase	access:public
+test_item_removal	gaphas/tests/test_view.py	/^    def test_item_removal(self):$/;"	m	class:ViewTestCase	access:public
+test_lookups	gaphas/tests/test_quadtree.py	/^    def test_lookups(self):$/;"	m	class:QuadtreeTestCase	access:public
+test_min_size	gaphas/tests/test_solver.py	/^    def test_min_size(self):$/;"	m	class:SizeTestCase	access:public
+test_minimal_se	gaphas/tests/test_element.py	/^    def test_minimal_se(self):$/;"	m	class:ElementTestCase	access:public
+test_moving_items	gaphas/tests/test_quadtree.py	/^    def test_moving_items(self):$/;"	m	class:QuadtreeTestCase	access:public
+test_orthogonal_horizontal_undo	gaphas/tests/test_line.py	/^    def test_orthogonal_horizontal_undo(self):$/;"	m	class:LineTestCase	access:public
+test_orthogonal_line_split_segment	gaphas/tests/test_line.py	/^    def test_orthogonal_line_split_segment(self):$/;"	m	class:LineTestCase	access:public
+test_remove	gaphas/tests/test_tree.py	/^    def test_remove(self):$/;"	m	class:TreeTestCase	access:public
+test_resize_se	gaphas/tests/test_element.py	/^    def test_resize_se(self):$/;"	m	class:ElementTestCase	access:public
+test_siblings	gaphas/tests/test_tree.py	/^    def test_siblings(self):$/;"	m	class:TreeTestCase	access:public
+test_strength_change	gaphas/tests/test_solver.py	/^    def test_strength_change(self):$/;"	m	class:WeakestVariableTestCase	access:public
+test_update_matrices	gaphas/tests/test_canvas.py	/^    def test_update_matrices(self):$/;"	m	class:MatricesTestCase	access:public
+test_view_registration	gaphas/tests/test_view.py	/^    def test_view_registration(self):$/;"	m	class:ViewTestCase	access:public
+test_view_registration_2	gaphas/tests/test_view.py	/^    def test_view_registration_2(self):$/;"	m	class:ViewTestCase	access:public
+test_weakest_list	gaphas/tests/test_solver.py	/^    def test_weakest_list(self):$/;"	m	class:WeakestVariableTestCase	access:public
+test_weakest_list_order	gaphas/tests/test_solver.py	/^    def test_weakest_list_order(self):$/;"	m	class:WeakestVariableTestCase	access:public
+test_with_rectangles	gaphas/tests/test_quadtree.py	/^    def test_with_rectangles(self):$/;"	m	class:QuadtreeTestCase	access:public
+text_align	gaphas/util.py	/^def text_align(cr, x, y, text, align_x=0, align_y=0, padding_x=0, padding_y=0):$/;"	f	access:public
+text_center	gaphas/util.py	/^def text_center(cr, x, y, text):$/;"	f	access:public
+text_extents	gaphas/util.py	/^def text_extents(cr, text, font=None, multiline=False, padding=1):$/;"	f	access:public
+text_multiline	gaphas/util.py	/^def text_multiline(cr, x, y, text, padding=1):$/;"	f	access:public
+text_set_font	gaphas/util.py	/^def text_set_font(cr, font):$/;"	f	access:public
+transform_distance	gaphas/matrix.py	/^    def transform_distance(self, dx, dy):$/;"	m	class:Matrix	access:public
+transform_point	gaphas/matrix.py	/^    def transform_point(self, x, y):$/;"	m	class:Matrix	access:public
+translate	gaphas/matrix.py	/^    def translate(self, tx, ty):$/;"	m	class:Matrix	access:public
+undo	gaphas/tests/test_line.py	/^def undo():$/;"	f	access:public
+undo_handler	gaphas/tests/test_line.py	/^def undo_handler(event):$/;"	f	access:public
+ungrab	gaphas/tool.py	/^    def ungrab(self):$/;"	m	class:ToolChainContext	access:public
+ungrab	gaphas/tool.py	/^    def ungrab(self):$/;"	m	class:ToolContext	access:public
+ungrab	gaphas/tool.py	/^    def ungrab(self, tool):$/;"	m	class:ToolChain	access:public
+ungrab_handle	gaphas/tool.py	/^    def ungrab_handle(self):$/;"	m	class:HandleTool	access:public
+unregister_view	gaphas/canvas.py	/^    def unregister_view(self, view):$/;"	m	class:Canvas	access:public
+unselect_all	gaphas/view.py	/^    def unselect_all(self):$/;"	m	class:View	access:public
+unselect_item	gaphas/view.py	/^    def unselect_item(self, item):$/;"	m	class:View	access:public
+update	box.py	/^    def update(self, model):$/;"	m	class:Box	access:public
+update	decorator.py	/^    def update(self, func, **kw):$/;"	m	class:FunctionMaker	access:public
+update	gaphas/canvas.py	/^    def update(self):$/;"	m	class:Canvas	access:public
+update	gaphas/quadtree.py	/^    def update(self, item, old_bounds, new_bounds):$/;"	m	class:QuadtreeBucket	access:public
+update	gaphas/view.py	/^    def update(self):$/;"	m	class:GtkView	access:public
+update	last_box.py	/^    def update(self, model, last_name=None):$/;"	m	class:Box	access:public
+update	line.py	/^    def update(self):$/;"	m	class:Line	access:public
+updateNamespace	ipython_view.py	/^    def updateNamespace(self, ns_dict):$/;"	m	class:IterableIPShell	access:public
+update_adjustments	gaphas/view.py	/^    def update_adjustments(self, allocation=None):$/;"	m	class:GtkView	access:public
+update_area_expanding	last_canvas.py	/^    def update_area_expanding(self, bounds):$/;"	m	class:Canvas	access:public
+update_area_to_contract	last_canvas.py	/^    def update_area_to_contract(self):$/;"	m	class:Canvas	access:public
+update_balance	gaphas/constraint.py	/^    def update_balance(self):$/;"	m	class:BalanceConstraint	access:public
+update_bounding_box	gaphas/view.py	/^    def update_bounding_box(self, cr, items=None):$/;"	m	class:View	access:public
+update_bounding_box	gaphas/view.py	/^    def update_bounding_box(self, items):$/;"	m	class:GtkView	access:public
+update_lines	box.py	/^    def update_lines(self):$/;"	m	class:Box	access:public
+update_lines	last_box.py	/^    def update_lines(self):$/;"	m	class:Box	access:public
+update_matrices	gaphas/canvas.py	/^    def update_matrices(self, items):$/;"	m	class:Canvas	access:public
+update_matrix	gaphas/canvas.py	/^    def update_matrix(self, item, parent=None):$/;"	m	class:Canvas	access:public
+update_matrix	gaphas/view.py	/^    def update_matrix(self, item):$/;"	m	class:View	access:public
+update_now	gaphas/canvas.py	/^    def update_now(self):$/;"	m	class:Canvas	access:public
+update_positions	last_box.py	/^    def update_positions(self):$/;"	m	class:Box	access:public
+update_ratio	gaphas/constraint.py	/^    def update_ratio(self):$/;"	m	class:LineConstraint	access:public
+update_wrapper	decorator.py	/^def update_wrapper(wrapper, model, infodict=None):$/;"	f	access:public
+variable	gaphas/canvas.py	/^    def variable(self):$/;"	m	class:VariableProjection	access:public
+variable	gaphas/solver.py	/^    def variable(self):$/;"	m	class:Projection	access:public
+variables	gaphas/constraint.py	/^    def variables(self):$/;"	m	class:Constraint	access:public
+warning	status.py	/^    def warning(self, message, long=None):$/;"	m	class:StatusBar	access:public
+weakest	gaphas/constraint.py	/^    def weakest(self):$/;"	m	class:Constraint	access:public
+wrapper	gaphas/decorators.py	/^        def wrapper(*args, **kwargs):$/;"	f	function:async.__call__	access:public
+wrapper	gaphas/decorators.py	/^        def wrapper(*args, **kwargs):$/;"	f	function:recursive.__call__	access:public
+wrapper	gaphas/decorators.py	/^    def wrapper(*args, **kwargs):$/;"	f	function:nonrecursive	access:public
+wrapper	gaphas/state.py	/^    def wrapper(func, *args, **kwargs):$/;"	f	function:observed	access:public
+write	ipython_view.py	/^    def write(self, text, editable=False):$/;"	m	class:ConsoleView	access:public
+zoom	gaphas/view.py	/^    def zoom(self, factor):$/;"	m	class:GtkView	access:public
+zoom	gaphas/view.py	/^    def zoom(self, factor):$/;"	m	class:View	access:public
+zoom_in	canvas.py	/^    def zoom_in(self):$/;"	m	class:Canvas	access:public
+zoom_out	canvas.py	/^    def zoom_out(self):$/;"	m	class:Canvas	access:public

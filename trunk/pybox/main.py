@@ -26,6 +26,7 @@ class Main(Window):
         self._create_canvas()
         self._create_status_bar()
         self._create_history()
+        self.view.main.set_size_request(450, 300)
         self.view.main.show()
 
     def set_title(self, string):
@@ -127,6 +128,12 @@ class Main(Window):
 
     def on_redo_button__clicked(self, widget):
         self.on_redo_item__activate(widget)
+
+    def on_zoomin_button__clicked(self, widget):
+        self.canvas.zoom_in()
+
+    def on_zoomout_button__clicked(self, widget):
+        self.canvas.zoom_out()
 
 
 if __name__ == '__main__':
