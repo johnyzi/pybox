@@ -18,6 +18,7 @@ class Canvas(gaphas.view.GtkView):
         gaphas.view.GtkView.__init__(self)
         self.main = main
         self.boxes = []
+        self.internal_zoom_factor = 1
 
         # Creates some internal objects
         self.session = session.Session(self.main)
@@ -107,3 +108,13 @@ class Canvas(gaphas.view.GtkView):
         self.main.canvas.grab_focus()
         self.main.canvas.emit("button-press-event", gtk.gdk.Event(gtk.gdk.NOTHING))
         self.main.canvas.emit("button-release-event", gtk.gdk.Event(gtk.gdk.NOTHING))
+
+
+    # Cambio de escala
+    def zoom_in(self):
+        self.zoom(1.2)
+        self.internal_zoom_factor += 1.2
+
+    def zoom_out(self):
+        self.zoom(1/1.2)
+        self.internal_zoom_factor -= 1.2
