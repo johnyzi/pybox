@@ -8,6 +8,7 @@ import session
 
 import box
 import model
+from gaphas import tool
 
 class Canvas(gaphas.view.GtkView):
     """Representa el objeto GTK que muestra el diagrama de clases."""
@@ -23,6 +24,16 @@ class Canvas(gaphas.view.GtkView):
 
         # Creates canvas drawable
         self.canvas = gaphas.canvas.Canvas()
+
+        # Set only the used tools.
+        new_tools = tool.ToolChain()
+        new_tools.append(tool.HoverTool())
+        new_tools.append(tool.HandleTool())
+        new_tools.append(tool.ItemTool())
+        new_tools.append(tool.RubberbandTool())
+
+        self.tool = new_tools
+
         self.show()
 
         # Event handlers
