@@ -1,6 +1,4 @@
 import gtk
-import model
-import dialogs
 
 from window import Window
 
@@ -13,14 +11,7 @@ class Popup(Window):
 
     def on_add__activate(self, widget):
         "Raise the window to create a new class."
-        new_model = model.Model()
-        all_classes = self.canvas.get_class_names()
-
-        dialog = dialogs.classview.ClassView(new_model, all_classes)
-        response = dialog.view.dialog1.run()
-
-        if response:
-            self.canvas.create_box(new_model)
+        self.canvas.show_create_class_dialog()
 
     def on_remove__activate(self, widget):
         self.canvas.remove_selected_box()
@@ -38,6 +29,7 @@ class Popup(Window):
             box.update(box.model, last_name)
             self.canvas.connect_box(box, box.model)
             self.canvas.session.on_notify_edit_class(box.model, last_name)
+
 
     def on_undo__activate(self, widget):
         self.session.on_notify_undo()
