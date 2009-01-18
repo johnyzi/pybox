@@ -35,8 +35,8 @@ class Main(Window):
     def set_can_save(self, state):
         "Define si habilita o no la posibilidad de guardar."
         self.view.saveas.set_sensitive(state)
-        self.view.new.set_sensitive(state)
-        self.view.new_button.set_sensitive(state)
+        #self.view.new.set_sensitive(state)
+        #self.view.new_button.set_sensitive(state)
 
     def set_can_export(self, state):
         "Define si habilita o no la posibilidad de exportar el documento."
@@ -70,7 +70,7 @@ class Main(Window):
         gtk.main_quit()
     
     def on_new__activate(self, widget):
-        self.canvas.new()
+        self.canvas.show_create_class_dialog()
 
     def on_quit_item__activate(self, widget):
         self.on_main__delete_event(widget)

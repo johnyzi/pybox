@@ -37,7 +37,10 @@ class Box(gaphas.examples.Item):
 
         name = self.model.name
         atributes = "\n".join(self.model.variables)
+        atributes_len_lines = len(self.model.variables)
+
         methods = "\n".join(self.model.methods)
+        methods_len_lines = len(self.model.methods)
 
         # Estrategia para crear la caja
         # -----------------------------
@@ -53,8 +56,18 @@ class Box(gaphas.examples.Item):
         name_size = gaphas.util.text_extents(cr, name) 
 
         gaphas.util.text_set_font(cr, normal_font)
+
         atributes_size = gaphas.util.text_extents(cr, atributes, multiline=True)
+        # Inserta el calculo por separacion de lineas.
+        w, h = atributes_size
+        h += atributes_len_lines * 2
+        atributes_size = (w, h)
+
         methods_size = gaphas.util.text_extents(cr, methods, multiline=True)
+        # Inserta el calculo por separacion de lineas.
+        w, h = methods_size
+        h += methods_len_lines * 2
+        methods_size = (w, h)
 
         sizes = [name_size, atributes_size, methods_size]
 

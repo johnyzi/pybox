@@ -2,13 +2,14 @@
 import gtk
 import gobject
 import gaphas
+from gaphas import tool
 
 import popup
 import session
 
 import box
 import model
-from gaphas import tool
+import dialogs
 
 class Canvas(gaphas.view.GtkView):
     """Representa el objeto GTK que muestra el diagrama de clases."""
@@ -45,9 +46,10 @@ class Canvas(gaphas.view.GtkView):
         Now, only show a menu when right click is pressed over the canvas."""
 
         if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-            self.popup.show(event, new=True)
+            self.popup.show(event, True)
             self.x_position = event.x
             self.y_position = event.y
+
 
     def get_class_names(self):
         """Get a list with all class names."""
@@ -73,6 +75,15 @@ class Canvas(gaphas.view.GtkView):
             print ""
             box.inspect()
 
+    def show_create_class_dialog(self):
+        new_model = model.Model()
+        all_classes = self.get_class_names()
+
+        dialog = dialogs.classview.ClassView(new_model, all_classes)
+        response = dialog.view.dialog1.run()
+
+        if response:
+            self.create_box(new_model, 40, 40)
 
     def create_box(self, new_model, x=None, y=None, hierarchy_lines=True):
         """Create a graphical Box that shows a class model.
@@ -90,3 +101,9 @@ class Canvas(gaphas.view.GtkView):
 
         self.canvas.add(new_box)
         new_box.matrix.translate(x, y)
+
+    def focus(self):
+        self.main.view.status.ui.get_widget('debug').grab_focus()
+        self.main.canvas.grab_focus()
+        self.main.canvas.emit("button-press-event", gtk.gdk.Event(gtk.gdk.NOTHING))
+        self.main.canvas.emit("button-release-event", gtk.gdk.Event(gtk.gdk.NOTHING))
