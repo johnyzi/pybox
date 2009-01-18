@@ -12,10 +12,21 @@ def distance((x1, y1), (x2, y2)):
 class Box(gaphas.examples.Item):
 
     def __init__(self, model, canvas_view):
+        self.lines_connected_to_me = []
         self.model = model
         gaphas.examples.Item.__init__(self)
         self.width = 100
         self.height = 100
+        self.update(model)
+
+    def update(self, model):
+        self.update_lines()
+
+    def update_lines(self):
+        "Actualiza la posición de las lineas que lo conectan a otras cajas."
+
+        for line in self.lines_connected_to_me:
+            line.update()
 
     def draw(self, context):
         name_font = 'sans bold 14'
