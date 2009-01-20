@@ -43,6 +43,7 @@ class Main(Window):
         "Define si habilita o no la posibilidad de exportar el documento."
         self.view.saveas.set_sensitive(state)
         self.view.export_png_item.set_sensitive(state)
+        self.view.export_svg_item.set_sensitive(state)
         self.view.export_pdf_item.set_sensitive(state)
 
     def _create_canvas(self):
@@ -93,6 +94,10 @@ class Main(Window):
 
     def on_export_png_item__activate(self, widget):
         d = dialogs.save.PNG(self.view.main, self.canvas, self.view.status)
+        d.run()
+
+    def on_export_svg_item__activate(self, widget):
+        d = dialogs.save.SVG(self.view.main, self.canvas, self.view.status)
         d.run()
 
     def on_export_pdf_item__activate(self, widget):

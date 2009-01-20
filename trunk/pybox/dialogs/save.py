@@ -2,7 +2,7 @@
 import cPickle
 import gtk
 import cairo
-import goocanvas
+import gaphas
 
 class SaveDialog:
     """Abstract save dialog."""
@@ -57,14 +57,24 @@ class PNG(SaveDialog):
         SaveDialog.__init__(self, parent, canvas, status, pattern, name)
 
     def _save_canvas_to(self, filename):
-        width = self.canvas.props.x2 - self.canvas.props.x1
-        height = self.canvas.props.y2 - self.canvas.props.y1
+        svgview = gaphas.View(self.canvas.canvas)
+        svgview.painter = gaphas.painter.ItemPainter()
 
-        bounds = goocanvas.Bounds(* self.canvas.get_bounds())
+        tmpsurface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 0, 0)
+        tmpcr = cairo.Context(tmpsurface)
+        svgview.update_bounding_box(tmpcr)
+        tmpcr.show_page()
+        tmpsurface.flush()
 
-        surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(width), int(height))
+        w, h = svgview.bounding_box.width, svgview.bounding_box.height
+        surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(w), int(h))
+
         cr = cairo.Context(surface)
-        self.canvas.render(cr, bounds, 1.0)
+        svgview.matrix.translate(-svgview.bounding_box.x, -svgview.bounding_box.y)
+        cr.save()
+        svgview.paint(cr)
+
+        cr.restore()
         cr.show_page()
 
         try:
@@ -86,20 +96,67 @@ class PDF(SaveDialog):
         SaveDialog.__init__(self, parent, canvas, status, pattern, name)
 
     def _save_canvas_to(self, filename):
-        width = self.canvas.props.x2 - self.canvas.props.x1
-        height = self.canvas.props.y2 - self.canvas.props.y1
+        svgview = gaphas.View(self.canvas.canvas)
+        svgview.painter = gaphas.painter.ItemPainter()
 
-        bounds = goocanvas.Bounds(* self.canvas.get_bounds())
+        tmpsurface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 0, 0)
+        tmpcr = cairo.Context(tmpsurface)
+        svgview.update_bounding_box(tmpcr)
+        tmpcr.show_page()
+        tmpsurface.flush()
+
+        w, h = svgview.bounding_box.width, svgview.bounding_box.height
 
         try:
-            surface = cairo.PDFSurface(filename, int(width), int(height))
+            surface = cairo.PDFSurface(filename, w, h)
         except IOError:
             self.status.error("I can't write the file as %s." %filename)
-            return
 
         cr = cairo.Context(surface)
-        self.canvas.render(cr, bounds, 1.0)
+        svgview.matrix.translate(-svgview.bounding_box.x, 
+                -svgview.bounding_box.y)
+        svgview.paint(cr)
         cr.show_page()
+        surface.flush()
+        surface.finish()
+
+        self.status.info("File saved as %s" %filename)
+        return True
+
+class SVG(SaveDialog):
+    """Allow to export canvas area in a .SVG file."""
+
+    def __init__(self, parent, canvas, status):
+        pattern = ("SVG Files", "*.svg")
+        name = "%s.svg" %(canvas.session.name)
+        SaveDialog.__init__(self, parent, canvas, status, pattern, name)
+
+    def _save_canvas_to(self, filename):
+        svgview = gaphas.View(self.canvas.canvas)
+        svgview.painter = gaphas.painter.ItemPainter()
+
+        tmpsurface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 0, 0)
+        tmpcr = cairo.Context(tmpsurface)
+        svgview.update_bounding_box(tmpcr)
+        tmpcr.show_page()
+        tmpsurface.flush()
+
+        w, h = svgview.bounding_box.width, svgview.bounding_box.height
+
+        try:
+            surface = cairo.SVGSurface(filename, w, h)
+        except IOError:
+            self.status.error("I can't write the file as %s." %filename)
+
+        cr = cairo.Context(surface)
+        svgview.matrix.translate(-svgview.bounding_box.x, 
+                -svgview.bounding_box.y)
+        svgview.paint(cr)
+        cr.show_page()
+        surface.flush()
+        surface.finish()
+
+
         self.status.info("File saved as %s" %filename)
         return True
 

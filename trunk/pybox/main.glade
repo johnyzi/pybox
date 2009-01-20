@@ -71,9 +71,16 @@
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="export_pdf_item">
+                      <widget class="GtkMenuItem" id="export_svg_item">
                         <property name="visible">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="label" translatable="yes">Export as .svg image file</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="export_pdf_item">
+                        <property name="visible">True</property>
                         <property name="label" translatable="yes">Export as .pdf document file</property>
                         <property name="use_underline">True</property>
                       </widget>
@@ -187,13 +194,17 @@
                 <property name="stock_id">gtk-new</property>
               </widget>
               <packing>
-                <property name="homogeneous">True</property>
+                <property name="expand">False</property>
               </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbutton1">
                 <property name="visible">True</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="undo_button">
@@ -201,7 +212,7 @@
                 <property name="stock_id">gtk-undo</property>
               </widget>
               <packing>
-                <property name="homogeneous">True</property>
+                <property name="expand">False</property>
               </packing>
             </child>
             <child>
@@ -210,7 +221,7 @@
                 <property name="stock_id">gtk-redo</property>
               </widget>
               <packing>
-                <property name="homogeneous">True</property>
+                <property name="expand">False</property>
               </packing>
             </child>
             <child>
@@ -218,7 +229,8 @@
                 <property name="visible">True</property>
               </widget>
               <packing>
-                <property name="homogeneous">True</property>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -227,7 +239,7 @@
                 <property name="stock_id">gtk-zoom-in</property>
               </widget>
               <packing>
-                <property name="homogeneous">True</property>
+                <property name="expand">False</property>
               </packing>
             </child>
             <child>
@@ -236,7 +248,7 @@
                 <property name="stock_id">gtk-zoom-out</property>
               </widget>
               <packing>
-                <property name="homogeneous">True</property>
+                <property name="expand">False</property>
               </packing>
             </child>
           </widget>
