@@ -24,7 +24,7 @@ class Session:
     def new_document_notify(self):
         self.name = 'Untitled'
         self._clear_state()
-        self.main.set_can_export(False)
+        self.main.set_can_export(True)
 
     def open_document_notify(self, filename):
         self.name = common.get_filename_without_extension(filename)
