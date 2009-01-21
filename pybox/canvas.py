@@ -100,6 +100,9 @@ class Canvas(gaphas.view.GtkView):
             x = self.x_position
             y = self.y_position
 
+        if hierarchy_lines:
+            self.connect_box(new_box, new_model)
+
         self.canvas.add(new_box)
         new_box.matrix.translate(x, y)
 

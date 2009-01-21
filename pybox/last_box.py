@@ -237,5 +237,8 @@ class Box:
         print self
         self.model.inspect()
 
-        for i, line in enumerate(self.lines_connected_to_me):
-            print "\tlines_connected_to_me[%d]: %s" %(i, line)
+        if self.lines_connected_to_me:
+            for i, line in enumerate(self.lines_connected_to_me):
+                print "\tlines_connected_to_me[%d]: %s" %(i, line)
+        else:
+            print "\tno lines connected to me"
