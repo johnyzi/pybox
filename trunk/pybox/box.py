@@ -151,3 +151,12 @@ class Box(gaphas.examples.Item):
         cr.line_to(width, y)
         cr.stroke()
         cr.restore()
+
+    def inspect(self):
+        print self
+        self.model.inspect()
+
+        for i, line in enumerate(self.lines_connected_to_me):
+            print "\tlines_connected_to_me[%d]: %s" %(i, line)
+        else:
+            print "\tno lines connected to me"
