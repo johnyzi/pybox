@@ -6,6 +6,18 @@ import model
 if __name__ == '__main__':
     main = main.Main()
 
+    # Modelo de clases generado
+    #
+    #   Mascota    Canino
+    #      ^        ^
+    #       \      /
+    #        \    /
+    #         Perro
+    #           ^
+    #           |
+    #           |
+    #        Caniche
+    #
     mascota = model.Model("Mascota", [], True, "", ['nombre', 'edad'], [])
     canino = model.Model("Canino", [], True, "", [], [])
     perro = model.Model("Perro", ["Mascota", "Canino"], False, "", [], [])
