@@ -156,6 +156,9 @@ class Box:
 
         Estos puntos se utilizan para conectar lineas a otras cajas.
         """
+
+        print self.canvas_view.get_item_bounding_box(self)
+
         bounds = self.group.get_bounds()
         x1, y1 = bounds.x1, bounds.y1
         x2, y2 = bounds.x2, bounds.y2

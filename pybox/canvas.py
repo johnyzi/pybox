@@ -10,6 +10,7 @@ import session
 import box
 import model
 import dialogs
+import line
 
 class Canvas(gaphas.view.GtkView):
     """Representa el objeto GTK que muestra el diagrama de clases."""
@@ -100,11 +101,30 @@ class Canvas(gaphas.view.GtkView):
             x = self.x_position
             y = self.y_position
 
+        new_box.matrix.translate(x, y)
+        self.canvas.add(new_box)
+
         if hierarchy_lines:
             self.connect_box(new_box, new_model)
 
-        self.canvas.add(new_box)
-        new_box.matrix.translate(x, y)
+    def connect_box(self, box, model):
+        # Conecta a las cajas en caso de existir una relacion.
+        father_lines = box.get_outgoing_lines()
+        old_fathers = []
+
+        for line in father_lines:
+            old_fathers.append(line.father)
+            line.remove()
+
+        if model.superclass:
+            for father in model.superclass:
+                superclass_box = self.get_box_by_name(father)
+                self.create_line(box, superclass_box)
+                superclass = self.get_box_by_name(model.name)
+
+    def create_line(self, child, father):
+        new_line = line.Line(self, child, father)
+        self.canvas.add(new_line)
 
     def focus(self):
         self.main.view.status.ui.get_widget('debug').grab_focus()

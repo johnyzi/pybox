@@ -114,6 +114,7 @@ class Canvas(goocanvas.Canvas):
         # Conecta a las cajas en caso de existir una relacion.
         father_lines = box.get_outgoing_lines()
         old_fathers = []
+
         for line in father_lines:
             old_fathers.append(line.father)
             line.remove()
