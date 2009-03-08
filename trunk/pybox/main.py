@@ -55,7 +55,6 @@ class Main(Window):
         self.view.hscrollbar.set_adjustment(self.canvas.hadjustment)
         self.view.vscrollbar.set_adjustment(self.canvas.vadjustment)
 
-
     def _create_history(self):
         "Construye el historial de cambios (deshacer y reahacer)."
         self.history = history.History(self)
@@ -134,11 +133,11 @@ class Main(Window):
     def on_redo_button__clicked(self, widget):
         self.on_redo_item__activate(widget)
 
-    def on_zoomin_button__clicked(self, widget):
-        self.canvas.zoom_in()
+    #def on_zoomin_button__clicked(self, widget):
+    #    self.canvas.zoom_in()
 
-    def on_zoomout_button__clicked(self, widget):
-        self.canvas.zoom_out()
+    #def on_zoomout_button__clicked(self, widget):
+    #    self.canvas.zoom_out()
 
 
 if __name__ == '__main__':
