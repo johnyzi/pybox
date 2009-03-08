@@ -31,7 +31,7 @@ class Canvas(gaphas.view.GtkView):
         # Set only the used tools.
         new_tools = tool.ToolChain()
         new_tools.append(tool.HoverTool())
-        new_tools.append(tool.HandleTool())
+        #new_tools.append(tool.HandleTool())
         new_tools.append(tool.ItemTool())
         new_tools.append(tool.RubberbandTool())
 
@@ -40,18 +40,28 @@ class Canvas(gaphas.view.GtkView):
         self.show()
 
         # Event handlers
-        self.connect('event', self.on_event)
+        self.connect('button-press-event', self.on_event)
+        self.connect('focus-in-event', self.on_focus_in)
+        #self.connect('motion-notify-event', self.on_motion_notify)
+
+    def on_motion_notify(self, widget, event):
+        for box in self.boxes:
+            box.update_lines()
+
+    def on_focus_in(self, widget, event):
+        print "Canvas recibe el foco del usuario"
 
     def on_event(self, widget, event):
         """This method is called by gtk when user iteract with canvas.
         
         Now, only show a menu when right click is pressed over the canvas."""
 
-        if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+        if event.button == 3:
             self.popup.show(event, True)
             self.x_position = event.x
             self.y_position = event.y
-
+        else:
+            self.on_motion_notify(None, None)
 
     def get_class_names(self):
         """Get a list with all class names."""
@@ -124,14 +134,12 @@ class Canvas(gaphas.view.GtkView):
 
     def create_line(self, child, father):
         new_line = line.Line(self, child, father)
-        self.canvas.add(new_line)
 
     def focus(self):
         self.main.view.status.ui.get_widget('debug').grab_focus()
         self.main.canvas.grab_focus()
-        self.main.canvas.emit("button-press-event", gtk.gdk.Event(gtk.gdk.NOTHING))
-        self.main.canvas.emit("button-release-event", gtk.gdk.Event(gtk.gdk.NOTHING))
-
+        self.emit("button-press-event", gtk.gdk.Event(gtk.gdk.NOTHING))
+        self.emit("button-release-event", gtk.gdk.Event(gtk.gdk.NOTHING))
 
     # Cambio de escala
     def zoom_in(self):

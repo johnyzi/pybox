@@ -20,6 +20,10 @@ class Box(gaphas.examples.Item):
         self.width = 100
         self.height = 100
 
+    def a(self, widget):
+        print widget
+
+
     def update_lines(self):
         "Actualiza la posición de las lineas que lo conectan a otras cajas."
 
@@ -100,7 +104,7 @@ class Box(gaphas.examples.Item):
         x = center_x - sizes[2][0] / 2
         gaphas.util.text_multiline(cr, x, y, methods)
 
-        self.update_lines()
+        #kself.update_lines()
 
     def get_connection_more_closer_to(self, other):
         "Retorna los puntos mas cercanos para conectar dos cajas."
