@@ -3,7 +3,59 @@ import gtk
 import gaphas
 
 
-class Line(gaphas.examples.Item):
+class Line(gaphas.item.Line):
+
+    def __init__(self, canvas_view, child, father):
+        gaphas.item.Line.__init__(self)
+        canvas_view.canvas.add(self)
+
+        self.child = child
+        self.father = father
+        self.set_points((0,0), (0,0))
+
+        self.child.lines_connected_to_me.append(self)
+        self.father.lines_connected_to_me.append(self)
+        self.set_no_movable()
+        self.update()
+
+    def set_no_movable(self):
+        for handle in self.handles():
+            handle.movable = False
+            handle.visible = False
+
+    def set_points(self, p1, p2):
+        x_offset = self.matrix[4]
+        y_offset = self.matrix[5]
+
+        self.handles()[0].pos = (p1[0] - x_offset, p1[1] - y_offset)
+        self.handles()[1].pos = (p2[0] - x_offset, p2[1] - y_offset)
+
+    def update(self):
+        closers = self.child.get_connection_more_closer_to(self.father)
+
+        self.set_points(closers[0], closers[1])
+        self.request_update()
+
+    def draw_tail(self, context):
+        cr = context.cairo
+
+        # la linea
+        cr.line_to(0, 0)
+        cr.stroke()
+
+        # la punta de flecha
+        cr.save()
+        cr.line_to(10, 5)
+        cr.move_to(0, 0)
+        cr.line_to(10, -5)
+        cr.line_to(10, 5)
+        cr.close_path()
+        cr.fill()
+        cr.restore()
+
+
+
+class Lddine(gaphas.examples.Item):
 
     def __init__(self, canvas_view, child, father):
         gaphas.examples.Item.__init__(self)
@@ -96,6 +148,7 @@ class Ldine(gaphas.item.Line):
         src = self.child.model.name
         dst = self.father.model.name
         return "<Line instance from '%s' to '%s'>" %(src, dst)
+
 '''
 class Line(goocanvas.Polyline):
     "Representa una linea que conecta a dos modelos de clase."
